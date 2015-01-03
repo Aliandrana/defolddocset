@@ -10,4 +10,4 @@ BeautifulSoup (http://www.crummy.com/software/BeautifulSoup/)
 
 usage
 -----
-Run `./createdocset.py` from a terminal.
+Run `./createdocset.py` from a terminal. This will create a complete defold.docset filestructure. If you have Dash installed it should be enough to double-click the defold.docset folde to import it to Dash.
