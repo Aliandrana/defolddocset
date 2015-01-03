@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
+     <style type="text/css">
+      .sidebar-nav {
+    padding: 9px 0;
+}
+     </style>
+     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
+       <meta charset="utf-8">
+        <title>
+         Reference Documentation
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+         <meta content="" name="description">
+          <meta content="" name="author">
+           <!--  Google analytics -->
+           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
+           <script type="text/javascript">
+            if (document.location.hostname != "127.0.0.1") {
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-83690-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }
+           </script>
+           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
+           </script>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
+           </script>
+          </meta>
+         </meta>
+        </meta>
+       </meta>
+      </link>
+     </link>
+    </link>
+   </link>
+  </link>
+ </head>
+ <body>
+  <script type="text/javascript">
+   var _ues = {
+            host : 'defold.userecho.com',
+            forum : '11347',
+            lang : 'en',
+            tab_corner_radius : 8,
+            tab_font_size : 20,
+            tab_image_hash : 'RmVlZGJhY2s%3D',
+            tab_alignment : 'left',
+            tab_text_color : '#FFFFFF',
+            tab_bg_color : '#729FCF',
+            tab_hover_color : '#5D81A8'
+        };
+
+        if (screen.width >= 1024) {
+            (function() {
+                var _ue = document.createElement('script');
+                _ue.type = 'text/javascript';
+                _ue.async = true;
+                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
+                        : 'http://')
+                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(_ue, s);
+            })();
+        }
+  </script>
+  <div class="container ref-doc">
+   <div class="row">
+    <div class="span9">
+     <div class="well well-blue">
+      <h2>
+       Functions
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Function
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#tilemap.get_bounds">
+           tilemap.get_bounds
+          </a>
+         </td>
+         <td>
+          get the bounds of a tile map
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#tilemap.get_tile">
+           tilemap.get_tile
+          </a>
+         </td>
+         <td>
+          get a tile from a tile map
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#tilemap.reset_constant">
+           tilemap.reset_constant
+          </a>
+         </td>
+         <td>
+          reset a shader constant for a tile map
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#tilemap.set_constant">
+           tilemap.set_constant
+          </a>
+         </td>
+         <td>
+          set a shader constant for a tile map
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#tilemap.set_tile">
+           tilemap.set_tile
+          </a>
+         </td>
+         <td>
+          set a tile in a tile map
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Messages
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Message
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#set_tile">
+           set_tile
+          </a>
+         </td>
+         <td>
+          (DEPRECATED) changes a tile in a tile map
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h2>
+      Functions
+     </h2>
+     <a name="tilemap.get_bounds">
+     </a>
+     <div>
+      <h3 class="name">
+       tilemap.get_bounds
+      </h3>
+      <p>
+       Get the tile set at the specified position in the tilemap. The returned tile to set is identified
+by its index starting with 1 in the top left corner of the tile set. The coordinates of the tile is
+1-indexed (see
+       <code>
+        tilemap.set_tile()
+       </code>
+       ) Which tile map and layer to query is identified by
+the URL and the layer name parameters.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the tile map (url)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       number of rows in the tile map (number)
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+-- get the level bounds.
+local x, y, w, h = tilemap.get_bounds("/level#tilemap")
+</pre>
+     </div>
+     <a name="tilemap.get_tile">
+     </a>
+     <div>
+      <h3 class="name">
+       tilemap.get_tile
+      </h3>
+      <p>
+       Get the tile set at the specified position in the tilemap. The returned tile to set is identified
+by its index starting with 1 in the top left corner of the tile set, or 0 if the tile is blank.
+The coordinates of the tile is 1-indexed (see
+       <code>
+        tilemap.set_tile()
+       </code>
+       )
+Which tile map and layer to query is identified by the URL and the layer name parameters.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the tile map (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          name
+         </td>
+         <td>
+          of the layer (string|hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          x-coordinate
+         </td>
+         <td>
+          of the tile (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          y-coordinate
+         </td>
+         <td>
+          of the tile (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       index of the tile (number)
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+-- get the tile under the player.
+local tileno = tilemap.get_tile("/level#tilemap", "foreground", self.player_x, self.player_y)
+</pre>
+     </div>
+     <a name="tilemap.reset_constant">
+     </a>
+     <div>
+      <h3 class="name">
+       tilemap.reset_constant
+      </h3>
+      <p>
+       The constant must be defined in the material assigned to the tile map.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which tile map to reset a constant for is identified by the URL.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the tile map that should have a constant reset (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          name
+         </td>
+         <td>
+          of the constant (string|hash)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       The following examples assumes that the tile map has id "tilemap" and that the default-material in builtins is used.
+If you assign a custom material to the tile map, you can reset the constants defined there in the same manner.
+      </p>
+      <p>
+       How to reset the tinting of a tile map:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+    tilemap.reset_constant("#tilemap", "tint")
+end
+</pre>
+     </div>
+     <a name="tilemap.set_constant">
+     </a>
+     <div>
+      <h3 class="name">
+       tilemap.set_constant
+      </h3>
+      <p>
+       The constant must be defined in the material assigned to the tile map.
+Setting a constant through this function will override the value set for that constant in the material.
+The value will be overridden until tilemap.reset_constant is called.
+Which tile map to set a constant for is identified by the URL.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the tile map that should have a constant set (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          name
+         </td>
+         <td>
+          of the constant (string|hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          value
+         </td>
+         <td>
+          of the constant (vec4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       The following examples assumes that the tile map has id "tile map" and that the default-material in builtins is used.
+If you assign a custom material to the tile map, you can set the constants defined there in the same manner.
+      </p>
+      <p>
+       How to tint a tile map to red:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+    tilemap.set_constant("#tilemap", "tint", vmath.vector4(1, 0, 0, 1))
+end
+</pre>
+     </div>
+     <a name="tilemap.set_tile">
+     </a>
+     <div>
+      <h3 class="name">
+       tilemap.set_tile
+      </h3>
+      <p>
+       Replace a tile in a tile map with a new tile. The coordinates of the tile is 1-indexed so a 4 by 4
+tile map has the following x,y coordinates:
+       <pre>
++-------+-------+------+------+
+| -2,1  | -1,1  | 0,1  | 1,1  |
++-------+-------+------+------+
+| -2,0  | -1,0  | 0,0  | 1,0  |
++-------+-------O------+------+
+| -2,-1 | -1,-1 | 0,-1 | 1,-1 |
++-------+-------+------+------+
+| -2,-2 | -1,-2 | 0,-2 | 1,-2 |
++-------+-------+------+------+
+</pre>
+       The coordinates must be within the bounds of the tile map as it were created. That is, it is not
+possible to extend the size of a tile map by setting tiles outside the edges.
+The tile to set is identified by its index starting with 1 in the top left corner of the tile set.
+To clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by
+the URL and the layer name parameters.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the tile map (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          name
+         </td>
+         <td>
+          of the layer (string|hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          x-coordinate
+         </td>
+         <td>
+          of the tile (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          y-coordinate
+         </td>
+         <td>
+          of the tile (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          new
+         </td>
+         <td>
+          tile to set (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          optional
+         </td>
+         <td>
+          if the tile should be horizontally flipped (boolean)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          optional
+         </td>
+         <td>
+          i the tile should be vertically flipped (boolean)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+-- Clear the tile under the player.
+tilemap.set_tile("/level#tilemap", "foreground", self.player_x, self.player_y, 0)
+</pre>
+     </div>
+     <h2>
+      Messages
+     </h2>
+     <a name="set_tile">
+     </a>
+     <div>
+      <h3 class="name">
+       set_tile
+      </h3>
+      <p>
+       Send this message to a tile map component to change the tile in one of its cells.
+
+DEPRECATED! Use
+       <code>
+        tilemap.set_tile()
+       </code>
+       instead.
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          layer_id
+         </td>
+         <td>
+          id of the layer for which to change a tile
+         </td>
+        </tr>
+        <tr>
+         <td>
+          position
+         </td>
+         <td>
+          the position of the cell for which to change the tile (world space)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          tile
+         </td>
+         <td>
+          index of the tile to change to in the tile set, 1 for the first tile and 0 to clear the tile (0 by default)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          dx
+         </td>
+         <td>
+          horizontal offset from the supplied position to the requested cell (grid space, 0 by default)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          dy
+         </td>
+         <td>
+          vertical offset from the supplied position to the requested cell (grid space, 0 by default)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       This example demonstrates how to clear the tile above the instance when it collides with that tile from underneath,
+i.e. the same thing that would happen in Super Mario Bros.
+      </p>
+      <p>
+       Assuming the instance we collide with has a tile map component with id "tilemap", which has a layer with id "layer1":
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("contact_point_response") then
+        -- check if the normal points down-wards
+        if message.normal.y &lt; -0.5 then
+            msg.post(msg.url(nil, message.other_id, "tilemap"), "set_tile", {layer_id = hash("layer1"), position = go.get_position(), dy = 1})
+        end
+    end
+end
+</pre>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
+  </script>
+  <script>
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+        prettyPrint();
+    });
+  </script>
+ </body>
+</html>

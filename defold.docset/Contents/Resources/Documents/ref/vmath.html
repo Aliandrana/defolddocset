@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
+     <style type="text/css">
+      .sidebar-nav {
+    padding: 9px 0;
+}
+     </style>
+     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
+       <meta charset="utf-8">
+        <title>
+         Reference Documentation
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+         <meta content="" name="description">
+          <meta content="" name="author">
+           <!--  Google analytics -->
+           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
+           <script type="text/javascript">
+            if (document.location.hostname != "127.0.0.1") {
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-83690-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }
+           </script>
+           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
+           </script>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
+           </script>
+          </meta>
+         </meta>
+        </meta>
+       </meta>
+      </link>
+     </link>
+    </link>
+   </link>
+  </link>
+ </head>
+ <body>
+  <script type="text/javascript">
+   var _ues = {
+            host : 'defold.userecho.com',
+            forum : '11347',
+            lang : 'en',
+            tab_corner_radius : 8,
+            tab_font_size : 20,
+            tab_image_hash : 'RmVlZGJhY2s%3D',
+            tab_alignment : 'left',
+            tab_text_color : '#FFFFFF',
+            tab_bg_color : '#729FCF',
+            tab_hover_color : '#5D81A8'
+        };
+
+        if (screen.width >= 1024) {
+            (function() {
+                var _ue = document.createElement('script');
+                _ue.type = 'text/javascript';
+                _ue.async = true;
+                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
+                        : 'http://')
+                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(_ue, s);
+            })();
+        }
+  </script>
+  <div class="container ref-doc">
+   <div class="row">
+    <div class="span9">
+     <div class="well well-blue">
+      <h2>
+       Functions
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Function
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#vmath.conj">
+           vmath.conj
+          </a>
+         </td>
+         <td>
+          calculates the conjugate of a quaternion
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.cross">
+           vmath.cross
+          </a>
+         </td>
+         <td>
+          calculates the cross-product of two vectors
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.dot">
+           vmath.dot
+          </a>
+         </td>
+         <td>
+          calculates the dot-product of two vectors
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.inv">
+           vmath.inv
+          </a>
+         </td>
+         <td>
+          calculates the inverse matrix.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.length">
+           vmath.length
+          </a>
+         </td>
+         <td>
+          calculates the vector length
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.length_sqr">
+           vmath.length_sqr
+          </a>
+         </td>
+         <td>
+          calculates the squared vector length
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.lerp">
+           vmath.lerp
+          </a>
+         </td>
+         <td>
+          lerps between two vectors
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.lerp">
+           vmath.lerp
+          </a>
+         </td>
+         <td>
+          lerps between two quaternions
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.lerp">
+           vmath.lerp
+          </a>
+         </td>
+         <td>
+          lerps between two numbers
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4">
+           vmath.matrix4
+          </a>
+         </td>
+         <td>
+          creates a new identity matrix
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4">
+           vmath.matrix4
+          </a>
+         </td>
+         <td>
+          creates a new matrix from another existing matrix
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_axis_angle">
+           vmath.matrix4_axis_angle
+          </a>
+         </td>
+         <td>
+          creates a matrix from an axis and an angle
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_from_quat">
+           vmath.matrix4_from_quat
+          </a>
+         </td>
+         <td>
+          creates a matrix from a quaternion
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_frustum">
+           vmath.matrix4_frustum
+          </a>
+         </td>
+         <td>
+          creates a frustum matrix
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_look_at">
+           vmath.matrix4_look_at
+          </a>
+         </td>
+         <td>
+          creates a look-at view matrix
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_orthographic">
+           vmath.matrix4_orthographic
+          </a>
+         </td>
+         <td>
+          creates an orthographic projection matrix
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_perspective">
+           vmath.matrix4_perspective
+          </a>
+         </td>
+         <td>
+          creates a perspective projection matrix
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_rotation_x">
+           vmath.matrix4_rotation_x
+          </a>
+         </td>
+         <td>
+          creates a matrix from rotation around x-axis
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_rotation_y">
+           vmath.matrix4_rotation_y
+          </a>
+         </td>
+         <td>
+          creates a matrix from rotation around y-axis
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.matrix4_rotation_z">
+           vmath.matrix4_rotation_z
+          </a>
+         </td>
+         <td>
+          creates a matrix from rotation around z-axis
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.normalize">
+           vmath.normalize
+          </a>
+         </td>
+         <td>
+          normalizes a vector
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.ortho_inv">
+           vmath.ortho_inv
+          </a>
+         </td>
+         <td>
+          calculates the inverse of an ortho-normal matrix.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.project">
+           vmath.project
+          </a>
+         </td>
+         <td>
+          projects a vector onto another vector
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat">
+           vmath.quat
+          </a>
+         </td>
+         <td>
+          creates a new identity quaternion
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat">
+           vmath.quat
+          </a>
+         </td>
+         <td>
+          creates a new quaternion from another existing quaternion
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat">
+           vmath.quat
+          </a>
+         </td>
+         <td>
+          creates a new quaternion from its coordinates
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat_axis_angle">
+           vmath.quat_axis_angle
+          </a>
+         </td>
+         <td>
+          creates a quaternion from axis and angle
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat_basis">
+           vmath.quat_basis
+          </a>
+         </td>
+         <td>
+          creates a quaternion from three base vectors
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat_from_to">
+           vmath.quat_from_to
+          </a>
+         </td>
+         <td>
+          creates a quaternion based on a vector rotation
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat_rotation_x">
+           vmath.quat_rotation_x
+          </a>
+         </td>
+         <td>
+          creates a quaternion from rotation around x-axis
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat_rotation_y">
+           vmath.quat_rotation_y
+          </a>
+         </td>
+         <td>
+          creates a quaternion from rotation around y-axis
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.quat_rotation_z">
+           vmath.quat_rotation_z
+          </a>
+         </td>
+         <td>
+          creates a quaternion from rotation around z-axis
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.rotate">
+           vmath.rotate
+          </a>
+         </td>
+         <td>
+          rotates a vector by a quaternion
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.slerp">
+           vmath.slerp
+          </a>
+         </td>
+         <td>
+          slerps between two vectors
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.slerp">
+           vmath.slerp
+          </a>
+         </td>
+         <td>
+          slerps between two quaternions
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.vector3">
+           vmath.vector3
+          </a>
+         </td>
+         <td>
+          creates a new zero vector
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.vector3">
+           vmath.vector3
+          </a>
+         </td>
+         <td>
+          creates a new vector from scalar value
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.vector3">
+           vmath.vector3
+          </a>
+         </td>
+         <td>
+          creates a new vector from another existing vector
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.vector3">
+           vmath.vector3
+          </a>
+         </td>
+         <td>
+          creates a new vector from its coordinates
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.vector4">
+           vmath.vector4
+          </a>
+         </td>
+         <td>
+          creates a new zero vector
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.vector4">
+           vmath.vector4
+          </a>
+         </td>
+         <td>
+          creates a new vector from scalar value
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.vector4">
+           vmath.vector4
+          </a>
+         </td>
+         <td>
+          creates a new vector from another existing vector
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#vmath.vector4">
+           vmath.vector4
+          </a>
+         </td>
+         <td>
+          creates a new vector from its coordinates
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h2>
+      Functions
+     </h2>
+     <a name="vmath.conj">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.conj
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          q
+         </td>
+         <td>
+          quaternion of which to calculate the conjugate (quaternion)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       the conjugate (quaternion)
+      </p>
+     </div>
+     <a name="vmath.cross">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.cross
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v1
+         </td>
+         <td>
+          first vector (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v2
+         </td>
+         <td>
+          second vector (vector3)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       a new vector representing the cross product (vector3)
+      </p>
+     </div>
+     <a name="vmath.dot">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.dot
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v1
+         </td>
+         <td>
+          first vector (vector3 or vector4)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v1
+         </td>
+         <td>
+          second vector (vector3 or vector4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       dot product (number)
+      </p>
+     </div>
+     <a name="vmath.inv">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.inv
+      </h3>
+      <p>
+       <b>
+        NOTE
+       </b>
+       For ortho-normal matrises, e.g. regular object transformation, use
+vmath.matrix4_ortho_inv instead. The specialized inverse for ortho-normalized matrices
+is much faster than the general inverse.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          m
+         </td>
+         <td>
+          matrix to invert (matrix4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       inverse of the supplied matrix (matrix4)
+      </p>
+     </div>
+     <a name="vmath.length">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.length
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          vector of which to calculate the length (vector3 or vector4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       vector length (number)
+      </p>
+     </div>
+     <a name="vmath.length_sqr">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.length_sqr
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          vector of which to calculate the squared length (vector3 or vector4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       squared vector length (number)
+      </p>
+     </div>
+     <a name="vmath.lerp">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.lerp
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          t
+         </td>
+         <td>
+          interpolation parameter, 0-1 (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v1
+         </td>
+         <td>
+          vector to lerp from (vector3 or vector4)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v2
+         </td>
+         <td>
+          vector to lerp to (vector3 or vector4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       the lerped vector (vector3 or vector4)
+      </p>
+     </div>
+     <a name="vmath.lerp">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.lerp
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          t
+         </td>
+         <td>
+          interpolation parameter, 0-1 (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          q1
+         </td>
+         <td>
+          quaternion to lerp from (quaternion)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          q2
+         </td>
+         <td>
+          quaternion to lerp to (quaternion)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       the lerped quaternion (quaternion)
+      </p>
+     </div>
+     <a name="vmath.lerp">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.lerp
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          t
+         </td>
+         <td>
+          interpolation parameter, 0-1 (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          n1
+         </td>
+         <td>
+          number to lerp from (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          n2
+         </td>
+         <td>
+          number to lerp to (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       the lerped number (number)
+      </p>
+     </div>
+     <a name="vmath.matrix4">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4
+      </h3>
+      <p>
+       An identity matrix describes a transform with no translation or rotation.
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       identity matrix (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          m
+         </td>
+         <td>
+          existing matrix (matrix4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       matrix which is a copy of the specified matrix (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_axis_angle">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_axis_angle
+      </h3>
+      <p>
+       The resulting matrix describes a rotation around the axis by the specified angle.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          axis (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          angle
+         </td>
+         <td>
+          angle in radians (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       matrix represented by axis and angle (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_from_quat">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_from_quat
+      </h3>
+      <p>
+       The resulting matrix describes the same rotation as the quaternion, but does not have any translation (also like the quaternion).
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          q
+         </td>
+         <td>
+          quaternion to create matrix from (quaternion)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       matrix represented by quaternion (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_frustum">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_frustum
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          left
+         </td>
+         <td>
+          coordinate for left clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          right
+         </td>
+         <td>
+          coordinate for right clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          bottom
+         </td>
+         <td>
+          coordinate for bottom clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          top
+         </td>
+         <td>
+          coordinate for top clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          near
+         </td>
+         <td>
+          coordinate for near clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          far
+         </td>
+         <td>
+          coordinate for far clipping plane (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       matrix representing the frustum (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_look_at">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_look_at
+      </h3>
+      <p>
+       This is useful to construct a view matrix for a camera or rendering in general.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          eye
+         </td>
+         <td>
+          eye position (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          look_at
+         </td>
+         <td>
+          look-at position (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          up
+         </td>
+         <td>
+          up vector (vector3)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       look-at matrix (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_orthographic">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_orthographic
+      </h3>
+      <p>
+       This is useful to construct a projection matrix for a camera or rendering in general.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          left
+         </td>
+         <td>
+          coordinate for left clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          right
+         </td>
+         <td>
+          coordinate for right clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          bottom
+         </td>
+         <td>
+          coordinate for bottom clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          top
+         </td>
+         <td>
+          coordinate for top clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          near
+         </td>
+         <td>
+          coordinate for near clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          far
+         </td>
+         <td>
+          coordinate for far clipping plane (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       orthographic projection matrix (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_perspective">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_perspective
+      </h3>
+      <p>
+       This is useful to construct a projection matrix for a camera or rendering in general.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          fov
+         </td>
+         <td>
+          angle of the full vertical field of view in radians (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          aspect
+         </td>
+         <td>
+          aspect ratio (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          near
+         </td>
+         <td>
+          coordinate for near clipping plane (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          far
+         </td>
+         <td>
+          coordinate for far clipping plane (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       perspective projection matrix (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_rotation_x">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_rotation_x
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          angle
+         </td>
+         <td>
+          angle in radians around x-axis (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       matrix from rotation around x-axis (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_rotation_y">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_rotation_y
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          angle
+         </td>
+         <td>
+          angle in radians around y-axis (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       matrix from rotation around y-axis (matrix4)
+      </p>
+     </div>
+     <a name="vmath.matrix4_rotation_z">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.matrix4_rotation_z
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          angle
+         </td>
+         <td>
+          angle in radians around z-axis (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       matrix from rotation around z-axis (matrix4)
+      </p>
+     </div>
+     <a name="vmath.normalize">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.normalize
+      </h3>
+      <p>
+       The length of the vector must be above 0, otherwise a div-by-zero will occur.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          vector to normalize (vector3 or vector4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new normalized vector (vector3 or vector4)
+      </p>
+     </div>
+     <a name="vmath.ortho_inv">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.ortho_inv
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          m
+         </td>
+         <td>
+          ortho-normalized matrix to invert (matrix4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       inverse of the supplied matrix (matrix4)
+      </p>
+     </div>
+     <a name="vmath.project">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.project
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v1
+         </td>
+         <td>
+          vector to be projected on the second (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v2
+         </td>
+         <td>
+          vector onto which the first will be projected, must not have zero length (vector3)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       the projected extent of the first vector onto the second (number)
+      </p>
+     </div>
+     <a name="vmath.quat">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new identity quaternion (quaternion)
+      </p>
+     </div>
+     <a name="vmath.quat">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          q
+         </td>
+         <td>
+          existing quaternion (quaternion)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new quaternion (quaternion)
+      </p>
+     </div>
+     <a name="vmath.quat">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          x
+         </td>
+         <td>
+          x coordinate (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          y
+         </td>
+         <td>
+          y coordinate (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          z
+         </td>
+         <td>
+          z coordinate (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          w
+         </td>
+         <td>
+          w coordinate (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new quaternion (quaternion)
+      </p>
+     </div>
+     <a name="vmath.quat_axis_angle">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat_axis_angle
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          axis (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          angle
+         </td>
+         <td>
+          angle (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       quaternion representing the axis-angle rotation (quaternion)
+      </p>
+     </div>
+     <a name="vmath.quat_basis">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat_basis
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          x
+         </td>
+         <td>
+          x base vector (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          y
+         </td>
+         <td>
+          y base vector (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          z
+         </td>
+         <td>
+          z base vector (vector3)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       quaternion representing the rotation of the specified base vectors (quaternion)
+      </p>
+     </div>
+     <a name="vmath.quat_from_to">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat_from_to
+      </h3>
+      <p>
+       The resulting quaternion describes the rotation that would make the first vector end up at the second.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v1
+         </td>
+         <td>
+          first vector, before rotation (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v2
+         </td>
+         <td>
+          second vector, after rotation (vector3)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       quaternion representing the rotation from first to second vector (quaternion)
+      </p>
+     </div>
+     <a name="vmath.quat_rotation_x">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat_rotation_x
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          angle
+         </td>
+         <td>
+          angle in radians around x-axis (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       quaternion representing the rotation around the x-axis (quaternion)
+      </p>
+     </div>
+     <a name="vmath.quat_rotation_y">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat_rotation_y
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          angle
+         </td>
+         <td>
+          angle in radians around y-axis (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       quaternion representing the rotation around the y-axis (quaternion)
+      </p>
+     </div>
+     <a name="vmath.quat_rotation_z">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.quat_rotation_z
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          angle
+         </td>
+         <td>
+          angle in radians around z-axis (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       quaternion representing the rotation around the z-axis (quaternion)
+      </p>
+     </div>
+     <a name="vmath.rotate">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.rotate
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          q
+         </td>
+         <td>
+          quaternion (quaternion)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          vector to rotate (vector3)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       the rotated vector (vector3)
+      </p>
+     </div>
+     <a name="vmath.slerp">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.slerp
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          t
+         </td>
+         <td>
+          interpolation parameter, 0-1 (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v1
+         </td>
+         <td>
+          vector to slerp from (vector3 or vector4)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          v2
+         </td>
+         <td>
+          vector to slerp to (vector3 or vector4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       the slerped vector (vector3 or vector4)
+      </p>
+     </div>
+     <a name="vmath.slerp">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.slerp
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          t
+         </td>
+         <td>
+          interpolation parameter, 0-1 (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          q1
+         </td>
+         <td>
+          quaternion to slerp from (quaternion)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          q2
+         </td>
+         <td>
+          quaternion to slerp to (quaternion)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       the slerped quaternion (quaternion)
+      </p>
+     </div>
+     <a name="vmath.vector3">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.vector3
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new zero vector (vector3)
+      </p>
+     </div>
+     <a name="vmath.vector3">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.vector3
+      </h3>
+      <p>
+       The value is set for every component
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          scalar value to splat (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new vector (vector3)
+      </p>
+     </div>
+     <a name="vmath.vector3">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.vector3
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          existing vector (vector3)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new vector (vector3)
+      </p>
+     </div>
+     <a name="vmath.vector3">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.vector3
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          x
+         </td>
+         <td>
+          x coordinate (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          y
+         </td>
+         <td>
+          y coordinate (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          z
+         </td>
+         <td>
+          z coordinate (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new vector (vector3)
+      </p>
+     </div>
+     <a name="vmath.vector4">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.vector4
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new zero vector (vector4)
+      </p>
+     </div>
+     <a name="vmath.vector4">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.vector4
+      </h3>
+      <p>
+       The value is set for every component
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          scalar value to splat (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new vector (vector4)
+      </p>
+     </div>
+     <a name="vmath.vector4">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.vector4
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          v
+         </td>
+         <td>
+          existing vector (vector4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new vector (vector4)
+      </p>
+     </div>
+     <a name="vmath.vector4">
+     </a>
+     <div>
+      <h3 class="name">
+       vmath.vector4
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          x
+         </td>
+         <td>
+          x coordinate (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          y
+         </td>
+         <td>
+          y coordinate (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          z
+         </td>
+         <td>
+          z coordinate (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          w
+         </td>
+         <td>
+          w coordinate (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new vector (vector4)
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
+  </script>
+  <script>
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+        prettyPrint();
+    });
+  </script>
+ </body>
+</html>

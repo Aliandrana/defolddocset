@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
+     <style type="text/css">
+      .sidebar-nav {
+    padding: 9px 0;
+}
+     </style>
+     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
+       <meta charset="utf-8">
+        <title>
+         Reference Documentation
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+         <meta content="" name="description">
+          <meta content="" name="author">
+           <!--  Google analytics -->
+           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
+           <script type="text/javascript">
+            if (document.location.hostname != "127.0.0.1") {
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-83690-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }
+           </script>
+           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
+           </script>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
+           </script>
+          </meta>
+         </meta>
+        </meta>
+       </meta>
+      </link>
+     </link>
+    </link>
+   </link>
+  </link>
+ </head>
+ <body>
+  <script type="text/javascript">
+   var _ues = {
+            host : 'defold.userecho.com',
+            forum : '11347',
+            lang : 'en',
+            tab_corner_radius : 8,
+            tab_font_size : 20,
+            tab_image_hash : 'RmVlZGJhY2s%3D',
+            tab_alignment : 'left',
+            tab_text_color : '#FFFFFF',
+            tab_bg_color : '#729FCF',
+            tab_hover_color : '#5D81A8'
+        };
+
+        if (screen.width >= 1024) {
+            (function() {
+                var _ue = document.createElement('script');
+                _ue.type = 'text/javascript';
+                _ue.async = true;
+                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
+                        : 'http://')
+                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(_ue, s);
+            })();
+        }
+  </script>
+  <div class="container ref-doc">
+   <div class="row">
+    <div class="span9">
+     <div class="well well-blue">
+      <h2>
+       Functions
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Function
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#image.load">
+           image.load
+          </a>
+         </td>
+         <td>
+          load image from buffer
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Constants
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Constant
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#image.TYPE_LUMINANCE">
+           image.TYPE_LUMINANCE
+          </a>
+         </td>
+         <td>
+          luminance image type
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#image.TYPE_RGB">
+           image.TYPE_RGB
+          </a>
+         </td>
+         <td>
+          RGB image type
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#image.TYPE_RGBA">
+           image.TYPE_RGBA
+          </a>
+         </td>
+         <td>
+          RGBA image type
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h2>
+      Functions
+     </h2>
+     <a name="image.load">
+     </a>
+     <div>
+      <h3 class="name">
+       image.load
+      </h3>
+      <p>
+       Load image (PNG or JPEG) from buffer.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          buffer
+         </td>
+         <td>
+          image data buffer
+         </td>
+        </tr>
+        <tr>
+         <td>
+          [premult]
+         </td>
+         <td>
+          premultiply alpha. optional and defaults to false
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       object with the following fields: width, height, type and buffer (raw data). nil is returned if loading fails.
+      </p>
+     </div>
+     <h2>
+      Constants
+     </h2>
+     <a name="image.TYPE_LUMINANCE">
+     </a>
+     <div>
+      <h3 class="name">
+       image.TYPE_LUMINANCE
+      </h3>
+      <p>
+       luminance image type
+      </p>
+     </div>
+     <a name="image.TYPE_RGB">
+     </a>
+     <div>
+      <h3 class="name">
+       image.TYPE_RGB
+      </h3>
+      <p>
+       RGB image type
+      </p>
+     </div>
+     <a name="image.TYPE_RGBA">
+     </a>
+     <div>
+      <h3 class="name">
+       image.TYPE_RGBA
+      </h3>
+      <p>
+       RGBA image type
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
+  </script>
+  <script>
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+        prettyPrint();
+    });
+  </script>
+ </body>
+</html>

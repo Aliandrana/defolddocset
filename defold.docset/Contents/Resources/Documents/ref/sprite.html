@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
+     <style type="text/css">
+      .sidebar-nav {
+    padding: 9px 0;
+}
+     </style>
+     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
+       <meta charset="utf-8">
+        <title>
+         Reference Documentation
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+         <meta content="" name="description">
+          <meta content="" name="author">
+           <!--  Google analytics -->
+           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
+           <script type="text/javascript">
+            if (document.location.hostname != "127.0.0.1") {
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-83690-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }
+           </script>
+           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
+           </script>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
+           </script>
+          </meta>
+         </meta>
+        </meta>
+       </meta>
+      </link>
+     </link>
+    </link>
+   </link>
+  </link>
+ </head>
+ <body>
+  <script type="text/javascript">
+   var _ues = {
+            host : 'defold.userecho.com',
+            forum : '11347',
+            lang : 'en',
+            tab_corner_radius : 8,
+            tab_font_size : 20,
+            tab_image_hash : 'RmVlZGJhY2s%3D',
+            tab_alignment : 'left',
+            tab_text_color : '#FFFFFF',
+            tab_bg_color : '#729FCF',
+            tab_hover_color : '#5D81A8'
+        };
+
+        if (screen.width >= 1024) {
+            (function() {
+                var _ue = document.createElement('script');
+                _ue.type = 'text/javascript';
+                _ue.async = true;
+                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
+                        : 'http://')
+                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(_ue, s);
+            })();
+        }
+  </script>
+  <div class="container ref-doc">
+   <div class="row">
+    <div class="span9">
+     <div class="well well-blue">
+      <h2>
+       Functions
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Function
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#sprite.reset_constant">
+           sprite.reset_constant
+          </a>
+         </td>
+         <td>
+          reset a shader constant for a sprite
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sprite.set_constant">
+           sprite.set_constant
+          </a>
+         </td>
+         <td>
+          set a shader constant for a sprite
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sprite.set_hflip">
+           sprite.set_hflip
+          </a>
+         </td>
+         <td>
+          make a sprite flip the animations horizontally or not
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sprite.set_vflip">
+           sprite.set_vflip
+          </a>
+         </td>
+         <td>
+          make a sprite flip the animations vertically or not
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Messages
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Message
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#animation_done">
+           animation_done
+          </a>
+         </td>
+         <td>
+          reports that an animation has completed
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#play_animation">
+           play_animation
+          </a>
+         </td>
+         <td>
+          plays a sprite animation
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Properties
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Property
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#scale">
+           scale
+          </a>
+         </td>
+         <td>
+          sprite scale (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#size">
+           size
+          </a>
+         </td>
+         <td>
+          sprite size (vector3)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h2>
+      Functions
+     </h2>
+     <a name="sprite.reset_constant">
+     </a>
+     <div>
+      <h3 class="name">
+       sprite.reset_constant
+      </h3>
+      <p>
+       The constant must be defined in the material assigned to the sprite.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which sprite to reset a constant for is identified by the URL.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the sprite that should have a constant reset (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          name
+         </td>
+         <td>
+          of the constant (string|hash)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       The following examples assumes that the sprite has id "sprite" and that the default-material in builtins is used.
+If you assign a custom material to the sprite, you can reset the constants defined there in the same manner.
+      </p>
+      <p>
+       How to reset the tinting of a sprite:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+    sprite.reset_constant("#sprite", "tint")
+end
+</pre>
+     </div>
+     <a name="sprite.set_constant">
+     </a>
+     <div>
+      <h3 class="name">
+       sprite.set_constant
+      </h3>
+      <p>
+       The constant must be defined in the material assigned to the sprite.
+Setting a constant through this function will override the value set for that constant in the material.
+The value will be overridden until sprite.reset_constant is called.
+Which sprite to set a constant for is identified by the URL.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the sprite that should have a constant set (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          name
+         </td>
+         <td>
+          of the constant (string|hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          value
+         </td>
+         <td>
+          of the constant (vec4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       The following examples assumes that the sprite has id "sprite" and that the default-material in builtins is used.
+If you assign a custom material to the sprite, you can set the constants defined there in the same manner.
+      </p>
+      <p>
+       How to tint a sprite to red:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+    sprite.set_constant("#sprite", "tint", vmath.vector4(1, 0, 0, 1))
+end
+</pre>
+     </div>
+     <a name="sprite.set_hflip">
+     </a>
+     <div>
+      <h3 class="name">
+       sprite.set_hflip
+      </h3>
+      <p>
+       Which sprite to flip is identified by the URL.
+If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the sprite that should flip its animations (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          flip
+         </td>
+         <td>
+          if the sprite should flip its animations or not (boolean)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       How to flip a sprite so it faces the horizontal movement:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function update(self, dt)
+    -- calculate self.velocity somehow
+    sprite.set_hflip("#sprite", self.velocity.x &lt; 0)
+end
+</pre>
+      <p>
+       It is assumed that the sprite component has id "sprite" and that the original animations faces right.
+      </p>
+     </div>
+     <a name="sprite.set_vflip">
+     </a>
+     <div>
+      <h3 class="name">
+       sprite.set_vflip
+      </h3>
+      <p>
+       Which sprite to flip is identified by the URL.
+If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          the sprite that should flip its animations (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          flip
+         </td>
+         <td>
+          if the sprite should flip its animations or not (boolean)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       How to flip a sprite in a game which negates gravity as a game mechanic:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function update(self, dt)
+    -- calculate self.up_side_down somehow
+    sprite.set_vflip("#sprite", self.up_side_down)
+end
+</pre>
+      <p>
+       It is assumed that the sprite component has id "sprite" and that the original animations are up-right.
+      </p>
+     </div>
+     <h2>
+      Messages
+     </h2>
+     <a name="animation_done">
+     </a>
+     <div>
+      <h3 class="name">
+       animation_done
+      </h3>
+      <p>
+       This message is sent to the sender of a
+       <code>
+        play_animation
+       </code>
+       message when the animation has completed.
+Note that only animations played either forward or backward once ever completes. See
+       <code>
+        play_animation
+       </code>
+       for more information and examples of how to use this message.
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          current_tile
+         </td>
+         <td>
+          the current tile of the sprite (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          id
+         </td>
+         <td>
+          id of the animation that was completed (hash)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="play_animation">
+     </a>
+     <div>
+      <h3 class="name">
+       play_animation
+      </h3>
+      <p>
+       <p>
+        Post this message to a sprite-component to make it play an animation from its tile set.
+       </p>
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          id
+         </td>
+         <td>
+          the id of the animation to play
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       In the examples, it is assumed that the instance of the script has a sprite-component with id "sprite". The sprite itself is assumed to be bound to a tile set with animations "walk" and "jump".
+       <pre class="prettyprint linenums lang-lua">
+msg.post("#sprite", "play_animation", {id = hash("jump")})
+</pre>
+       <p>
+        How to sequence two animations together.
+       </p>
+       <pre class="prettyprint linenums lang-lua">
+function init(self)
+    -- play jump animation at init
+    msg.post("#sprite", "play_animation", {id = hash("jump")})
+end
+
+function on_message(self, message_id, message, sender)
+    -- check for animation done response
+    if message_id == hash("animation_done") then
+        -- start the walk animation
+        msg.post("#sprite", "play_animation", {id = hash("walk")})
+    end
+end
+</pre>
+      </p>
+     </div>
+     <h2>
+      Properties
+     </h2>
+     <a name="scale">
+     </a>
+     <div>
+      <h3 class="name">
+       scale
+      </h3>
+      <p>
+       The non-uniform scale of the sprite. The type of the property is vector3.
+       <h3>
+        Examples
+       </h3>
+       <p>
+        How to scale a sprite independently along the X and Y axis:
+       </p>
+       <pre class="prettyprint linenums lang-lua">
+function init(self)
+ -- Double the y-axis scaling on component "sprite"
+	local yscale = go.get("#sprite", "scale.y")
+	go.set("#sprite", "scale.y", yscale * 2)
+end
+</pre>
+      </p>
+     </div>
+     <a name="size">
+     </a>
+     <div>
+      <h3 class="name">
+       size
+      </h3>
+      <p>
+       [READ ONLY] Returns the size of the sprite, not allowing for any additional scaling that may be applied.
+The type of the property is vector3.
+       <h3>
+        Examples
+       </h3>
+       <p>
+        How to query a sprite's size, either as a vector or selecting a specific dimension:
+       </p>
+       <pre class="prettyprint linenums lang-lua">
+function init(self)
+ -- get size from component "sprite"
+	local size = go.get("#sprite", "size")
+	local sx = go.get("#sprite", "size.x")
+	-- do something useful
+	assert(size.x == sx)
+end
+</pre>
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
+  </script>
+  <script>
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+        prettyPrint();
+    });
+  </script>
+ </body>
+</html>

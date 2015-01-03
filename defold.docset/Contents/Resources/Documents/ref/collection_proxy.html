@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
+     <style type="text/css">
+      .sidebar-nav {
+    padding: 9px 0;
+}
+     </style>
+     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
+       <meta charset="utf-8">
+        <title>
+         Reference Documentation
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+         <meta content="" name="description">
+          <meta content="" name="author">
+           <!--  Google analytics -->
+           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
+           <script type="text/javascript">
+            if (document.location.hostname != "127.0.0.1") {
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-83690-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }
+           </script>
+           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
+           </script>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
+           </script>
+          </meta>
+         </meta>
+        </meta>
+       </meta>
+      </link>
+     </link>
+    </link>
+   </link>
+  </link>
+ </head>
+ <body>
+  <script type="text/javascript">
+   var _ues = {
+            host : 'defold.userecho.com',
+            forum : '11347',
+            lang : 'en',
+            tab_corner_radius : 8,
+            tab_font_size : 20,
+            tab_image_hash : 'RmVlZGJhY2s%3D',
+            tab_alignment : 'left',
+            tab_text_color : '#FFFFFF',
+            tab_bg_color : '#729FCF',
+            tab_hover_color : '#5D81A8'
+        };
+
+        if (screen.width >= 1024) {
+            (function() {
+                var _ue = document.createElement('script');
+                _ue.type = 'text/javascript';
+                _ue.async = true;
+                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
+                        : 'http://')
+                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(_ue, s);
+            })();
+        }
+  </script>
+  <div class="container ref-doc">
+   <div class="row">
+    <div class="span9">
+     <div class="well well-blue">
+      <h2>
+       Messages
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Message
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#disable">
+           disable
+          </a>
+         </td>
+         <td>
+          tells a collection proxy to disable the referenced collection
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#enable">
+           enable
+          </a>
+         </td>
+         <td>
+          tells a collection proxy to enable the referenced collection
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#final">
+           final
+          </a>
+         </td>
+         <td>
+          tells a collection proxy to finalize the referenced collection
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#init">
+           init
+          </a>
+         </td>
+         <td>
+          tells a collection proxy to initialize the loaded collection
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#load">
+           load
+          </a>
+         </td>
+         <td>
+          tells a collection proxy to start loading the referenced collection
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#set_time_step">
+           set_time_step
+          </a>
+         </td>
+         <td>
+          sets the time-step for update
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#unload">
+           unload
+          </a>
+         </td>
+         <td>
+          tells a collection proxy to start unloading the referenced collection
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h2>
+      Messages
+     </h2>
+     <a name="disable">
+     </a>
+     <div>
+      <h3 class="name">
+       disable
+      </h3>
+      <p>
+       Post this message to a collection-proxy-component to disable the referenced collection, which in turn disables the contained game objects and components.
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       In this example we use a collection proxy to load/unload a level (collection).
+      </p>
+      <p>
+       The examples assumes the script belongs to an instance with a collection-proxy-component with id "proxy".
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("end_level") then
+        local proxy = msg.url("#proxy")
+        msg.post(proxy, "disable")
+        msg.post(proxy, "final")
+        msg.post(proxy, "unload")
+        -- store sender for later notification
+        self.unloader = sender
+    elseif message_id == hash("proxy_unloaded") then
+        -- let unloader know
+        msg.post(self.unloader, "level_ended")
+    end
+end
+</pre>
+     </div>
+     <a name="enable">
+     </a>
+     <div>
+      <h3 class="name">
+       enable
+      </h3>
+      <p>
+       Post this message to a collection-proxy-component to enable the referenced collection, which in turn enables the contained game objects and components.
+If the referenced collection was not initialized prior to this call, it will automatically be initialized.
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       In this example we use a collection proxy to load/unload a level (collection).
+      </p>
+      <p>
+       The examples assume the script belongs to an instance with collection-proxy-component with id "proxy".
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("start_level") then
+        -- some script tells us to start loading the level
+        msg.post("#proxy", "load")
+        -- store sender for later notification
+        self.loader = sender
+    elseif message_id == hash("proxy_loaded") then
+        -- enable the collection and let the loader know
+        msg.post(sender, "enable")
+        msg.post(self.loader, "level_started")
+    end
+end
+        
+        </pre>
+     </div>
+     <a name="final">
+     </a>
+     <div>
+      <h3 class="name">
+       final
+      </h3>
+      <p>
+       Post this message to a collection-proxy-component to finalize the referenced collection, which in turn finalizes the contained game objects and components.
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       In this example we use a collection proxy to load/unload a level (collection).
+      </p>
+      <p>
+       The examples assumes the script belongs to an instance with a collection-proxy-component with id "proxy".
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("end_level") then
+        local proxy = msg.url("#proxy")
+        msg.post(proxy, "disable")
+        msg.post(proxy, "final")
+        msg.post(proxy, "unload")
+        -- store sender for later notification
+        self.unloader = sender
+    elseif message_id == hash("proxy_unloaded") then
+        -- let unloader know
+        msg.post(self.unloader, "level_ended")
+    end
+end
+</pre>
+     </div>
+     <a name="init">
+     </a>
+     <div>
+      <h3 class="name">
+       init
+      </h3>
+      <p>
+       Post this message to a collection-proxy-component to initialize the game objects and components in the referenced collection.
+Sending
+       <code>
+        enable
+       </code>
+       to an uninitialized collection proxy automatically initializes it.
+The
+       <code>
+        init
+       </code>
+       message simply provides a higher level of control.
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       In this example we use a collection proxy to load/unload a level (collection).
+      </p>
+      <p>
+       The examples assume the script belongs to an instance with collection-proxy-component with id "proxy".
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("load_level") then
+        -- some script tells us to start loading the level
+        msg.post("#proxy", "load")
+        -- store sender for later notification
+        self.loader = sender
+    elseif message_id == hash("proxy_loaded") then
+        -- only initialize the proxy at this point since we want to enable it at a later time for some reason
+        msg.post(sender, "init")
+        -- let loader know
+        msg.post(self.loader, message_id)
+    end
+end
+</pre>
+     </div>
+     <a name="load">
+     </a>
+     <div>
+      <h3 class="name">
+       load
+      </h3>
+      <p>
+       <p>
+        Post this message to a collection-proxy-component to start the loading of the referenced collection.
+When the loading has completed, the message
+        <code>
+         proxy_loaded
+        </code>
+        will be sent back to the script.
+       </p>
+       <p>
+        A loaded collection must be initialized (message
+        <code>
+         init
+        </code>
+        ) and enabled (message
+        <code>
+         enable
+        </code>
+        ) in order to be simulated and drawn.
+       </p>
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       In this example we use a collection proxy to load/unload a level (collection).
+      </p>
+      <p>
+       The examples assume the script belongs to an instance with collection-proxy-component with id "proxy".
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("start_level") then
+        -- some script tells us to start loading the level
+        msg.post("#proxy", "load")
+        -- store sender for later notification
+        self.loader = sender
+    elseif message_id == hash("proxy_loaded") then
+        -- enable the collection and let the loader know
+        msg.post(sender, "enable")
+        msg.post(self.loader, message_id)
+    end
+end
+</pre>
+     </div>
+     <a name="set_time_step">
+     </a>
+     <div>
+      <h3 class="name">
+       set_time_step
+      </h3>
+      <p>
+       <p>
+        Post this message to a collection-proxy-component to modify the time-step used when updating the collection controlled by the proxy.
+The time-step is modified by a scaling
+        <code>
+         factor
+        </code>
+        and can be incremented either continuously or in discrete steps.
+       </p>
+       <p>
+        The continuous mode can be used for slow-motion or fast-forward effects.
+       </p>
+       <p>
+        The discrete mode is only useful when scaling the time-step to pass slower than real time (
+        <code>
+         factor
+        </code>
+        is below 1).
+The time-step will then be set to 0 for as many frames as the scaling demands and then take on the full real-time-step for one frame,
+to simulate pulses. E.g. if
+        <code>
+         factor
+        </code>
+        is set to
+        <code>
+         0.1
+        </code>
+        the time-step would be 0 for 9 frames, then be 1/60 for one
+frame, 0 for 9 frames, and so on. The result in practice is that the game looks like it's updated at a much lower frequency than 60 Hz,
+which can be useful for debugging when each frame needs to be inspected.
+       </p>
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          factor
+         </td>
+         <td>
+          time-step scaling factor (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          mode
+         </td>
+         <td>
+          time-step mode: 0 for continuous and 1 for discrete (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       The examples assumes the script belongs to an instance with a collection-proxy-component with id "proxy".
+      </p>
+      <p>
+       Update the collection twice as fast:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+msg.post("#proxy", "set_time_step", {factor = 2, mode = 0})
+</pre>
+      <p>
+       Update the collection twice as slow:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+msg.post("#proxy", "set_time_step", {factor = 0.5, mode = 0})
+</pre>
+      <p>
+       Simulate 1 FPS for the collection:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+msg.post("#proxy", "set_time_step", {factor = 1/60, mode = 1})
+</pre>
+     </div>
+     <a name="unload">
+     </a>
+     <div>
+      <h3 class="name">
+       unload
+      </h3>
+      <p>
+       <p>
+        Post this message to a collection-proxy-component to start the unloading of the referenced collection.
+When the unloading has completed, the message
+        <code>
+         proxy_unloaded
+        </code>
+        will be sent back to the script.
+       </p>
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       In this example we use a collection proxy to load/unload a level (collection).
+      </p>
+      <p>
+       The examples assumes the script belongs to an instance with a collection-proxy-component with id "proxy".
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("end_level") then
+        local proxy = msg.url("#proxy")
+        msg.post(proxy, "disable")
+        msg.post(proxy, "final")
+        msg.post(proxy, "unload")
+        -- store sender for later notification
+        self.unloader = sender
+    elseif message_id == hash("proxy_unloaded") then
+        -- let unloader know
+        msg.post(self.unloader, "level_ended")
+    end
+end
+</pre>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
+  </script>
+  <script>
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+        prettyPrint();
+    });
+  </script>
+ </body>
+</html>

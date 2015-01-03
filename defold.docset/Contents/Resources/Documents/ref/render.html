@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
+     <style type="text/css">
+      .sidebar-nav {
+    padding: 9px 0;
+}
+     </style>
+     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
+       <meta charset="utf-8">
+        <title>
+         Reference Documentation
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+         <meta content="" name="description">
+          <meta content="" name="author">
+           <!--  Google analytics -->
+           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
+           <script type="text/javascript">
+            if (document.location.hostname != "127.0.0.1") {
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-83690-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }
+           </script>
+           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
+           </script>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
+           </script>
+          </meta>
+         </meta>
+        </meta>
+       </meta>
+      </link>
+     </link>
+    </link>
+   </link>
+  </link>
+ </head>
+ <body>
+  <script type="text/javascript">
+   var _ues = {
+            host : 'defold.userecho.com',
+            forum : '11347',
+            lang : 'en',
+            tab_corner_radius : 8,
+            tab_font_size : 20,
+            tab_image_hash : 'RmVlZGJhY2s%3D',
+            tab_alignment : 'left',
+            tab_text_color : '#FFFFFF',
+            tab_bg_color : '#729FCF',
+            tab_hover_color : '#5D81A8'
+        };
+
+        if (screen.width >= 1024) {
+            (function() {
+                var _ue = document.createElement('script');
+                _ue.type = 'text/javascript';
+                _ue.async = true;
+                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
+                        : 'http://')
+                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(_ue, s);
+            })();
+        }
+  </script>
+  <div class="container ref-doc">
+   <div class="row">
+    <div class="span9">
+     <div class="well well-blue">
+      <h2>
+       Functions
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Function
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#render.clear">
+           render.clear
+          </a>
+         </td>
+         <td>
+          clears the active render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.constant_buffer">
+           render.constant_buffer
+          </a>
+         </td>
+         <td>
+          create a new constant buffer.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.delete_render_target">
+           render.delete_render_target
+          </a>
+         </td>
+         <td>
+          deletes a render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.disable_material">
+           render.disable_material
+          </a>
+         </td>
+         <td>
+          disables the currently enabled material
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.disable_render_target">
+           render.disable_render_target
+          </a>
+         </td>
+         <td>
+          disables a render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.disable_state">
+           render.disable_state
+          </a>
+         </td>
+         <td>
+          disables a render state
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.disable_texture">
+           render.disable_texture
+          </a>
+         </td>
+         <td>
+          disables a texture for a render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.draw">
+           render.draw
+          </a>
+         </td>
+         <td>
+          draws all objects matching a predicate
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.draw_debug2d">
+           render.draw_debug2d
+          </a>
+         </td>
+         <td>
+          draws all 2d debug graphics (Deprecated)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.draw_debug3d">
+           render.draw_debug3d
+          </a>
+         </td>
+         <td>
+          draws all 3d debug graphics
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.enable_material">
+           render.enable_material
+          </a>
+         </td>
+         <td>
+          enables a material
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.enable_render_target">
+           render.enable_render_target
+          </a>
+         </td>
+         <td>
+          enables a render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.enable_state">
+           render.enable_state
+          </a>
+         </td>
+         <td>
+          enables a render state
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.enable_texture">
+           render.enable_texture
+          </a>
+         </td>
+         <td>
+          enables a texture for a render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.get_height">
+           render.get_height
+          </a>
+         </td>
+         <td>
+          gets the window height, as specified for the project
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.get_render_target_height">
+           render.get_render_target_height
+          </a>
+         </td>
+         <td>
+          retrieve a buffer height from a render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.get_render_target_width">
+           render.get_render_target_width
+          </a>
+         </td>
+         <td>
+          retrieve a buffer width from a render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.get_width">
+           render.get_width
+          </a>
+         </td>
+         <td>
+          gets the window width, as specified for the project
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.get_window_height">
+           render.get_window_height
+          </a>
+         </td>
+         <td>
+          gets the window height
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.get_window_width">
+           render.get_window_width
+          </a>
+         </td>
+         <td>
+          gets the actual window width
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.predicate">
+           render.predicate
+          </a>
+         </td>
+         <td>
+          creates a new render predicate
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.render_target">
+           render.render_target
+          </a>
+         </td>
+         <td>
+          creates a new render target
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_blend_func">
+           render.set_blend_func
+          </a>
+         </td>
+         <td>
+          sets the blending function
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_color_mask">
+           render.set_color_mask
+          </a>
+         </td>
+         <td>
+          sets the color mask
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_cull_face">
+           render.set_cull_face
+          </a>
+         </td>
+         <td>
+          sets the cull face
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_depth_mask">
+           render.set_depth_mask
+          </a>
+         </td>
+         <td>
+          sets the depth mask
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_polygon_offset">
+           render.set_polygon_offset
+          </a>
+         </td>
+         <td>
+          sets the polygon offset
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_projection">
+           render.set_projection
+          </a>
+         </td>
+         <td>
+          sets the projection matrix
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_render_target_size">
+           render.set_render_target_size
+          </a>
+         </td>
+         <td>
+          sets the render target size
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_stencil_func">
+           render.set_stencil_func
+          </a>
+         </td>
+         <td>
+          sets the stencil test function
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_stencil_mask">
+           render.set_stencil_mask
+          </a>
+         </td>
+         <td>
+          sets the stencil mask
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_stencil_op">
+           render.set_stencil_op
+          </a>
+         </td>
+         <td>
+          sets the stencil operator
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_view">
+           render.set_view
+          </a>
+         </td>
+         <td>
+          sets the view matrix
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.set_viewport">
+           render.set_viewport
+          </a>
+         </td>
+         <td>
+          sets the render viewport
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Messages
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Message
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#clear_color">
+           clear_color
+          </a>
+         </td>
+         <td>
+          set clear color
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#draw_line">
+           draw_line
+          </a>
+         </td>
+         <td>
+          draw a line on the screen
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#draw_text">
+           draw_text
+          </a>
+         </td>
+         <td>
+          draw a text on the screen
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Constants
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Constant
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#render.BLEND_CONSTANT_ALPHA">
+           render.BLEND_CONSTANT_ALPHA
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_CONSTANT_COLOR">
+           render.BLEND_CONSTANT_COLOR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_DST_ALPHA">
+           render.BLEND_DST_ALPHA
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_DST_COLOR">
+           render.BLEND_DST_COLOR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_ONE">
+           render.BLEND_ONE
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_ONE_MINUS_CONSTANT_ALPHA">
+           render.BLEND_ONE_MINUS_CONSTANT_ALPHA
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_ONE_MINUS_CONSTANT_COLOR">
+           render.BLEND_ONE_MINUS_CONSTANT_COLOR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_ONE_MINUS_DST_ALPHA">
+           render.BLEND_ONE_MINUS_DST_ALPHA
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_ONE_MINUS_DST_COLOR">
+           render.BLEND_ONE_MINUS_DST_COLOR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_ONE_MINUS_SRC_ALPHA">
+           render.BLEND_ONE_MINUS_SRC_ALPHA
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_ONE_MINUS_SRC_COLOR">
+           render.BLEND_ONE_MINUS_SRC_COLOR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_SRC_ALPHA">
+           render.BLEND_SRC_ALPHA
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_SRC_ALPHA_SATURATE">
+           render.BLEND_SRC_ALPHA_SATURATE
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_SRC_COLOR">
+           render.BLEND_SRC_COLOR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BLEND_ZERO">
+           render.BLEND_ZERO
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BUFFER_COLOR_BIT">
+           render.BUFFER_COLOR_BIT
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BUFFER_DEPTH_BIT">
+           render.BUFFER_DEPTH_BIT
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.BUFFER_STENCIL_BIT">
+           render.BUFFER_STENCIL_BIT
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FACE_BACK">
+           render.FACE_BACK
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FACE_FRONT">
+           render.FACE_FRONT
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FACE_FRONT_AND_BACK">
+           render.FACE_FRONT_AND_BACK
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FILTER_LINEAR">
+           render.FILTER_LINEAR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FILTER_NEAREST">
+           render.FILTER_NEAREST
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FORMAT_DEPTH">
+           render.FORMAT_DEPTH
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FORMAT_LUMINANCE">
+           render.FORMAT_LUMINANCE
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FORMAT_RGB">
+           render.FORMAT_RGB
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FORMAT_RGBA">
+           render.FORMAT_RGBA
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FORMAT_RGBA_DXT1">
+           render.FORMAT_RGBA_DXT1
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FORMAT_RGBA_DXT3">
+           render.FORMAT_RGBA_DXT3
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FORMAT_RGBA_DXT5">
+           render.FORMAT_RGBA_DXT5
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.FORMAT_RGB_DXT1">
+           render.FORMAT_RGB_DXT1
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STATE_BLEND">
+           render.STATE_BLEND
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STATE_CULL_FACE">
+           render.STATE_CULL_FACE
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STATE_DEPTH_TEST">
+           render.STATE_DEPTH_TEST
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STATE_POLYGON_OFFSET_FILL">
+           render.STATE_POLYGON_OFFSET_FILL
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STATE_STENCIL_TEST">
+           render.STATE_STENCIL_TEST
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_FUNC_ALWAYS">
+           render.STENCIL_FUNC_ALWAYS
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_FUNC_EQUAL">
+           render.STENCIL_FUNC_EQUAL
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_FUNC_GEQUAL">
+           render.STENCIL_FUNC_GEQUAL
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_FUNC_GREATER">
+           render.STENCIL_FUNC_GREATER
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_FUNC_LEQUAL">
+           render.STENCIL_FUNC_LEQUAL
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_FUNC_LESS">
+           render.STENCIL_FUNC_LESS
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_FUNC_NEVER">
+           render.STENCIL_FUNC_NEVER
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_FUNC_NOTEQUAL">
+           render.STENCIL_FUNC_NOTEQUAL
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_OP_DECR">
+           render.STENCIL_OP_DECR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_OP_DECR_WRAP">
+           render.STENCIL_OP_DECR_WRAP
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_OP_INCR">
+           render.STENCIL_OP_INCR
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_OP_INCR_WRAP">
+           render.STENCIL_OP_INCR_WRAP
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_OP_INVERT">
+           render.STENCIL_OP_INVERT
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_OP_KEEP">
+           render.STENCIL_OP_KEEP
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_OP_REPLACE">
+           render.STENCIL_OP_REPLACE
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.STENCIL_OP_ZERO">
+           render.STENCIL_OP_ZERO
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.WRAP_CLAMP_TO_BORDER">
+           render.WRAP_CLAMP_TO_BORDER
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.WRAP_CLAMP_TO_EDGE">
+           render.WRAP_CLAMP_TO_EDGE
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.WRAP_MIRRORED_REPEAT">
+           render.WRAP_MIRRORED_REPEAT
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#render.WRAP_REPEAT">
+           render.WRAP_REPEAT
+          </a>
+         </td>
+         <td>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h2>
+      Functions
+     </h2>
+     <a name="render.clear">
+     </a>
+     <div>
+      <h3 class="name">
+       render.clear
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          buffers
+         </td>
+         <td>
+          Table specifying which buffers to clear. Available keys are: render.BUFFER_COLOR_BIT, render.BUFFER_DEPTH_BIT and render.BUFFER_STENCIL_BIT.
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+render.clear({[render.BUFFER_COLOR_BIT] = vmath.vector4(0, 0, 0, 0), [render.BUFFER_DEPTH_BIT] = 1})
+</pre>
+     </div>
+     <a name="render.constant_buffer">
+     </a>
+     <div>
+      <h3 class="name">
+       render.constant_buffer
+      </h3>
+      <p>
+       Constant buffers are used to set shader program variables and are optionally passed to the render.draw function.
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new constant buffer
+      </p>
+     </div>
+     <a name="render.delete_render_target">
+     </a>
+     <div>
+      <h3 class="name">
+       render.delete_render_target
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          render_target
+         </td>
+         <td>
+          render target to delete (render_target)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.disable_material">
+     </a>
+     <div>
+      <h3 class="name">
+       render.disable_material
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.disable_render_target">
+     </a>
+     <div>
+      <h3 class="name">
+       render.disable_render_target
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          render_target
+         </td>
+         <td>
+          render target to disable (render_target)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.disable_state">
+     </a>
+     <div>
+      <h3 class="name">
+       render.disable_state
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          state
+         </td>
+         <td>
+          state to enable (constant)
+          <ul>
+           <li>
+            <code>
+             render.STATE_DEPTH_TEST
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STATE_STENCIL_TEST
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STATE_BLEND
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STATE_CULL_FACE
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STATE_POLYGON_OFFSET_FILL
+            </code>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.disable_texture">
+     </a>
+     <div>
+      <h3 class="name">
+       render.disable_texture
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          unit
+         </td>
+         <td>
+          texture unit to enable disable for (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          render_target
+         </td>
+         <td>
+          render target for which to disable the specified texture unit (render_target)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.draw">
+     </a>
+     <div>
+      <h3 class="name">
+       render.draw
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          predicate
+         </td>
+         <td>
+          predicate to draw for (predicate)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          constants
+         </td>
+         <td>
+          constants to use while rendering (constants buffer)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.draw_debug2d">
+     </a>
+     <div>
+      <h3 class="name">
+       render.draw_debug2d
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.draw_debug3d">
+     </a>
+     <div>
+      <h3 class="name">
+       render.draw_debug3d
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.enable_material">
+     </a>
+     <div>
+      <h3 class="name">
+       render.enable_material
+      </h3>
+      <p>
+       If another material was already enabled, it will be automatically disabled.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          material_id
+         </td>
+         <td>
+          material id to enable (string)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.enable_render_target">
+     </a>
+     <div>
+      <h3 class="name">
+       render.enable_render_target
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          render_target
+         </td>
+         <td>
+          render target to enable (render_target)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.enable_state">
+     </a>
+     <div>
+      <h3 class="name">
+       render.enable_state
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          state
+         </td>
+         <td>
+          state to enable (constant)
+          <ul>
+           <li>
+            <code>
+             render.STATE_DEPTH_TEST
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STATE_STENCIL_TEST
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STATE_BLEND
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STATE_ALPHA_TEST
+            </code>
+            No available on iOS/Android
+           </li>
+           <li>
+            <code>
+             render.STATE_CULL_FACE
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STATE_POLYGON_OFFSET_FILL
+            </code>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.enable_texture">
+     </a>
+     <div>
+      <h3 class="name">
+       render.enable_texture
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          unit
+         </td>
+         <td>
+          texture unit to enable texture for (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          render_target
+         </td>
+         <td>
+          render target for which to enable the specified texture unit (render_target)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.get_height">
+     </a>
+     <div>
+      <h3 class="name">
+       render.get_height
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       specified window height (number)
+      </p>
+     </div>
+     <a name="render.get_render_target_height">
+     </a>
+     <div>
+      <h3 class="name">
+       render.get_render_target_height
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          render_target
+         </td>
+         <td>
+          render target from which to retrieve the buffer height
+         </td>
+        </tr>
+        <tr>
+         <td>
+          buffer_type
+         </td>
+         <td>
+          which type of buffer to retrieve the height from
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.get_render_target_width">
+     </a>
+     <div>
+      <h3 class="name">
+       render.get_render_target_width
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          render_target
+         </td>
+         <td>
+          render target from which to retrieve the buffer width
+         </td>
+        </tr>
+        <tr>
+         <td>
+          buffer_type
+         </td>
+         <td>
+          which type of buffer to retrieve the width from
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.get_width">
+     </a>
+     <div>
+      <h3 class="name">
+       render.get_width
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       specified window width (number)
+      </p>
+     </div>
+     <a name="render.get_window_height">
+     </a>
+     <div>
+      <h3 class="name">
+       render.get_window_height
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       actual window height (number)
+      </p>
+     </div>
+     <a name="render.get_window_width">
+     </a>
+     <div>
+      <h3 class="name">
+       render.get_window_width
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       actual window width (number)
+      </p>
+     </div>
+     <a name="render.predicate">
+     </a>
+     <div>
+      <h3 class="name">
+       render.predicate
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          predicates
+         </td>
+         <td>
+          table of tags that the predicate should match (table)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new predicate (predicate)
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+local p = render.predicate({"opaque", "smoke"})
+</pre>
+     </div>
+     <a name="render.render_target">
+     </a>
+     <div>
+      <h3 class="name">
+       render.render_target
+      </h3>
+      <p>
+       Available keys for the render target parameters table:
+       <table class="table table-striped table-bordered">
+        <th>
+         Keys
+        </th>
+        <th>
+         Values
+        </th>
+        <tr>
+         <td>
+          "format"
+         </td>
+         <td>
+          render.FORMAT_LUMINANCE
+          <br/>
+          render.FORMAT_RGB
+          <br/>
+          render.FORMAT_RGBA
+          <br/>
+          render.FORMAT_RGB_DXT1
+          <br/>
+          render.FORMAT_RGBA_DXT1
+          <br/>
+          render.FORMAT_RGBA_DXT3
+          <br/>
+          render.FORMAT_RGBA_DXT5
+          <br/>
+          render.FORMAT_DEPTH
+          <br/>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          "width"
+         </td>
+         <td>
+          number
+         </td>
+        </tr>
+        <tr>
+         <td>
+          "height"
+         </td>
+         <td>
+          number
+         </td>
+        </tr>
+        <tr>
+         <td>
+          "min_filter"
+         </td>
+         <td>
+          render.FILTER_LINEAR
+          <br/>
+          render.FILTER_NEAREST
+          <br/>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          "mag_filter"
+         </td>
+         <td>
+          render.FILTER_LINEAR
+          <br/>
+          render.FILTER_NEAREST
+          <br/>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          "u_wrap"
+         </td>
+         <td>
+          render.WRAP_CLAMP_TO_BORDER
+          <br/>
+          render.WRAP_CLAMP_TO_EDGE
+          <br/>
+          render.WRAP_MIRRORED_REPEAT
+          <br/>
+          render.WRAP_REPEAT
+          <br/>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          "v_wrap"
+         </td>
+         <td>
+          render.WRAP_CLAMP_TO_BORDER
+          <br/>
+          render.WRAP_CLAMP_TO_EDGE
+          <br/>
+          render.WRAP_MIRRORED_REPEAT
+          <br/>
+          render.WRAP_REPEAT
+          <br/>
+         </td>
+        </tr>
+       </table>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          name
+         </td>
+         <td>
+          render target name (string)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          parameters
+         </td>
+         <td>
+          table of all parameters, see the description for available keys and values (table)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       new render target (render_target)
+      </p>
+     </div>
+     <a name="render.set_blend_func">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_blend_func
+      </h3>
+      <p>
+       Available factors:
+       <ul>
+        <li>
+         <code>
+          render.BLEND_ZERO
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_ONE
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_SRC_COLOR
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_ONE_MINUS_SRC_COLOR
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_DST_COLOR
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_ONE_MINUS_DST_COLOR
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_SRC_ALPHA
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_ONE_MINUS_SRC_ALPHA
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_DST_ALPHA
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_ONE_MINUS_DST_ALPHA
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_SRC_ALPHA_SATURATE
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_CONSTANT_COLOR
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_ONE_MINUS_CONSTANT_COLOR
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_CONSTANT_ALPHA
+         </code>
+        </li>
+        <li>
+         <code>
+          render.BLEND_ONE_MINUS_CONSTANT_ALPHA
+         </code>
+        </li>
+       </ul>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          source_factor
+         </td>
+         <td>
+          source factor
+         </td>
+        </tr>
+        <tr>
+         <td>
+          destination_factor
+         </td>
+         <td>
+          destination factor
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_color_mask">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_color_mask
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          red
+         </td>
+         <td>
+          red mask (boolean)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          green
+         </td>
+         <td>
+          green mask (boolean)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          blue
+         </td>
+         <td>
+          blue mask (boolean)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          alpha
+         </td>
+         <td>
+          alpha mask (boolean)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_cull_face">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_cull_face
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          face_type
+         </td>
+         <td>
+          face type (constant)
+          <ul>
+           <li>
+            <code>
+             render.FACE_FRONT
+            </code>
+           </li>
+           <li>
+            <code>
+             render.FACE_BACK
+            </code>
+           </li>
+           <li>
+            <code>
+             render.FACE_FRONT_AND_BACK
+            </code>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_depth_mask">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_depth_mask
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          depth
+         </td>
+         <td>
+          depth mask (boolean)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_polygon_offset">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_polygon_offset
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          factor
+         </td>
+         <td>
+          polygon offset factor (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          units
+         </td>
+         <td>
+          polygon offset units (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_projection">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_projection
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          matrix
+         </td>
+         <td>
+          projection matrix (matrix4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_render_target_size">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_render_target_size
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          render_target
+         </td>
+         <td>
+          render target to set size for (render_target)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          width
+         </td>
+         <td>
+          new render target width (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          height
+         </td>
+         <td>
+          new render target height (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_stencil_func">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_stencil_func
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          func
+         </td>
+         <td>
+          stencil test function (constant)
+          <ul>
+           <li>
+            <code>
+             render.STENCIL_FUNC_NEVER
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STENCIL_FUNC_LESS
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STENCIL_FUNC_LEQUAL
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STENCIL_FUNC_GREATER
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STENCIL_FUNC_GEQUAL
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STENCIL_FUNC_EQUAL
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STENCIL_FUNC_NOTEQUAL
+            </code>
+           </li>
+           <li>
+            <code>
+             render.STENCIL_FUNC_ALWAYS
+            </code>
+           </li>
+          </ul>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          ref
+         </td>
+         <td>
+          reference value for the stencil test (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          mask
+         </td>
+         <td>
+          mask that is ANDed with both the reference value and the stored stencil value when the test is done (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_stencil_mask">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_stencil_mask
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          mask
+         </td>
+         <td>
+          stencil mask (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_stencil_op">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_stencil_op
+      </h3>
+      <p>
+       Available operators:
+       <ul>
+        <li>
+         <code>
+          render.STENCIL_OP_KEEP
+         </code>
+        </li>
+        <li>
+         <code>
+          render.STENCIL_OP_ZERO
+         </code>
+        </li>
+        <li>
+         <code>
+          render.STENCIL_OP_REPLACE
+         </code>
+        </li>
+        <li>
+         <code>
+          render.STENCIL_OP_INCR
+         </code>
+        </li>
+        <li>
+         <code>
+          render.STENCIL_OP_INCR_WRAP
+         </code>
+        </li>
+        <li>
+         <code>
+          render.STENCIL_OP_DECR
+         </code>
+        </li>
+        <li>
+         <code>
+          render.STENCIL_OP_DECR_WRAP
+         </code>
+        </li>
+        <li>
+         <code>
+          render.STENCIL_OP_INVERT
+         </code>
+        </li>
+       </ul>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          sfail
+         </td>
+         <td>
+          action to take when the stencil test fails (constant)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          dpfail
+         </td>
+         <td>
+          the stencil action when the stencil test passes (constant)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          dppass
+         </td>
+         <td>
+          the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled (constant)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_view">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_view
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          matrix
+         </td>
+         <td>
+          view matrix to set (matrix4)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="render.set_viewport">
+     </a>
+     <div>
+      <h3 class="name">
+       render.set_viewport
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          x
+         </td>
+         <td>
+          left corner (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          y
+         </td>
+         <td>
+          bottom corner (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          width
+         </td>
+         <td>
+          viewport width (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          height
+         </td>
+         <td>
+          viewport height (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h2>
+      Messages
+     </h2>
+     <a name="clear_color">
+     </a>
+     <div>
+      <h3 class="name">
+       clear_color
+      </h3>
+      <p>
+       Set render clear color. This is the color that appears on the screen where nothing is rendered, i.e. background.
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          color
+         </td>
+         <td>
+          color to use as clear color
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+msg.post("@render:", "clear_color", { color = vmath.vector4(1, 0, 0, 0) } )
+</pre>
+     </div>
+     <a name="draw_line">
+     </a>
+     <div>
+      <h3 class="name">
+       draw_line
+      </h3>
+      <p>
+       Draw a line on the screen. This should mostly be used for debugging purposes.
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          start_point
+         </td>
+         <td>
+          Start point of the line
+         </td>
+        </tr>
+        <tr>
+         <td>
+          end_point
+         </td>
+         <td>
+          End point of the line
+         </td>
+        </tr>
+        <tr>
+         <td>
+          color
+         </td>
+         <td>
+          Color of the line
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+-- draw a white line from (200, 200) to (200, 300)
+msg.post("@render:", "draw_line", { start_point = vmath.vector3(200, 200, 0), end_point = vmath.vector3(200, 300, 0), color = vmath.vector4(1, 1, 1, 1) } )
+</pre>
+     </div>
+     <a name="draw_text">
+     </a>
+     <div>
+      <h3 class="name">
+       draw_text
+      </h3>
+      <p>
+       Draw a text on the screen. This should mostly be used for debugging purposes.
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          position
+         </td>
+         <td>
+          Position of the text
+         </td>
+        </tr>
+        <tr>
+         <td>
+          text
+         </td>
+         <td>
+          The text to draw
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+msg.post("@render:", "draw_text", { text = "Hello world!", position = vmath.vector3(200, 200, 0) } )
+</pre>
+     </div>
+     <h2>
+      Constants
+     </h2>
+     <a name="render.BLEND_CONSTANT_ALPHA">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_CONSTANT_ALPHA
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_CONSTANT_COLOR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_CONSTANT_COLOR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_DST_ALPHA">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_DST_ALPHA
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_DST_COLOR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_DST_COLOR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_ONE">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_ONE
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_ONE_MINUS_CONSTANT_ALPHA">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_ONE_MINUS_CONSTANT_ALPHA
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_ONE_MINUS_CONSTANT_COLOR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_ONE_MINUS_CONSTANT_COLOR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_ONE_MINUS_DST_ALPHA">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_ONE_MINUS_DST_ALPHA
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_ONE_MINUS_DST_COLOR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_ONE_MINUS_DST_COLOR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_ONE_MINUS_SRC_ALPHA">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_ONE_MINUS_SRC_ALPHA
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_ONE_MINUS_SRC_COLOR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_ONE_MINUS_SRC_COLOR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_SRC_ALPHA">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_SRC_ALPHA
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_SRC_ALPHA_SATURATE">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_SRC_ALPHA_SATURATE
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_SRC_COLOR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_SRC_COLOR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BLEND_ZERO">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BLEND_ZERO
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BUFFER_COLOR_BIT">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BUFFER_COLOR_BIT
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BUFFER_DEPTH_BIT">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BUFFER_DEPTH_BIT
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.BUFFER_STENCIL_BIT">
+     </a>
+     <div>
+      <h3 class="name">
+       render.BUFFER_STENCIL_BIT
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FACE_BACK">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FACE_BACK
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FACE_FRONT">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FACE_FRONT
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FACE_FRONT_AND_BACK">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FACE_FRONT_AND_BACK
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FILTER_LINEAR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FILTER_LINEAR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FILTER_NEAREST">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FILTER_NEAREST
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FORMAT_DEPTH">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FORMAT_DEPTH
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FORMAT_LUMINANCE">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FORMAT_LUMINANCE
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FORMAT_RGB">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FORMAT_RGB
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FORMAT_RGBA">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FORMAT_RGBA
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FORMAT_RGBA_DXT1">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FORMAT_RGBA_DXT1
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FORMAT_RGBA_DXT3">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FORMAT_RGBA_DXT3
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FORMAT_RGBA_DXT5">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FORMAT_RGBA_DXT5
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.FORMAT_RGB_DXT1">
+     </a>
+     <div>
+      <h3 class="name">
+       render.FORMAT_RGB_DXT1
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STATE_BLEND">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STATE_BLEND
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STATE_CULL_FACE">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STATE_CULL_FACE
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STATE_DEPTH_TEST">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STATE_DEPTH_TEST
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STATE_POLYGON_OFFSET_FILL">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STATE_POLYGON_OFFSET_FILL
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STATE_STENCIL_TEST">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STATE_STENCIL_TEST
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_FUNC_ALWAYS">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_FUNC_ALWAYS
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_FUNC_EQUAL">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_FUNC_EQUAL
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_FUNC_GEQUAL">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_FUNC_GEQUAL
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_FUNC_GREATER">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_FUNC_GREATER
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_FUNC_LEQUAL">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_FUNC_LEQUAL
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_FUNC_LESS">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_FUNC_LESS
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_FUNC_NEVER">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_FUNC_NEVER
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_FUNC_NOTEQUAL">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_FUNC_NOTEQUAL
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_OP_DECR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_OP_DECR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_OP_DECR_WRAP">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_OP_DECR_WRAP
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_OP_INCR">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_OP_INCR
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_OP_INCR_WRAP">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_OP_INCR_WRAP
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_OP_INVERT">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_OP_INVERT
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_OP_KEEP">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_OP_KEEP
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_OP_REPLACE">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_OP_REPLACE
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.STENCIL_OP_ZERO">
+     </a>
+     <div>
+      <h3 class="name">
+       render.STENCIL_OP_ZERO
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.WRAP_CLAMP_TO_BORDER">
+     </a>
+     <div>
+      <h3 class="name">
+       render.WRAP_CLAMP_TO_BORDER
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.WRAP_CLAMP_TO_EDGE">
+     </a>
+     <div>
+      <h3 class="name">
+       render.WRAP_CLAMP_TO_EDGE
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.WRAP_MIRRORED_REPEAT">
+     </a>
+     <div>
+      <h3 class="name">
+       render.WRAP_MIRRORED_REPEAT
+      </h3>
+      <p>
+      </p>
+     </div>
+     <a name="render.WRAP_REPEAT">
+     </a>
+     <div>
+      <h3 class="name">
+       render.WRAP_REPEAT
+      </h3>
+      <p>
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
+  </script>
+  <script>
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+        prettyPrint();
+    });
+  </script>
+ </body>
+</html>

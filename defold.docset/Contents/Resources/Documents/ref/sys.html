@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
+     <style type="text/css">
+      .sidebar-nav {
+    padding: 9px 0;
+}
+     </style>
+     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
+       <meta charset="utf-8">
+        <title>
+         Reference Documentation
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+         <meta content="" name="description">
+          <meta content="" name="author">
+           <!--  Google analytics -->
+           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
+           <script type="text/javascript">
+            if (document.location.hostname != "127.0.0.1") {
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-83690-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }
+           </script>
+           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
+           </script>
+           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
+           </script>
+          </meta>
+         </meta>
+        </meta>
+       </meta>
+      </link>
+     </link>
+    </link>
+   </link>
+  </link>
+ </head>
+ <body>
+  <script type="text/javascript">
+   var _ues = {
+            host : 'defold.userecho.com',
+            forum : '11347',
+            lang : 'en',
+            tab_corner_radius : 8,
+            tab_font_size : 20,
+            tab_image_hash : 'RmVlZGJhY2s%3D',
+            tab_alignment : 'left',
+            tab_text_color : '#FFFFFF',
+            tab_bg_color : '#729FCF',
+            tab_hover_color : '#5D81A8'
+        };
+
+        if (screen.width >= 1024) {
+            (function() {
+                var _ue = document.createElement('script');
+                _ue.type = 'text/javascript';
+                _ue.async = true;
+                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
+                        : 'http://')
+                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(_ue, s);
+            })();
+        }
+  </script>
+  <div class="container ref-doc">
+   <div class="row">
+    <div class="span9">
+     <div class="well well-blue">
+      <h2>
+       Functions
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Function
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#sys.get_config">
+           sys.get_config
+          </a>
+         </td>
+         <td>
+          get config value
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sys.get_config">
+           sys.get_config
+          </a>
+         </td>
+         <td>
+          get config value with default value
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sys.get_ifaddrs">
+           sys.get_ifaddrs
+          </a>
+         </td>
+         <td>
+          enumerate network cards
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sys.get_save_file">
+           sys.get_save_file
+          </a>
+         </td>
+         <td>
+          gets the save-file path
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sys.get_sys_info">
+           sys.get_sys_info
+          </a>
+         </td>
+         <td>
+          get system information
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sys.load">
+           sys.load
+          </a>
+         </td>
+         <td>
+          loads a lua table from a file on disk
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sys.load_resource">
+           sys.load_resource
+          </a>
+         </td>
+         <td>
+          loads resource from game data
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sys.open_url">
+           sys.open_url
+          </a>
+         </td>
+         <td>
+          open url in default application
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#sys.save">
+           sys.save
+          </a>
+         </td>
+         <td>
+          saves a lua table to a file stored on disk
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Messages
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Message
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#exit">
+           exit
+          </a>
+         </td>
+         <td>
+          exits application
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#reboot">
+           reboot
+          </a>
+         </td>
+         <td>
+          reboot engine with arguments
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#set_update_frequency">
+           set_update_frequency
+          </a>
+         </td>
+         <td>
+          set update frequency
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#start_record">
+           start_record
+          </a>
+         </td>
+         <td>
+          starts video recording
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#stop_record">
+           stop_record
+          </a>
+         </td>
+         <td>
+          stop current video recording
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#toggle_profile">
+           toggle_profile
+          </a>
+         </td>
+         <td>
+          shows/hides the on-screen profiler
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h2>
+      Functions
+     </h2>
+     <a name="sys.get_config">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.get_config
+      </h3>
+      <p>
+       Get config value from the game.project configuration file.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          key
+         </td>
+         <td>
+          key to get value for. The syntax is SECTION.KEY
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       config value as a string. nil if the config key doesn't exists
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       Get display width
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+local width = tonumber(sys.get_config("display.width"))
+</pre>
+     </div>
+     <a name="sys.get_config">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.get_config
+      </h3>
+      <p>
+       Get config value from the game.project configuration file with default value
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          key
+         </td>
+         <td>
+          key to get value for. The syntax is SECTION.KEY
+         </td>
+        </tr>
+        <tr>
+         <td>
+          default_value
+         </td>
+         <td>
+          default value to return if the value doens't exists
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       config value as a string. default_value if the config key doesn't exists
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       Get user config value
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+local speed = tonumber(sys.get_config("my_game.speed", "10.23"))
+</pre>
+     </div>
+     <a name="sys.get_ifaddrs">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.get_ifaddrs
+      </h3>
+      <p>
+       returns an array of tables with the following members:
+name, address (ip-string), mac (hardware address, colon separated string), up (bool), running (bool). NOTE: ip and mac might be nil if not available
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       an array of tables
+      </p>
+     </div>
+     <a name="sys.get_save_file">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.get_save_file
+      </h3>
+      <p>
+       The save-file path is operating system specific and is typically located under the users home directory.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          application_id
+         </td>
+         <td>
+          user defined id of the application, which helps define the location of the save-file (string)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          file_name
+         </td>
+         <td>
+          file-name to get path for (string)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       path to save-file (string)
+      </p>
+     </div>
+     <a name="sys.get_sys_info">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.get_sys_info
+      </h3>
+      <p>
+       returns a table with the following members:
+device_model, system_name, system_version, language, territory, gmt_offset (minutes), device_ident, ad_ident and ad_tracking_enabled.
+model is currently only available on iOS and Android.
+language is in ISO-639 format (two characters) and territory in
+ISO-3166 format (two characters)
+device_ident is "identifierForVendor" on iOS, "android_id" on Android and empty string on all other platforms
+      </p>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       table with system information
+      </p>
+     </div>
+     <a name="sys.load">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.load
+      </h3>
+      <p>
+       If the file exists, it must have been created by
+       <code>
+        sys.save
+       </code>
+       to be loaded.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          filename
+         </td>
+         <td>
+          file to read from (string)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       loaded lua table, which is empty if the file could not be found (table)
+      </p>
+     </div>
+     <a name="sys.load_resource">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.load_resource
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          filename
+         </td>
+         <td>
+          resource to load (string)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       loaded lua table, which is empty if the file could not be found (table)
+      </p>
+     </div>
+     <a name="sys.open_url">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.open_url
+      </h3>
+      <p>
+       Open URL in default application, typically a browser
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          url
+         </td>
+         <td>
+          url to open
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       a boolean indicating if the url could be opened or not
+      </p>
+     </div>
+     <a name="sys.save">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.save
+      </h3>
+      <p>
+       The table can later be loaded by
+       <code>
+        sys.load
+       </code>
+       .
+Use
+       <code>
+        sys.get_save_file
+       </code>
+       to obtain a valid location for the file.
+Internally, this function uses a workspace buffer sized output file sized 128kb. This size reflects the output file size which must not exceed this limit.
+Additionally, the total number of rows that any one table may contain is limited to 65536 (i.e. a 16 bit range). When tables are used to represent arrays, the values of
+keys are permitted to fall within a 32 bit range, supporting sparse arrays, however the limit on the total number of rows remains in effect.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          filename
+         </td>
+         <td>
+          file to write to (string)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          table
+         </td>
+         <td>
+          lua table to save (table)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       a boolean indicating if the table could be saved or not (boolean)
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       Save data:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+local my_table = {my_key = "my_important_value"}
+local my_file_path = sys.get_save_file("my_game", "my_file")
+if not sys.save(my_file_path, my_table) then
+    -- Alert user that the data could not be saved
+end
+</pre>
+      <p>
+       And load it at a later time, e.g. next game session:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+local my_file_path = sys.get_save_file("my_game", "my_file")
+local my_table = sys.load(my_file_path)
+if #my_table == 0 then
+    -- The file could not be found
+end
+</pre>
+     </div>
+     <h2>
+      Messages
+     </h2>
+     <a name="exit">
+     </a>
+     <div>
+      <h3 class="name">
+       exit
+      </h3>
+      <p>
+       Terminates the game application and reports the specified
+       <code>
+        code
+       </code>
+       to the OS.
+This message can only be sent to the designated
+       <code>
+        @system
+       </code>
+       socket.
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          code
+         </td>
+         <td>
+          exit code to report to the OS, 0 means clean exit (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("quit") then
+        msg.post("@system:", "exit", {code = 0})
+    end
+end
+</pre>
+     </div>
+     <a name="reboot">
+     </a>
+     <div>
+      <h3 class="name">
+       reboot
+      </h3>
+      <p>
+       Arguments will be translated into command line arguments. Sending the reboot
+command is equivalent to starting the engine with the same arguments.
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          arg1
+         </td>
+         <td>
+          argument 1
+         </td>
+        </tr>
+        <tr>
+         <td>
+          arg2
+         </td>
+         <td>
+          argument 2
+         </td>
+        </tr>
+        <tr>
+         <td>
+          arg3
+         </td>
+         <td>
+          argument 3
+         </td>
+        </tr>
+        <tr>
+         <td>
+          arg4
+         </td>
+         <td>
+          argument 4
+         </td>
+        </tr>
+        <tr>
+         <td>
+          arg5
+         </td>
+         <td>
+          argument 5
+         </td>
+        </tr>
+        <tr>
+         <td>
+          arg6
+         </td>
+         <td>
+          argument 6
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+-- Reboot engine with a specific bootstrap collection.
+local arg1 = '--config=bootstrap.main_collection=/my.collectionc'
+local arg2 = 'build/default/game.projectc'
+msg.post("@system:", "reboot", {arg1 = arg1, arg2 = arg2})
+</pre>
+     </div>
+     <a name="set_update_frequency">
+     </a>
+     <div>
+      <h3 class="name">
+       set_update_frequency
+      </h3>
+      <p>
+       Set game update-frequency. This option is equivalent to display.update_frequency but
+set in run-time
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          frequency
+         </td>
+         <td>
+          target frequency. 60 for 60 fps
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+msg.post("@system:", "set_update_frequency", { frequency = 60 } )
+</pre>
+     </div>
+     <a name="start_record">
+     </a>
+     <div>
+      <h3 class="name">
+       start_record
+      </h3>
+      <p>
+       Starts video recording of the game frame-buffer to file. Current video format is the
+open vp8 codec in the ivf container. It's possible to upload this format directly
+to YouTube. The VLC video player has native support but with the known issue that
+not the entirely files is played back. It's probably an issue with VLC.
+The Miro Video Converter has support for vp8/ivf.
+NOTE: Audio is currently not supported
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          file_name
+         </td>
+         <td>
+          file name to write the video to
+         </td>
+        </tr>
+        <tr>
+         <td>
+          frame_period
+         </td>
+         <td>
+          frame period to record, ie write every nth frame. Default value is 2
+         </td>
+        </tr>
+        <tr>
+         <td>
+          fps
+         </td>
+         <td>
+          frames per second. Playback speed for the video. Default value is 30. The fps value doens't affect the recording. It's only meta-data in the written video file.
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+Record a video in 30 fps given that the native game fps is 60:
+msg.post("@system:", "start_record", { file_name = "test_rec.ivf" } )
+
+To write a video in 60 fps given that the native game fps is 60:
+msg.post("@system:", "start_record", { file_name = "test_rec.ivf", frame_period = 1, fps = 60 } )
+
+</pre>
+     </div>
+     <a name="stop_record">
+     </a>
+     <div>
+      <h3 class="name">
+       stop_record
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+msg.post("@system:", "stop_record")
+</pre>
+     </div>
+     <a name="toggle_profile">
+     </a>
+     <div>
+      <h3 class="name">
+       toggle_profile
+      </h3>
+      <p>
+       This message can only be sent to the designated
+       <code>
+        @system
+       </code>
+       socket.
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+msg.post("@system:", "toggle_profile")
+</pre>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
+  </script>
+  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
+  </script>
+  <script>
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+        prettyPrint();
+    });
+  </script>
+ </body>
+</html>
