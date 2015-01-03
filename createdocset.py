@@ -65,16 +65,16 @@ def parse_ref(url, local_path, db_cursor):
 		file.write(soup.prettify("utf-8"))
 
 
-
-
 # create all paths
-if not os.path.exists(ref_path):
-	os.makedirs(ref_path)
+if os.path.exists(ref_path):
+	shutil.rmtree(ref_path)
+os.makedirs(ref_path)
 
 # create Info.plist
 with open(os.path.join(contents_path, "Info.plist"), "w") as file:
 	file.write(INFO_PLIST)
 
+# copy icon
 shutil.copyfile("icon.tiff", os.path.join(docset_path, "icon.tiff"))
 
 # create sqlite db
