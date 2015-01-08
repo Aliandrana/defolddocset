@@ -6,7 +6,7 @@ This Python script will scrape http://doc.defold.com and generate a docset for i
 requirements
 ------------
 * Python 2.7
-* [BeautifulSoup](http://www.crummy.com/software/BeautifulSoup/)
+* [BeautifulSoup 4](http://www.crummy.com/software/BeautifulSoup/) (install it through `pip install beautifulsoup4` or `easy_install beautifulsoup4`)
 
 usage
 -----
