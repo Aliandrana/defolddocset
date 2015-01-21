@@ -181,6 +181,36 @@
         </tr>
         <tr>
          <td>
+          <a href="#gui.get_clipping_inverted">
+           gui.get_clipping_inverted
+          </a>
+         </td>
+         <td>
+          gets node clipping inverted state
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.get_clipping_mode">
+           gui.get_clipping_mode
+          </a>
+         </td>
+         <td>
+          gets the node clipping mode
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.get_clipping_visible">
+           gui.get_clipping_visible
+          </a>
+         </td>
+         <td>
+          gets node clipping visibility state
+         </td>
+        </tr>
+        <tr>
+         <td>
           <a href="#gui.get_color">
            gui.get_color
           </a>
@@ -571,6 +601,36 @@
         </tr>
         <tr>
          <td>
+          <a href="#gui.set_clipping_inverted">
+           gui.set_clipping_inverted
+          </a>
+         </td>
+         <td>
+          sets node clipping visibility
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.set_clipping_mode">
+           gui.set_clipping_mode
+          </a>
+         </td>
+         <td>
+          sets node clipping mode state
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.set_clipping_visible">
+           gui.set_clipping_visible
+          </a>
+         </td>
+         <td>
+          sets node clipping visibility
+         </td>
+        </tr>
+        <tr>
+         <td>
           <a href="#gui.set_color">
            gui.set_color
           </a>
@@ -707,6 +767,16 @@
          </td>
          <td>
           sets the node position
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.set_render_order">
+           gui.set_render_order
+          </a>
+         </td>
+         <td>
+          set the render ordering for the current GUI scene
          </td>
         </tr>
         <tr>
@@ -974,6 +1044,26 @@
          </td>
          <td>
           multiply blending
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.CLIPPING_MODE_NONE">
+           gui.CLIPPING_MODE_NONE
+          </a>
+         </td>
+         <td>
+          clipping mode none
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.CLIPPING_MODE_STENCIL">
+           gui.CLIPPING_MODE_STENCIL
+          </a>
+         </td>
+         <td>
+          clipping mode stencil
          </td>
         </tr>
         <tr>
@@ -2240,6 +2330,111 @@ end
        </ul>
       </p>
      </div>
+     <a name="gui.get_clipping_inverted">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.get_clipping_inverted
+      </h3>
+      <p>
+       If node is set as an inverted clipping node, it will clip anything inside as opposed to outside.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node from which to get the clipping inverted state (node)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       true or false
+      </p>
+     </div>
+     <a name="gui.get_clipping_mode">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.get_clipping_mode
+      </h3>
+      <p>
+       Clipping mode defines how the node will clipping it's children nodes
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node from which to get the clipping mode (node)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       node clipping mode (constant)
+       <ul>
+        <li>
+         <code>
+          gui.CLIPPING_MODE_NONE
+         </code>
+        </li>
+        <li>
+         <code>
+          gui.CLIPPING_MODE_STENCIL
+         </code>
+        </li>
+       </ul>
+      </p>
+     </div>
+     <a name="gui.get_clipping_visible">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.get_clipping_visible
+      </h3>
+      <p>
+       If node is set as visible clipping node, it will be shown as well as clipping. Otherwise, it will only clip but not show visually.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node from which to get the clipping visibility state (node)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       true or false
+      </p>
+     </div>
      <a name="gui.get_color">
      </a>
      <div>
@@ -3490,6 +3685,117 @@ Higher index means the node is drawn above lower indexed nodes.
        </tbody>
       </table>
      </div>
+     <a name="gui.set_clipping_inverted">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.set_clipping_inverted
+      </h3>
+      <p>
+       If node is set as an inverted clipping node, it will clip anything inside as opposed to outside.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node to set clipping inverted state for (node)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          visible
+         </td>
+         <td>
+          true or false
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="gui.set_clipping_mode">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.set_clipping_mode
+      </h3>
+      <p>
+       Clipping mode defines how the node will clipping it's children nodes
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node to set clipping mode for (node)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          clipping_mode
+         </td>
+         <td>
+          clipping mode to set (constant)
+          <ul>
+           <li>
+            <code>
+             gui.CLIPPING_MODE_NONE
+            </code>
+           </li>
+           <li>
+            <code>
+             gui.CLIPPING_MODE_STENCIL
+            </code>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <a name="gui.set_clipping_visible">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.set_clipping_visible
+      </h3>
+      <p>
+       If node is set as an visible clipping node, it will be shown as well as clipping. Otherwise, it will only clip but not show visually.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node to set clipping visibility for (node)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          visible
+         </td>
+         <td>
+          true or false
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
      <a name="gui.set_color">
      </a>
      <div>
@@ -3958,6 +4264,34 @@ Higher index means the node is drawn above lower indexed nodes.
        </tbody>
       </table>
      </div>
+     <a name="gui.set_render_order">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.set_render_order
+      </h3>
+      <p>
+       Set the order number for the current GUI scene. The number dictates the sorting of the "gui" render predicate, in other words
+in which order the scene will be rendered in relation to other currently rendered GUI scenes.
+
+The number must be in the range 0 to 7.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          order
+         </td>
+         <td>
+          rendering order (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
      <a name="gui.set_rotation">
      </a>
      <div>
@@ -4126,7 +4460,7 @@ Higher index means the node is drawn above lower indexed nodes.
        gui.set_texture
       </h3>
       <p>
-       This is currently only useful for box nodes. The texture must be mapped to the gui scene in the gui editor.
+       Set the texture on a box or pie node. The texture must be mapped to the gui scene in the gui editor.
       </p>
       <h3>
        Parameters
@@ -4803,6 +5137,26 @@ end
       </h3>
       <p>
        multiply blending
+      </p>
+     </div>
+     <a name="gui.CLIPPING_MODE_NONE">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.CLIPPING_MODE_NONE
+      </h3>
+      <p>
+       clipping mode none
+      </p>
+     </div>
+     <a name="gui.CLIPPING_MODE_STENCIL">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.CLIPPING_MODE_STENCIL
+      </h3>
+      <p>
+       clipping mode stencil
       </p>
      </div>
      <a name="gui.EASING_INBACK">
