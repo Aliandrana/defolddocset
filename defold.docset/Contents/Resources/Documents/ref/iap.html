@@ -74,42 +74,99 @@
        <tbody>
         <tr>
          <td>
-          <a href="#msg.post">
-           msg.post
+          <a href="#iap.buy">
+           iap.buy
           </a>
          </td>
          <td>
-          posts a message to a receiving URL
+          buy product
          </td>
         </tr>
         <tr>
          <td>
-          <a href="#msg.url">
-           msg.url
+          <a href="#iap.list">
+           iap.list
           </a>
          </td>
          <td>
-          creates a new URL
+          list in-app products
          </td>
         </tr>
         <tr>
          <td>
-          <a href="#msg.url">
-           msg.url
+          <a href="#iap.restore">
+           iap.restore
           </a>
          </td>
          <td>
-          creates a new URL from a string
+          restore products (non-consumable)
          </td>
         </tr>
         <tr>
          <td>
-          <a href="#msg.url">
-           msg.url
+          <a href="#iap.set_listener">
+           iap.set_listener
           </a>
          </td>
          <td>
-          creates a new URL from separate arguments
+          set transaction listener
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Constants
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Constant
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#iap.TRANS_STATE_FAILED">
+           iap.TRANS_STATE_FAILED
+          </a>
+         </td>
+         <td>
+          transaction failed state
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#iap.TRANS_STATE_PURCHASED">
+           iap.TRANS_STATE_PURCHASED
+          </a>
+         </td>
+         <td>
+          transaction purchased state
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#iap.TRANS_STATE_PURCHASING">
+           iap.TRANS_STATE_PURCHASING
+          </a>
+         </td>
+         <td>
+          transaction purchasing state
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#iap.TRANS_STATE_RESTORED">
+           iap.TRANS_STATE_RESTORED
+          </a>
+         </td>
+         <td>
+          transaction restored state
          </td>
         </tr>
        </tbody>
@@ -118,11 +175,11 @@
      <h2>
       Functions
      </h2>
-     <a name="msg.post">
+     <a name="iap.buy">
      </a>
      <div>
       <h3 class="name">
-       msg.post
+       iap.buy
       </h3>
       <p>
       </p>
@@ -133,26 +190,18 @@
        <tbody>
         <tr>
          <td>
-          receiver
+          id
          </td>
          <td>
-          The receiver must be a string in URL-format, a URL object, a hashed string or nil. Nil is a short way of sending the message back to the calling script. (string|url|hash|nil)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          message_id
-         </td>
-         <td>
-          The id must be a string or a hashed string. (string|hash)
+          product to buy (identifier)
          </td>
         </tr>
         <tr>
          <td>
-          [message]
+          callback
          </td>
          <td>
-          lua table message to send (table)
+          result callback
          </td>
         </tr>
        </tbody>
@@ -161,51 +210,30 @@
        Examples
       </h3>
       <pre class="prettyprint linenums lang-lua">
-msg.post(my_url, "my_message", {my_parameter = "my_value"})
+local function iap_listener(self, transaction, error)
+    if error == nil then
+        print(transaction.ident)
+        print(transaction.state)
+        print(transaction.date)
+        print(transaction.trans_ident) -- only available when state == TRANS_STATE_PURCHASED or state == TRANS_STATE_RESTORED
+        print(transaction.receipt)     -- only available when state == TRANS_STATE_PURCHASED
+    else
+        print(error.error)
+    end
+end
+function example(self)
+    iap.set_listener(iap_listener)
+    iap.buy("my_iap")
+end
 </pre>
      </div>
-     <a name="msg.url">
+     <a name="iap.list">
      </a>
      <div>
       <h3 class="name">
-       msg.url
+       iap.list
       </h3>
       <p>
-       This is equivalent to msg.url("").
-      </p>
-      <h3>
-       Returns
-      </h3>
-      <p>
-       a new URL (url)
-      </p>
-     </div>
-     <a name="msg.url">
-     </a>
-     <div>
-      <h3 class="name">
-       msg.url
-      </h3>
-      <p>
-       The format of the string must be
-       <code>
-        "[socket:][path][#fragment]"
-       </code>
-       , which is similar to a http URL.
-When addressing instances,
-       <code>
-        socket
-       </code>
-       is the name of the collection.
-       <code>
-        path
-       </code>
-       is the id of the instance,
-which can either be relative the instance of the calling script or global.
-       <code>
-        fragment
-       </code>
-       would be the id of the desired component.
       </p>
       <h3>
        Parameters
@@ -214,36 +242,84 @@ which can either be relative the instance of the calling script or global.
        <tbody>
         <tr>
          <td>
-          urlstring
+          ids
          </td>
          <td>
-          string to create the url from (string)
+          table (array) to get information about
+         </td>
+        </tr>
+        <tr>
+         <td>
+          callback
+         </td>
+         <td>
+          result callback
          </td>
         </tr>
        </tbody>
       </table>
-      <h3>
-       Returns
-      </h3>
-      <p>
-       a new URL (url)
-      </p>
       <h3>
        Examples
       </h3>
       <pre class="prettyprint linenums lang-lua">
-local my_url = msg.url("#my_component")
-local my_url = msg.url("my_collection:/my_sub_collection/my_instance#my_component")
-local my_url = msg.url("my_socket:")
+local function iap_callback(self, products, error)
+    if error == nil then
+        for k,v in pairs(products) do
+            print(v.ident)
+            print(v.title)
+            print(v.description)
+            print(v.price)
+            print(v.price_string)
+            print(v.currency_code) -- only available on iOS
+        end
+    else
+        print(error.error)
+    end
+end
+function example(self)
+    iap.list({"my_iap"}, iap_callback)
+end
 </pre>
      </div>
-     <a name="msg.url">
+     <a name="iap.restore">
      </a>
      <div>
       <h3 class="name">
-       msg.url
+       iap.restore
       </h3>
       <p>
+      </p>
+     </div>
+     <a name="iap.set_listener">
+     </a>
+     <div>
+      <h3 class="name">
+       iap.set_listener
+      </h3>
+      <p>
+       The listener callback has the following signature: function(self, transaction, error) where transaction is a table
+describing the transaction and error is a table. The error parameter is nil on success.
+The transaction table has the following members:
+       <ul>
+        <li>
+         ident: product identifier
+         <li>
+          state: transaction state
+          <li>
+           trans_ident: transaction identifier (only set when state == TRANS_STATE_RESTORED or state == TRANS_STATE_PURCHASED)
+           <li>
+            receipt: receipt (only set when state == TRANS_STATE_PURCHASED)
+            <li>
+             date: transaction date
+             <li>
+              original_trans: original transaction (only set when state == TRANS_STATE_RESTORED)
+             </li>
+            </li>
+           </li>
+          </li>
+         </li>
+        </li>
+       </ul>
       </p>
       <h3>
        Parameters
@@ -252,35 +328,56 @@ local my_url = msg.url("my_socket:")
        <tbody>
         <tr>
          <td>
-          [socket]
+          listener
          </td>
          <td>
-          socket of the URL (string|socket)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          [path]
-         </td>
-         <td>
-          path of the URL (string|hash)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          [fragment]
-         </td>
-         <td>
-          fragment of the URL (string|hash)
+          listener function
          </td>
         </tr>
        </tbody>
       </table>
-      <h3>
-       Returns
+     </div>
+     <h2>
+      Constants
+     </h2>
+     <a name="iap.TRANS_STATE_FAILED">
+     </a>
+     <div>
+      <h3 class="name">
+       iap.TRANS_STATE_FAILED
       </h3>
       <p>
-       a new URL (url)
+       transaction failed state
+      </p>
+     </div>
+     <a name="iap.TRANS_STATE_PURCHASED">
+     </a>
+     <div>
+      <h3 class="name">
+       iap.TRANS_STATE_PURCHASED
+      </h3>
+      <p>
+       transaction purchased state
+      </p>
+     </div>
+     <a name="iap.TRANS_STATE_PURCHASING">
+     </a>
+     <div>
+      <h3 class="name">
+       iap.TRANS_STATE_PURCHASING
+      </h3>
+      <p>
+       transaction purchasing state
+      </p>
+     </div>
+     <a name="iap.TRANS_STATE_RESTORED">
+     </a>
+     <div>
+      <h3 class="name">
+       iap.TRANS_STATE_RESTORED
+      </h3>
+      <p>
+       transaction restored state
       </p>
      </div>
     </div>

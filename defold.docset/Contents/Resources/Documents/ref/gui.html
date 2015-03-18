@@ -53,33 +53,6 @@
   </link>
  </head>
  <body>
-  <script type="text/javascript">
-   var _ues = {
-            host : 'defold.userecho.com',
-            forum : '11347',
-            lang : 'en',
-            tab_corner_radius : 8,
-            tab_font_size : 20,
-            tab_image_hash : 'RmVlZGJhY2s%3D',
-            tab_alignment : 'left',
-            tab_text_color : '#FFFFFF',
-            tab_bg_color : '#729FCF',
-            tab_hover_color : '#5D81A8'
-        };
-
-        if (screen.width >= 1024) {
-            (function() {
-                var _ue = document.createElement('script');
-                _ue.type = 'text/javascript';
-                _ue.async = true;
-                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
-                        : 'http://')
-                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(_ue, s);
-            })();
-        }
-  </script>
   <div class="container ref-doc">
    <div class="row">
     <div class="span9">
@@ -157,6 +130,16 @@
          </td>
          <td>
           deletes a node
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.delete_texture">
+           gui.delete_texture
+          </a>
+         </td>
+         <td>
+          delete texture
          </td>
         </tr>
         <tr>
@@ -561,6 +544,16 @@
         </tr>
         <tr>
          <td>
+          <a href="#gui.new_texture">
+           gui.new_texture
+          </a>
+         </td>
+         <td>
+          create new texture
+         </td>
+        </tr>
+        <tr>
+         <td>
           <a href="#gui.pick_node">
            gui.pick_node
           </a>
@@ -837,6 +830,16 @@
          </td>
          <td>
           sets the node texture
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.set_texture_data">
+           gui.set_texture_data
+          </a>
+         </td>
+         <td>
+          set the buffer data for a texture
          </td>
         </tr>
         <tr>
@@ -2229,6 +2232,46 @@ end
        </tbody>
       </table>
      </div>
+     <a name="gui.delete_texture">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.delete_texture
+      </h3>
+      <p>
+       Delete a dynamically created texture.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          texture
+         </td>
+         <td>
+          texture id (string|hash)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+     -- Create a texture.
+     if gui.new_texture("temp_tx", 10, 10, "rgb", string.rep('\0', 10 * 10 * 3)) then
+         -- Do something with the texture.
+         ...
+
+         -- Delete the texture
+         gui.delete_texture("temp_tx")
+     end
+end
+</pre>
+     </div>
      <a name="gui.get_adjust_mode">
      </a>
      <div>
@@ -3524,6 +3567,111 @@ Higher index means the node is drawn above lower indexed nodes.
        new text node (node)
       </p>
      </div>
+     <a name="gui.new_texture">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.new_texture
+      </h3>
+      <p>
+       Dynamically create a new texture.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          texture
+         </td>
+         <td>
+          texture id (string|hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          width
+         </td>
+         <td>
+          texture width (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          height
+         </td>
+         <td>
+          texture height (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          type
+         </td>
+         <td>
+          texture type (string|constant)
+          <ul>
+           <li>
+            <code>
+             "rgb"
+            </code>
+            - RGB
+           </li>
+           <li>
+            <code>
+             "rgba"
+            </code>
+            - RGBA
+           </li>
+           <li>
+            <code>
+             "l"
+            </code>
+            - LUMINANCE
+           </li>
+          </ul>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          buffer
+         </td>
+         <td>
+          texture data (string)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       texture creation was successful (boolean)
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+     local w = 200
+     local h = 300
+
+     -- A nice orange. String with the RGB values.
+     local orange = string.char(0xff) .. string.char(0x80) .. string.char(0x10)
+
+     -- Create the texture. Repeat the color string for each pixel.
+     if gui.new_texture("orange_tx", w, h, "rgb", string.rep(orange, w * h)) then
+         -- Create a box node and apply the texture to it.
+         local n = gui.new_box_node(vmath.vector3(200, 200, 0), vmath.vector3(w, h, 0))
+         gui.set_texture(n, "orange_tx")
+     else
+         -- Could not create texture...
+         ...
+     end
+end
+</pre>
+     </div>
      <a name="gui.pick_node">
      </a>
      <div>
@@ -4485,6 +4633,117 @@ The number must be in the range 0 to 7.
         </tr>
        </tbody>
       </table>
+     </div>
+     <a name="gui.set_texture_data">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.set_texture_data
+      </h3>
+      <p>
+       Set the texture buffer data for a dynamically created texture.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          texture
+         </td>
+         <td>
+          texture id (string|hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          width
+         </td>
+         <td>
+          texture width (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          height
+         </td>
+         <td>
+          texture height (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          type
+         </td>
+         <td>
+          texture type (string|constant)
+          <ul>
+           <li>
+            <code>
+             "rgb"
+            </code>
+            - RGB
+           </li>
+           <li>
+            <code>
+             "rgba"
+            </code>
+            - RGBA
+           </li>
+           <li>
+            <code>
+             "l"
+            </code>
+            - LUMINANCE
+           </li>
+          </ul>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          buffer
+         </td>
+         <td>
+          texture data (string)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       setting the data was successful (boolean)
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+     local w = 200
+     local h = 300
+
+     -- Create a dynamic texture, all white.
+     if gui.new_texture("dynamic_tx", w, h, "rgb", string.rep(string.char(0xff), w * h * 3)) then
+         -- Create a box node and apply the texture to it.
+         local n = gui.new_box_node(vmath.vector3(200, 200, 0), vmath.vector3(w, h, 0))
+         gui.set_texture(n, "dynamic_tx")
+
+         ...
+
+         -- Change the data in the texture to a nice orange.
+         local orange = string.char(0xff) .. string.char(0x80) .. string.char(0x10)
+         if gui.set_texture_data("dynamic_tx", w, h, "rgb", string.rep(orange, w * h)) then
+             -- Go on and to more stuff
+             ...
+         end
+     else
+         -- Something went wrong
+         ...
+     end
+end
+</pre>
      </div>
      <a name="gui.set_xanchor">
      </a>

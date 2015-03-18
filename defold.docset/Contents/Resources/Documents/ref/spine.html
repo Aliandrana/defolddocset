@@ -53,33 +53,6 @@
   </link>
  </head>
  <body>
-  <script type="text/javascript">
-   var _ues = {
-            host : 'defold.userecho.com',
-            forum : '11347',
-            lang : 'en',
-            tab_corner_radius : 8,
-            tab_font_size : 20,
-            tab_image_hash : 'RmVlZGJhY2s%3D',
-            tab_alignment : 'left',
-            tab_text_color : '#FFFFFF',
-            tab_bg_color : '#729FCF',
-            tab_hover_color : '#5D81A8'
-        };
-
-        if (screen.width >= 1024) {
-            (function() {
-                var _ue = document.createElement('script');
-                _ue.type = 'text/javascript';
-                _ue.async = true;
-                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
-                        : 'http://')
-                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(_ue, s);
-            })();
-        }
-  </script>
   <div class="container ref-doc">
    <div class="row">
     <div class="span9">
@@ -127,6 +100,43 @@
          </td>
          <td>
           play an animation on a spine model
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h2>
+       Messages
+      </h2>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th>
+          Message
+         </th>
+         <th>
+          Brief
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          <a href="#spine_animation_done">
+           spine_animation_done
+          </a>
+         </td>
+         <td>
+          reports the completion of a Spine animation
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#spine_event">
+           spine_event
+          </a>
+         </td>
+         <td>
+          reports an incoming event from the Spine animation
          </td>
         </tr>
        </tbody>
@@ -332,6 +342,166 @@ function init(self)
     spine.play(url, "jump", go.PLAYBACK_ONCE_FORWARD, 0.1, function (self)
         spine.play(url, "run", go.PLAYBACK_LOOP_FORWARD, 0.2)
     end)
+end
+</pre>
+     </div>
+     <h2>
+      Messages
+     </h2>
+     <a name="spine_animation_done">
+     </a>
+     <div>
+      <h3 class="name">
+       spine_animation_done
+      </h3>
+      <p>
+       <p>
+        This message is sent when a Spine animation has finished playing back to the script
+that started the animation. This message is sent only for animations that play with
+the following playback modes and no message is sent if the animation is cancelled with
+spine.cancel():
+        <ul>
+         <li>
+          go.PLAYBACK_ONCE_FORWARD
+         </li>
+         <li>
+          go.PLAYBACK_ONCE_BACKWARD
+         </li>
+         <li>
+          go.PLAYBACK_ONCE_PINGPONG
+         </li>
+        </ul>
+       </p>
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          animation_id
+         </td>
+         <td>
+          the id of the completed animation (hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          playback
+         </td>
+         <td>
+          the playback mode of the completed animation (constant)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+  if message_id == hash("spine_animation_done") then
+    if message.animation_id == hash("run") and message.playback == go.PLAYBACK_ONCE_FORWARD then
+      -- The animation "run" has finished running forward.
+      ...
+    end
+  end
+end
+</pre>
+     </div>
+     <a name="spine_event">
+     </a>
+     <div>
+      <h3 class="name">
+       spine_event
+      </h3>
+      <p>
+       <p>
+        This message is sent when Spine animation playback fires events. These events
+has to be defined on the animation track in the Spine animation editor. An event
+can contain custom values expressed in the fields "integer", "float" and "string".
+       </p>
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          event_id
+         </td>
+         <td>
+          the id of the event (hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          animation_id
+         </td>
+         <td>
+          the id of the animation (hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          t
+         </td>
+         <td>
+          the time of the event in seconds, relative to the start of the animation (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          blend_weight
+         </td>
+         <td>
+          the blend weight (between 0.0-1.0) of the current animation at time t (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          integer
+         </td>
+         <td>
+          user defined integer value for the event (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          float
+         </td>
+         <td>
+          user defined floating point value for the event (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          string
+         </td>
+         <td>
+          user defined string value for the event (hash)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       The following example assumes that an animation sends event messages with the id "footstep"
+and that the "integer" field is used to distinguish between left and right foot (values 0 and 1).
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+  if message_id == hash("spine_event") then
+    -- Receiving animation event from Spine. Play footsteps.
+    if message.event_id == hash("footstep") and message.integer == 0 then
+      msg.post("#sound_footstep_right", "play_sound")
+    elseif message.event_id == hash("footstep") and message.integer == 1 then
+      msg.post("#sound_footstep_left", "play_sound")
+  end
 end
 </pre>
      </div>

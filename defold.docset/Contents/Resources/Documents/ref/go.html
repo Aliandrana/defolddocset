@@ -53,33 +53,6 @@
   </link>
  </head>
  <body>
-  <script type="text/javascript">
-   var _ues = {
-            host : 'defold.userecho.com',
-            forum : '11347',
-            lang : 'en',
-            tab_corner_radius : 8,
-            tab_font_size : 20,
-            tab_image_hash : 'RmVlZGJhY2s%3D',
-            tab_alignment : 'left',
-            tab_text_color : '#FFFFFF',
-            tab_bg_color : '#729FCF',
-            tab_hover_color : '#5D81A8'
-        };
-
-        if (screen.width >= 1024) {
-            (function() {
-                var _ue = document.createElement('script');
-                _ue.type = 'text/javascript';
-                _ue.async = true;
-                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
-                        : 'http://')
-                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(_ue, s);
-            })();
-        }
-  </script>
   <div class="container ref-doc">
    <div class="row">
     <div class="span9">
@@ -137,6 +110,16 @@
          </td>
          <td>
           deletes a game object instance
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#go.delete_all">
+           go.delete_all
+          </a>
+         </td>
+         <td>
+          deletes a set of game object instance
          </td>
         </tr>
         <tr>
@@ -393,7 +376,7 @@
           </a>
          </td>
          <td>
-          requests the transform from an instance
+          (DEPRECATED) requests the transform from an instance
          </td>
         </tr>
         <tr>
@@ -413,7 +396,7 @@
           </a>
          </td>
          <td>
-          reports back the transform of an instance
+          (DEPRECATED) reports back the transform of an instance
          </td>
         </tr>
        </tbody>
@@ -1183,17 +1166,7 @@ go.cancel_animations(go.get_id(), "position")
       </h3>
       <p>
        <div>
-        Use this function to delete a game object identified by its id.
-       </div>
-       <div>
-        <b>
-         NOTE!
-        </b>
-        Don't call this function directly or indirectly from a
-        <a href="#final">
-         final
-        </a>
-        call. This will currently result in undefined behaviour.
+        Delete a game object identified by its id.
        </div>
       </p>
       <h3>
@@ -1220,6 +1193,55 @@ go.cancel_animations(go.get_id(), "position")
       <pre class="prettyprint linenums lang-lua">
 local id = go.get_id("my_game_object") -- retrieve the id of the game object to be deleted
 go.detele(id) -- delete the game object
+</pre>
+     </div>
+     <a name="go.delete_all">
+     </a>
+     <div>
+      <h3 class="name">
+       go.delete_all
+      </h3>
+      <p>
+       <div>
+        Delete all game objects simultaneously as listed in table.
+The table values (not keys) should be game object ids (hashes).
+       </div>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          [ids]
+         </td>
+         <td>
+          table with values of instance ids (hashes) to be deleted
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       An example how to delete game objects listed in a table
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+-- List the objects to be deleted
+local ids = { hash("/my_object_1"), hash("/my_object_2"), hash("/my_object_3") }
+go.delete_all(ids)
+</pre>
+      <p>
+       An example how to delete game objects spawned via a collectionfactory
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+-- Spawn a collection of game objects.
+local ids = collectionfactory.create("#collectionfactory")
+...
+-- Delete all objects listed in the table 'ids'.
+go.delete_all(ids)
 </pre>
      </div>
      <a name="go.get">
@@ -2208,6 +2230,36 @@ The
           The change in y value.
          </td>
         </tr>
+        <tr>
+         <td>
+          <code>
+           acc_x
+          </code>
+         </td>
+         <td>
+          Accelerometer x value (if present).
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <code>
+           acc_y
+          </code>
+         </td>
+         <td>
+          Accelerometer y value (if present).
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <code>
+           acc_z
+          </code>
+         </td>
+         <td>
+          Accelerometer z value (if present).
+         </td>
+        </tr>
        </table>
       </p>
       <h3>
@@ -2672,7 +2724,7 @@ msg.post(".", "release_input_focus")
       <p>
        <div>
         <b>
-         Deprecated
+         DEPRECATED!
         </b>
         See the functions
         <code>
@@ -2791,7 +2843,7 @@ msg.post("my_instance", "set_parent")
       <p>
        <div>
         <b>
-         Deprecated
+         DEPRECATED!
         </b>
         See the functions
         <code>

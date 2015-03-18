@@ -53,33 +53,6 @@
   </link>
  </head>
  <body>
-  <script type="text/javascript">
-   var _ues = {
-            host : 'defold.userecho.com',
-            forum : '11347',
-            lang : 'en',
-            tab_corner_radius : 8,
-            tab_font_size : 20,
-            tab_image_hash : 'RmVlZGJhY2s%3D',
-            tab_alignment : 'left',
-            tab_text_color : '#FFFFFF',
-            tab_bg_color : '#729FCF',
-            tab_hover_color : '#5D81A8'
-        };
-
-        if (screen.width >= 1024) {
-            (function() {
-                var _ue = document.createElement('script');
-                _ue.type = 'text/javascript';
-                _ue.async = true;
-                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/'
-                        : 'http://')
-                        + 'cdn.userecho.com/js/widget-1.4.gz.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(_ue, s);
-            })();
-        }
-  </script>
   <div class="container ref-doc">
    <div class="row">
     <div class="span9">
@@ -122,8 +95,8 @@
        factory.create
       </h3>
       <p>
-       Which factory to create the game object is identified by the URL.
-The game object will be created between this frame and the next.
+       The URL identifies which factory should create the game object.
+If the game object is created inside of the frame (e.g. from an update callback), the game object will be created instantly, but none of its component will be updated in the same frame.
 
 Properties defined in scripts in the created game object can be overridden through the properties-parameter below.
 See go.property for more information on script properties.
@@ -190,9 +163,6 @@ See go.property for more information on script properties.
       <pre class="prettyprint linenums lang-lua">
 function init(self)
     self.my_created_object = factory.create("#factory", nil, nil, {my_value = 1})
-end
-
-function update(self, dt)
     -- communicate with the object
     msg.post(msg.url(nil, self.my_created_object), "hello")
 end

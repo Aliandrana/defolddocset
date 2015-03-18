@@ -74,12 +74,12 @@
        <tbody>
         <tr>
          <td>
-          <a href="#json.decode">
-           json.decode
+          <a href="#collectionfactory.create">
+           collectionfactory.create
           </a>
          </td>
          <td>
-          decode JSON from a string to a lua-table
+          Spawn a new instance of a collection into the existing collection.
          </td>
         </tr>
        </tbody>
@@ -88,15 +88,29 @@
      <h2>
       Functions
      </h2>
-     <a name="json.decode">
+     <a name="collectionfactory.create">
      </a>
      <div>
       <h3 class="name">
-       json.decode
+       collectionfactory.create
       </h3>
       <p>
-       Decode a string of JSON data into a Lua table.
-A Lua error is raised for syntax errors.
+       The URL identifies the collectionfactory component that should do the spawning.
+
+Spawning is instant, but spawned game objects get their first update calls the following frame. The supplied parameters for position, rotation and scale
+will be applied to the whole collection when spawned.
+
+Script properties in the created game objects can be overridden through
+a properties-parameter table. The table should contain game object ids
+(hash) as keys and property tables as values to be used when initiating each
+spawned game object.
+
+See go.property for more information on script properties.
+
+The function returns a table that contains a key for each game object
+id (hash), as addressed if the collection file was top level, and the
+corresponding spawned instance id (hash) as value with a unique path
+prefix added to each instance.
       </p>
       <h3>
        Parameters
@@ -105,10 +119,42 @@ A Lua error is raised for syntax errors.
        <tbody>
         <tr>
          <td>
-          json
+          url
          </td>
          <td>
-          json data (string)
+          the collection factory component to be used (url)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          [position]
+         </td>
+         <td>
+          position to assign to the newly spawned collection (vector3)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          [rotation]
+         </td>
+         <td>
+          rotation to assign to the newly spawned collection (quat)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          [properties]
+         </td>
+         <td>
+          table of script properties to propagate to any new game object instances (table)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          [scale]
+         </td>
+         <td>
+          uniform scaling to apply to the newly spawned collection (must be greater than 0). (number)
          </td>
         </tr>
        </tbody>
@@ -117,8 +163,48 @@ A Lua error is raised for syntax errors.
        Returns
       </h3>
       <p>
-       decoded json (table)
+       a table mapping the id:s from the collection to the new instance id:s
       </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       How to spawn a collection of game objects:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+  -- Spawn a small group of enemies.
+  local pos = vmath.vector3(100, 12.5, 0)
+  local rot = vmath.quat_rotation_z(math.pi / 2)
+  local scale = 0.5
+  local props = {}
+  props[hash("/enemy_leader")] = { health = 1000.0 }
+  props[hash("/enemy_1")] = { health = 200.0 }
+  props[hash("/enemy_2")] = { health = 400.0, color = hash("green") }
+
+  local self.enemy_ids = collectionfactory.create("#enemyfactory", pos, rot, props, scale)
+  -- enemy_ids now map to the spawned instance ids:
+  --
+  -- pprint(self.enemy_ids)
+  --
+  -- DEBUG:SCRIPT:
+  -- {
+  --   hash: [/enemy_leader] = hash: [/collection0/enemy_leader],
+  --   hash: [/enemy_1] = hash: [/collection0/enemy_1],
+  --   hash: [/enemy_2] = hash: [/collection0/enemy_2]
+  -- }
+
+  -- Send "attack" message to the leader. First look up its instance id.
+  local leader_id = self.enemy_ids[hash("/enemy_leader")]
+  msg.post(leader_id, "attack")
+end
+</pre>
+      <p>
+       How to delete a spawned collection:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+go.delete_all(self.enemy_ids)
+</pre>
      </div>
     </div>
    </div>
