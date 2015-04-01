@@ -104,6 +104,16 @@
         </tr>
         <tr>
          <td>
+          <a href="#gui.cancel_flipbook">
+           gui.cancel_flipbook
+          </a>
+         </td>
+         <td>
+          pause or unpause the node flipbook animation
+         </td>
+        </tr>
+        <tr>
+         <td>
           <a href="#gui.clone">
            gui.clone
           </a>
@@ -210,6 +220,16 @@
          </td>
          <td>
           gets the angle for the filled pie sector
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.get_flipbook">
+           gui.get_flipbook
+          </a>
+         </td>
+         <td>
+          gets the node flipbook animation
          </td>
         </tr>
         <tr>
@@ -560,6 +580,16 @@
          </td>
          <td>
           determines if the node is pickable by the supplied coordinates
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#gui.play_flipbook">
+           gui.play_flipbook
+          </a>
+         </td>
+         <td>
+          play node flipbook animation
          </td>
         </tr>
         <tr>
@@ -2146,6 +2176,31 @@ end
        </tbody>
       </table>
      </div>
+     <a name="gui.cancel_flipbook">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.cancel_flipbook
+      </h3>
+      <p>
+       Pause or unpause the node flipbook animation.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node cancel flipbook animation for (node)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
      <a name="gui.clone">
      </a>
      <div>
@@ -2522,6 +2577,39 @@ end
       <p>
        sector angle
       </p>
+     </div>
+     <a name="gui.get_flipbook">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.get_flipbook
+      </h3>
+      <p>
+       Get node flipbook animation.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node to get flipbook animation from (node)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          animation
+         </td>
+         <td>
+          animation id (hash)
+         </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
      <a name="gui.get_font">
      </a>
@@ -3211,7 +3299,7 @@ Higher index means the node is drawn above lower indexed nodes.
        gui.get_texture
       </h3>
       <p>
-       This is currently only useful for box nodes. The texture must be mapped to the gui scene in the gui editor.
+       This is currently only useful for box or pie nodes. The texture must be mapped to the gui scene in the gui editor.
       </p>
       <h3>
        Parameters
@@ -3717,6 +3805,47 @@ end
       <p>
        pick result (boolean)
       </p>
+     </div>
+     <a name="gui.play_flipbook">
+     </a>
+     <div>
+      <h3 class="name">
+       gui.play_flipbook
+      </h3>
+      <p>
+       Play flipbook animation on a box or pie node. The current node texture must contain the animation.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          node
+         </td>
+         <td>
+          node to set animation for (node)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          animation
+         </td>
+         <td>
+          animation id (string|hash)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          [complete_function]
+         </td>
+         <td>
+          function to call when the animation has completed (function)
+         </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
      <a name="gui.reset_nodes">
      </a>
