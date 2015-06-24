@@ -162,6 +162,16 @@
           saves a lua table to a file stored on disk
          </td>
         </tr>
+        <tr>
+         <td>
+          <a href="#sys.set_error_handler">
+           sys.set_error_handler
+          </a>
+         </td>
+         <td>
+          set the error handler. The error handler is a function which is called whenever a lua runtime error occurs.
+         </td>
+        </tr>
        </tbody>
       </table>
       <h2>
@@ -312,7 +322,7 @@ local width = tonumber(sys.get_config("display.width"))
           default_value
          </td>
          <td>
-          default value to return if the value doens't exists
+          default value to return if the value does not exist
          </td>
         </tr>
        </tbody>
@@ -321,7 +331,7 @@ local width = tonumber(sys.get_config("display.width"))
        Returns
       </h3>
       <p>
-       config value as a string. default_value if the config key doesn't exists
+       config value as a string. default_value if the config key does not exist
       </p>
       <h3>
        Examples
@@ -563,7 +573,8 @@ keys are permitted to fall within a 32 bit range, supporting sparse arrays, howe
        Save data:
       </p>
       <pre class="prettyprint linenums lang-lua">
-local my_table = {my_key = "my_important_value"}
+local my_table = {}
+table.add(my_table, "my_value")
 local my_file_path = sys.get_save_file("my_game", "my_file")
 if not sys.save(my_file_path, my_table) then
     -- Alert user that the data could not be saved
@@ -575,9 +586,46 @@ end
       <pre class="prettyprint linenums lang-lua">
 local my_file_path = sys.get_save_file("my_game", "my_file")
 local my_table = sys.load(my_file_path)
-if #my_table == 0 then
-    -- The file could not be found
+if not next(my_table) then
+    -- empty table
 end
+</pre>
+     </div>
+     <a name="sys.set_error_handler">
+     </a>
+     <div>
+      <h3 class="name">
+       sys.set_error_handler
+      </h3>
+      <p>
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          error_handler
+         </td>
+         <td>
+          the function to be called on error
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       Install error handler that just prints the errors
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+ sys.set_error_handler(function(source, message, traceback)
+     print("source: " .. source);
+     print("message: " .. message);
+     print("traceback: " .. traceback);
+ end)
 </pre>
      </div>
      <h2>

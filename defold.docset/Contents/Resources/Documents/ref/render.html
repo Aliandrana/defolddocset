@@ -459,6 +459,16 @@
           draw a text on the screen
          </td>
         </tr>
+        <tr>
+         <td>
+          <a href="#window_resized">
+           window_resized
+          </a>
+         </td>
+         <td>
+          reports a window size change
+         </td>
+        </tr>
        </tbody>
       </table>
       <h2>
@@ -1032,7 +1042,8 @@ render.clear({[render.BUFFER_COLOR_BIT] = vmath.vector4(0, 0, 0, 0), [render.BUF
        render.constant_buffer
       </h3>
       <p>
-       Constant buffers are used to set shader program variables and are optionally passed to the render.draw function.
+       Constant buffers are used to set shader program variables and are optionally passed to the render.draw function. The buffer's constant elements can be indexed like an ordinary Lua table, but you can't iterate
+over them with pairs() or ipairs().
       </p>
       <h3>
        Returns
@@ -1040,6 +1051,22 @@ render.clear({[render.BUFFER_COLOR_BIT] = vmath.vector4(0, 0, 0, 0), [render.BUF
       <p>
        new constant buffer
       </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       Set a "tint" constant in a constant buffer in the render script:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+local constants = render.constant_buffer()
+constants.tint = vmath.vector4(1, 1, 1, 1)
+</pre>
+      <p>
+       Then use the constant buffer when drawing a predicate:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+render.draw(self.my_pred, constants)
+</pre>
      </div>
      <a name="render.delete_render_target">
      </a>
@@ -1319,7 +1346,7 @@ render.clear({[render.BUFFER_COLOR_BIT] = vmath.vector4(0, 0, 0, 0), [render.BUF
             <code>
              render.STATE_ALPHA_TEST
             </code>
-            No available on iOS/Android
+            (not available on iOS and Android)
            </li>
            <li>
             <code>
@@ -1363,7 +1390,15 @@ render.clear({[render.BUFFER_COLOR_BIT] = vmath.vector4(0, 0, 0, 0), [render.BUF
           render_target
          </td>
          <td>
-          render target for which to enable the specified texture unit (render_target)
+          render target from which to enable the specified texture unit (render_target)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          buffer_type
+         </td>
+         <td>
+          buffer type from which to enable the texture (constant)
          </td>
         </tr>
        </tbody>
@@ -2368,6 +2403,51 @@ msg.post("@render:", "draw_line", { start_point = vmath.vector3(200, 200, 0), en
       </h3>
       <pre class="prettyprint linenums lang-lua">
 msg.post("@render:", "draw_text", { text = "Hello world!", position = vmath.vector3(200, 200, 0) } )
+</pre>
+     </div>
+     <a name="window_resized">
+     </a>
+     <div>
+      <h3 class="name">
+       window_resized
+      </h3>
+      <p>
+       Reports a change in window size. This is initiated on window resize on desktop or by orientation changes
+on mobile devices.
+      </p>
+      <h3>
+       Fields
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          height
+         </td>
+         <td>
+          the new window height (number)
+         </td>
+        </tr>
+        <tr>
+         <td>
+          width
+         </td>
+         <td>
+          the new window width (number)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Examples
+      </h3>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message)
+    -- check for the message
+    if message.id == hash("window_resized") then
+        -- the window was resized.
+    end
+end
 </pre>
      </div>
      <h2>

@@ -124,6 +124,26 @@
         </tr>
         <tr>
          <td>
+          <a href="#proxy_loaded">
+           proxy_loaded
+          </a>
+         </td>
+         <td>
+          tells a collection proxy to start asynchronous loading of the referenced collection
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="#proxy_unloaded">
+           proxy_unloaded
+          </a>
+         </td>
+         <td>
+          reports that a collection proxy has unloaded its referenced collection
+         </td>
+        </tr>
+        <tr>
+         <td>
           <a href="#set_time_step">
            set_time_step
           </a>
@@ -214,8 +234,7 @@ function on_message(self, message_id, message, sender)
         msg.post(self.loader, "level_started")
     end
 end
-        
-        </pre>
+</pre>
      </div>
      <a name="final">
      </a>
@@ -345,6 +364,75 @@ function on_message(self, message_id, message, sender)
     end
 end
 </pre>
+     </div>
+     <a name="proxy_loaded">
+     </a>
+     <div>
+      <h3 class="name">
+       proxy_loaded
+      </h3>
+      <p>
+       <p>
+        Post this message to a collection-proxy-component to start background loading of the referenced collection.
+When the loading has completed, the message
+        <code>
+         proxy_loaded
+        </code>
+        will be sent back to the script.
+       </p>
+       <p>
+        A loaded collection must be initialized (message
+        <code>
+         init
+        </code>
+        ) and enabled (message
+        <code>
+         enable
+        </code>
+        ) in order to be simulated and drawn.
+       </p>
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       In this example we use a collection proxy to load/unload a level (collection).
+      </p>
+      <p>
+       The examples assume the script belongs to an instance with collection-proxy-component with id "proxy".
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function on_message(self, message_id, message, sender)
+    if message_id == hash("start_level") then
+        -- some script tells us to start loading the level
+        msg.post("#proxy", "async_load")
+        -- store sender for later notification
+        self.loader = sender
+    elseif message_id == hash("proxy_loaded") then
+        -- enable the collection and let the loader know
+        msg.post(sender, "enable")
+        msg.post(self.loader, message_id)
+    end
+end
+</pre>
+      /*# reports that a collection proxy has loaded its referenced collection
+      <p>
+       This message is sent back to the script that initiated a collection proxy load when the referenced
+collection is loaded. See documentation for "load" for examples how to use.
+      </p>
+     </div>
+     <a name="proxy_unloaded">
+     </a>
+     <div>
+      <h3 class="name">
+       proxy_unloaded
+      </h3>
+      <p>
+       <p>
+        This message is sent back to the script that initiated an unload with a collection proxy when
+the referenced collection is unloaded. See documentation for "unload" for examples how to use.
+       </p>
+      </p>
      </div>
      <a name="set_time_step">
      </a>

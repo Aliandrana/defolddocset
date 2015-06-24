@@ -174,6 +174,16 @@
         </tr>
         <tr>
          <td>
+          <a href="#go.get_scale_vector">
+           go.get_scale_vector
+          </a>
+         </td>
+         <td>
+          gets the 3d scale factor of the instance
+         </td>
+        </tr>
+        <tr>
+         <td>
           <a href="#go.get_world_position">
            go.get_world_position
           </a>
@@ -1051,7 +1061,7 @@ By starting a new animation in that function, several animations can be sequence
           to
          </td>
          <td>
-          target property value (number|vmath.vec3|vmath.vec4|vmath.quat)
+          target property value (number|vector3|vector4|quaternion)
          </td>
         </tr>
         <tr>
@@ -1059,11 +1069,11 @@ By starting a new animation in that function, several animations can be sequence
           easing
          </td>
          <td>
-          easing to use during animation (constant), see the
+          easing to use during animation. Either specify a constant, see the
           <a href="/doc/properties">
            properties guide
           </a>
-          for a complete list
+          for a complete list, or a vmath.vector with a curve. (constant|vector)
          </td>
         </tr>
         <tr>
@@ -1104,6 +1114,23 @@ local function x_done(self, url, property)
 end
 function init(self)
     go.animate(go.get_id(), "position.x", go.PLAYBACK_ONCE_FORWARD, 10, go.EASING_LINEAR, 1, 0, x_done)
+end
+</pre>
+      <p>
+       Animate the y positin of a game object using a crazy custom easing curve:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+function init(self)
+    local values = { 0, 0, 0, 0, 0, 0, 0, 0,
+                     1, 1, 1, 1, 1, 1, 1, 1,
+                     0, 0, 0, 0, 0, 0, 0, 0,
+                     1, 1, 1, 1, 1, 1, 1, 1,
+                     0, 0, 0, 0, 0, 0, 0, 0,
+                     1, 1, 1, 1, 1, 1, 1, 1,
+                     0, 0, 0, 0, 0, 0, 0, 0,
+                     1, 1, 1, 1, 1, 1, 1, 1 }
+     local vec = vmath.vector(values)
+     go.animate("go", "position.y", go.PLAYBACK_LOOP_PINGPONG, 100, vec, 2.0)
 end
 </pre>
      </div>
@@ -1192,7 +1219,7 @@ go.cancel_animations(go.get_id(), "position")
       </p>
       <pre class="prettyprint linenums lang-lua">
 local id = go.get_id("my_game_object") -- retrieve the id of the game object to be deleted
-go.detele(id) -- delete the game object
+go.delete(id) -- delete the game object
 </pre>
      </div>
      <a name="go.delete_all">
@@ -1279,7 +1306,7 @@ go.delete_all(ids)
        Returns
       </h3>
       <p>
-       the value of the specified property (number|hash|url|vmath.vec3|vmath.vec4|vmath.quat|boolean)
+       the value of the specified property (number|hash|url|vector3|vector4|quaternion|boolean)
       </p>
       <h3>
        Examples
@@ -1513,6 +1540,56 @@ local s = go.get_scale()
 local s = go.get_scale("x")
 </pre>
      </div>
+     <a name="go.get_scale_vector">
+     </a>
+     <div>
+      <h3 class="name">
+       go.get_scale_vector
+      </h3>
+      <p>
+       The scale is relative the parent (if any). Use
+       <code>
+        go.get_world_scale
+       </code>
+       to retrieve the global world scale factor.
+      </p>
+      <h3>
+       Parameters
+      </h3>
+      <table class="table table-striped">
+       <tbody>
+        <tr>
+         <td>
+          [id]
+         </td>
+         <td>
+          optional id of the instance to get the scale for, by default the instance of the calling script (hash|string|url)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <h3>
+       Returns
+      </h3>
+      <p>
+       scale factor (vector)
+      </p>
+      <h3>
+       Examples
+      </h3>
+      <p>
+       Get the scale of the instance the script is attached to:
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+local s = go.get_scale_vector()
+</pre>
+      <p>
+       Get the scale of another instance "x":
+      </p>
+      <pre class="prettyprint linenums lang-lua">
+local s = go.get_scale_vector("x")
+</pre>
+     </div>
      <a name="go.get_world_position">
      </a>
      <div>
@@ -1692,7 +1769,7 @@ Note that you can only use this function outside any callback-functions like ini
           value
          </td>
          <td>
-          default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. (number, hash, url, vector3, vector4, quat)
+          default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. (number|hash|url|vector3|vector4|quaternion)
          </td>
         </tr>
        </tbody>
@@ -1756,7 +1833,7 @@ end
        Returns
       </h3>
       <p>
-       position and direction of the ray in world space (vmath.vector3, vmath.vector3)
+       position and direction of the ray in world space (vector3, vector3)
       </p>
      </div>
      <a name="go.set">
@@ -1793,7 +1870,7 @@ end
           value
          </td>
          <td>
-          the value to set (number|hash|url|vmath.vec3|vmath.vec4|vmath.quat|boolean)
+          the value to set (number|hash|url|vector3|vector4|quaternion|boolean)
          </td>
         </tr>
        </tbody>
@@ -1935,7 +2012,7 @@ NOTE! Physics are currently not affected when setting scale from this function.
           scale
          </td>
          <td>
-          uniform scale factor, must be greater than 0 (number)
+          vector or uniform scale factor, must be greater than 0 (number)
          </td>
         </tr>
         <tr>
@@ -2122,6 +2199,26 @@ The
         <tr>
          <td>
           <code>
+           screen_x
+          </code>
+         </td>
+         <td>
+          The screen space x value of a pointer device, if present.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <code>
+           screen_y
+          </code>
+         </td>
+         <td>
+          The screen space y value of a pointer device, if present.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <code>
            dx
           </code>
          </td>
@@ -2137,6 +2234,26 @@ The
          </td>
          <td>
           The change in y value of a pointer device, if present.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <code>
+           screen_dx
+          </code>
+         </td>
+         <td>
+          The change in screen space x value of a pointer device, if present.
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <code>
+           screen_dy
+          </code>
+         </td>
+         <td>
+          The change in screen space y value of a pointer device, if present.
          </td>
         </tr>
         <tr>
@@ -2595,8 +2712,7 @@ function on_input(self, action_id, action)
         self.my_action_amount = action.value
     end
 end
-        
-        </pre>
+</pre>
      </div>
      <a name="disable">
      </a>
