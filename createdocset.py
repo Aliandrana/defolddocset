@@ -38,7 +38,7 @@ db_path = os.path.join(resources_path, "docSet.dsidx")
 
 
 def parse_ref(url, local_path, db_cursor):
-	print("Parsing " + local_path)
+	print("  Parsing " + local_path)
 	urllib.urlretrieve(url, local_path)
 	soup = BeautifulSoup(open(local_path).read())
 
@@ -58,7 +58,7 @@ def parse_ref(url, local_path, db_cursor):
 				function_name = function_name.split(".")[1]
 			path = local_path.replace(documents_path + "/", "") + href
 			db_cursor.execute('INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)', (function_name, 'Function', path))
-			print("Adding documentation for " + function_name)
+			print("    Adding documentation for " + function_name)
 
 	# update file with the changes made (removed divs etc)
 	with open(local_path, "wb") as file:
