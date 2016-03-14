@@ -1,338 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
-   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
-     <style type="text/css">
-      .sidebar-nav {
-    padding: 9px 0;
-}
-     </style>
-     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-      <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
-       <meta charset="utf-8">
-        <title>
-         Reference Documentation
-        </title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-         <meta content="" name="description">
-          <meta content="" name="author">
-           <!--  Google analytics -->
-           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
-           <script type="text/javascript">
-            if (document.location.hostname != "127.0.0.1") {
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-83690-3']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    }
-           </script>
-           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
-           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
-           </script>
-           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
-           </script>
-          </meta>
-         </meta>
-        </meta>
-       </meta>
-      </link>
-     </link>
-    </link>
-   </link>
-  </link>
- </head>
- <body>
-  <div class="container ref-doc">
-   <div class="row">
-    <div class="span9">
-     <div class="well well-blue">
-      <h2>
-       Functions
-      </h2>
-      <table class="table table-striped">
-       <thead>
-        <tr>
-         <th>
-          Function
-         </th>
-         <th>
-          Brief
-         </th>
-        </tr>
-       </thead>
-       <tbody>
-        <tr>
-         <td>
-          <a href="#particlefx.play">
-           particlefx.play
-          </a>
-         </td>
-         <td>
-          start playing a particle FX
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#particlefx.reset_constant">
-           particlefx.reset_constant
-          </a>
-         </td>
-         <td>
-          reset a shader constant for a particle FX emitter
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#particlefx.set_constant">
-           particlefx.set_constant
-          </a>
-         </td>
-         <td>
-          set a shader constant for a particle FX emitter
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#particlefx.stop">
-           particlefx.stop
-          </a>
-         </td>
-         <td>
-          stop playing a particle fx
-         </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <h2>
-      Functions
-     </h2>
-     <a name="particlefx.play">
-     </a>
-     <div>
-      <h3 class="name">
-       particlefx.play
-      </h3>
-      <p>
-       Particle FX started this way need to be manually stopped through particlefx.stop.
-Which particle FX to play is identified by the URL.
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          url
-         </td>
-         <td>
-          the particle fx that should start playing (url)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <p>
-       How to play a particle fx when a game object is created:
-      </p>
-      <pre class="prettyprint linenums lang-lua">
+<h1><a name=''></a></h1><p>ParticleFX documentation</p><p>ParticleFX documentation</p><h1><a name='particlefx.play'>particlefx.play</a></h1><p>start playing a particle FX</p><p>Particle FX started this way need to be manually stopped through particlefx.stop.
+Which particle FX to play is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the particle fx that should start playing (url)</p><h3>EXAMPLES</h3><p><p>
+How to play a particle fx when a game object is created:
+</p>
+<pre>
 function init(self)
     particlefx.play("#particlefx")
 end
-</pre>
-     </div>
-     <a name="particlefx.reset_constant">
-     </a>
-     <div>
-      <h3 class="name">
-       particlefx.reset_constant
-      </h3>
-      <p>
-       The constant must be defined in the material assigned to the emitter.
+</pre></p><h1><a name='particlefx.reset_constant'>particlefx.reset_constant</a></h1><p>reset a shader constant for a particle FX emitter</p><p>The constant must be defined in the material assigned to the emitter.
 Resetting a constant through this function implies that the value defined in the material will be used.
-Which particle FX to reset a constant for is identified by the URL.
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          url
-         </td>
-         <td>
-          the particle FX that should have a constant reset (url)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          emitter_id
-         </td>
-         <td>
-          the id of the emitter (string|hash)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          name
-         </td>
-         <td>
-          the name of the constant (string|hash)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <p>
-       The following examples assumes that the particle FX has id "particlefx", contains an emitter with id "emitter" and that the default-material in builtins is used.
+Which particle FX to reset a constant for is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the particle FX that should have a constant reset (url)</p><p>emitter_id - the id of the emitter (string|hash)</p><p>name - the name of the constant (string|hash)</p><h3>EXAMPLES</h3><p><p>
+The following examples assumes that the particle FX has id "particlefx", contains an emitter with id "emitter" and that the default-material in builtins is used.
 If you assign a custom material to the emitter, you can reset the constants defined there in the same manner.
-      </p>
-      <p>
-       How to reset the tinting of particles from an emitter:
-      </p>
-      <pre class="prettyprint linenums lang-lua">
+</p>
+<p>
+How to reset the tinting of particles from an emitter:
+</p>
+<pre>
 function init(self)
     particlefx.reset_constant("#particlefx", "emitter", "tint")
 end
-</pre>
-     </div>
-     <a name="particlefx.set_constant">
-     </a>
-     <div>
-      <h3 class="name">
-       particlefx.set_constant
-      </h3>
-      <p>
-       The constant must be defined in the material assigned to the emitter.
+</pre></p><h1><a name='particlefx.set_constant'>particlefx.set_constant</a></h1><p>set a shader constant for a particle FX emitter</p><p>The constant must be defined in the material assigned to the emitter.
 Setting a constant through this function will override the value set for that constant in the material.
 The value will be overridden until particlefx.reset_constant is called.
-Which particle FX to set a constant for is identified by the URL.
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          url
-         </td>
-         <td>
-          the particle FX that should have a constant set (url)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          emitter_id
-         </td>
-         <td>
-          the id of the emitter (string|hash)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          name
-         </td>
-         <td>
-          the name of the constant (string|hash)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          value
-         </td>
-         <td>
-          the value of the constant (vec4)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <p>
-       The following examples assumes that the particle FX has id "particlefx", contains an emitter with id "emitter" and that the default-material in builtins is used.
+Which particle FX to set a constant for is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the particle FX that should have a constant set (url)</p><p>emitter_id - the id of the emitter (string|hash)</p><p>name - the name of the constant (string|hash)</p><p>value - the value of the constant (vec4)</p><h3>EXAMPLES</h3><p><p>
+The following examples assumes that the particle FX has id "particlefx", contains an emitter with id "emitter" and that the default-material in builtins is used.
 If you assign a custom material to the emitter, you can set the constants defined there in the same manner.
-      </p>
-      <p>
-       How to tint particles from an emitter red:
-      </p>
-      <pre class="prettyprint linenums lang-lua">
+</p>
+<p>
+How to tint particles from an emitter red:
+</p>
+<pre>
 function init(self)
     particlefx.set_constant("#particlefx", "emitter", "tint", vmath.vector4(1, 0, 0, 1))
 end
-</pre>
-     </div>
-     <a name="particlefx.stop">
-     </a>
-     <div>
-      <h3 class="name">
-       particlefx.stop
-      </h3>
-      <p>
-       Stopping a particle FX does not remove the already spawned particles.
-Which particle fx to stop is identified by the URL.
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          url
-         </td>
-         <td>
-          the particle fx that should stop playing (url)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <p>
-       How to stop a particle fx when a game object is deleted:
-      </p>
-      <pre class="prettyprint linenums lang-lua">
+</pre></p><h1><a name='particlefx.stop'>particlefx.stop</a></h1><p>stop playing a particle fx</p><p>Stopping a particle FX does not remove the already spawned particles.
+Which particle fx to stop is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the particle fx that should stop playing (url)</p><h3>EXAMPLES</h3><p><p>
+How to stop a particle fx when a game object is deleted:
+</p>
+<pre>
 function final(self)
     particlefx.stop("#particlefx")
 end
-</pre>
-     </div>
-    </div>
-   </div>
-  </div>
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
-  </script>
-  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
-  </script>
-  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
-  </script>
-  <script>
-  </script>
-  <script type="text/javascript">
-   $(document).ready(function() {
-        prettyPrint();
-    });
-  </script>
- </body>
-</html>
+</pre></p>

@@ -1,259 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
-   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
-     <style type="text/css">
-      .sidebar-nav {
-    padding: 9px 0;
-}
-     </style>
-     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-      <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
-       <meta charset="utf-8">
-        <title>
-         Reference Documentation
-        </title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-         <meta content="" name="description">
-          <meta content="" name="author">
-           <!--  Google analytics -->
-           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
-           <script type="text/javascript">
-            if (document.location.hostname != "127.0.0.1") {
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-83690-3']);
-        _gaq.push(['_trackPageview']);
+<h1><a name='iap.REASON_UNSPECIFIED'>iap.REASON_UNSPECIFIED</a></h1><p>unspecified error reason</p><h1><a name='iap.REASON_USER_CANCELED'>iap.REASON_USER_CANCELED</a></h1><p>user canceled reason</p><h1><a name='iap.TRANS_STATE_FAILED'>iap.TRANS_STATE_FAILED</a></h1><p>transaction failed state</p><h1><a name='iap.TRANS_STATE_PURCHASED'>iap.TRANS_STATE_PURCHASED</a></h1><p>transaction purchased state</p><h1><a name='iap.TRANS_STATE_PURCHASING'>iap.TRANS_STATE_PURCHASING</a></h1><p>transaction purchasing state</p><h1><a name='iap.TRANS_STATE_RESTORED'>iap.TRANS_STATE_RESTORED</a></h1><p>transaction restored state</p><h1><a name='iap.TRANS_STATE_UNVERIFIED'>iap.TRANS_STATE_UNVERIFIED</a></h1><p>transaction unverified state</p><h1><a name='iap.buy'>iap.buy</a></h1><p>buy product</p><h3>PARAMETERS</h3><p>id - product to buy (identifier)
 
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    }
-           </script>
-           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
-           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
-           </script>
-           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
-           </script>
-          </meta>
-         </meta>
-        </meta>
-       </meta>
-      </link>
-     </link>
-    </link>
-   </link>
-  </link>
- </head>
- <body>
-  <div class="container ref-doc">
-   <div class="row">
-    <div class="span9">
-     <div class="well well-blue">
-      <h2>
-       Functions
-      </h2>
-      <table class="table table-striped">
-       <thead>
-        <tr>
-         <th>
-          Function
-         </th>
-         <th>
-          Brief
-         </th>
-        </tr>
-       </thead>
-       <tbody>
-        <tr>
-         <td>
-          <a href="#iap.buy">
-           iap.buy
-          </a>
-         </td>
-         <td>
-          buy product
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#iap.list">
-           iap.list
-          </a>
-         </td>
-         <td>
-          list in-app products
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#iap.restore">
-           iap.restore
-          </a>
-         </td>
-         <td>
-          restore products (non-consumable)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#iap.set_listener">
-           iap.set_listener
-          </a>
-         </td>
-         <td>
-          set transaction listener
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h2>
-       Constants
-      </h2>
-      <table class="table table-striped">
-       <thead>
-        <tr>
-         <th>
-          Constant
-         </th>
-         <th>
-          Brief
-         </th>
-        </tr>
-       </thead>
-       <tbody>
-        <tr>
-         <td>
-          <a href="#iap.TRANS_STATE_FAILED">
-           iap.TRANS_STATE_FAILED
-          </a>
-         </td>
-         <td>
-          transaction failed state
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#iap.TRANS_STATE_PURCHASED">
-           iap.TRANS_STATE_PURCHASED
-          </a>
-         </td>
-         <td>
-          transaction purchased state
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#iap.TRANS_STATE_PURCHASING">
-           iap.TRANS_STATE_PURCHASING
-          </a>
-         </td>
-         <td>
-          transaction purchasing state
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#iap.TRANS_STATE_RESTORED">
-           iap.TRANS_STATE_RESTORED
-          </a>
-         </td>
-         <td>
-          transaction restored state
-         </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <h2>
-      Functions
-     </h2>
-     <a name="iap.buy">
-     </a>
-     <div>
-      <h3 class="name">
-       iap.buy
-      </h3>
-      <p>
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          id
-         </td>
-         <td>
-          product to buy (identifier)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <pre class="prettyprint linenums lang-lua">
+<b>Note:</b> Calling iap.finish is required on a successful transaction if auto finish transactions is disabled in project settings.</p><h3>EXAMPLES</h3><p><pre>
 local function iap_listener(self, transaction, error)
     if error == nil then
         print(transaction.ident)
         print(transaction.state)
         print(transaction.date)
-        print(transaction.trans_ident) -- only available when state == TRANS_STATE_PURCHASED or state == TRANS_STATE_RESTORED
-        print(transaction.receipt)     -- only available when state == TRANS_STATE_PURCHASED
+        print(transaction.trans_ident) -- only available when state == TRANS_STATE_PURCHASED, TRANS_STATE_UNVERIFIED or TRANS_STATE_RESTORED
+        print(transaction.receipt)     -- only available when state == TRANS_STATE_PURCHASED or TRANS_STATE_UNVERIFIED
+        print(transaction.user_id)     -- only available for Amazon IAP transactions
+
+        -- required if auto finish transactions is disabled in project settings
+        if (transaction.state == iap.TRANS_STATE_PURCHASED) then
+            -- do server-side verification of purchase here..
+            iap.finish(self, transation)
+        end
     else
-        print(error.error)
+        print(error.error, error.reason)
     end
 end
 function example(self)
     iap.set_listener(iap_listener)
     iap.buy("my_iap")
 end
-</pre>
-     </div>
-     <a name="iap.list">
-     </a>
-     <div>
-      <h3 class="name">
-       iap.list
-      </h3>
-      <p>
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          ids
-         </td>
-         <td>
-          table (array) to get information about
-         </td>
-        </tr>
-        <tr>
-         <td>
-          callback
-         </td>
-         <td>
-          result callback
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <pre class="prettyprint linenums lang-lua">
+</pre></p><h1><a name='iap.finish'>iap.finish</a></h1><p>finish buying product</p><h3>PARAMETERS</h3><p>transaction - transaction table parameter as supplied in listener callback
+
+<b>Note:</b> Calling iap.finish is required on a successful transaction if auto finish transactions is disabled in project settings (otherwise ignored).
+The transaction.state field must equal iap.TRANS_STATE_PURCHASED.</p><h1><a name='iap.get_provider_id'>iap.get_provider_id</a></h1><p>get current provider id</p><h3>RETURN</h3><p>provider id (constant).
+<ul>
+    <li>iap.PROVIDER_ID_GOOGLE</li>
+    <li>iap.PROVIDER_ID_AMAZON</li>
+    <li>iap.PROVIDER_ID_APPLE</li>
+    <li>iap.PROVIDER_ID_FACEBOOK</li>
+</ul></p><h1><a name='iap.list'>iap.list</a></h1><p>list in-app products</p><h3>PARAMETERS</h3><p>ids - table (array) to get information about</p><p>callback - result callback</p><h3>EXAMPLES</h3><p><b>Note:</b> Nested calls, that is calling iap.list from within callback is not supported.
+ Doing so will result in call being ignored with the engine reporting "Unexpected callback set".
+
+<pre>
 local function iap_callback(self, products, error)
     if error == nil then
         for k,v in pairs(products) do
@@ -271,123 +53,14 @@ end
 function example(self)
     iap.list({"my_iap"}, iap_callback)
 end
-</pre>
-     </div>
-     <a name="iap.restore">
-     </a>
-     <div>
-      <h3 class="name">
-       iap.restore
-      </h3>
-      <p>
-      </p>
-     </div>
-     <a name="iap.set_listener">
-     </a>
-     <div>
-      <h3 class="name">
-       iap.set_listener
-      </h3>
-      <p>
-       The listener callback has the following signature: function(self, transaction, error) where transaction is a table
+</pre></p><h1><a name='iap.restore'>iap.restore</a></h1><p>restore products (non-consumable)</p><h3>RETURN</h3><p>false if current store doesn't support handling restored transactions, otherwise true (bool)</p><h1><a name='iap.set_listener'>iap.set_listener</a></h1><p>set transaction listener</p><p>The listener callback has the following signature: function(self, transaction, error) where transaction is a table
 describing the transaction and error is a table. The error parameter is nil on success.
 The transaction table has the following members:
-       <ul>
-        <li>
-         ident: product identifier
-         <li>
-          state: transaction state
-          <li>
-           trans_ident: transaction identifier (only set when state == TRANS_STATE_RESTORED or state == TRANS_STATE_PURCHASED)
-           <li>
-            receipt: receipt (only set when state == TRANS_STATE_PURCHASED)
-            <li>
-             date: transaction date
-             <li>
-              original_trans: original transaction (only set when state == TRANS_STATE_RESTORED)
-             </li>
-            </li>
-           </li>
-          </li>
-         </li>
-        </li>
-       </ul>
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          listener
-         </td>
-         <td>
-          listener function
-         </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <h2>
-      Constants
-     </h2>
-     <a name="iap.TRANS_STATE_FAILED">
-     </a>
-     <div>
-      <h3 class="name">
-       iap.TRANS_STATE_FAILED
-      </h3>
-      <p>
-       transaction failed state
-      </p>
-     </div>
-     <a name="iap.TRANS_STATE_PURCHASED">
-     </a>
-     <div>
-      <h3 class="name">
-       iap.TRANS_STATE_PURCHASED
-      </h3>
-      <p>
-       transaction purchased state
-      </p>
-     </div>
-     <a name="iap.TRANS_STATE_PURCHASING">
-     </a>
-     <div>
-      <h3 class="name">
-       iap.TRANS_STATE_PURCHASING
-      </h3>
-      <p>
-       transaction purchasing state
-      </p>
-     </div>
-     <a name="iap.TRANS_STATE_RESTORED">
-     </a>
-     <div>
-      <h3 class="name">
-       iap.TRANS_STATE_RESTORED
-      </h3>
-      <p>
-       transaction restored state
-      </p>
-     </div>
-    </div>
-   </div>
-  </div>
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
-  </script>
-  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
-  </script>
-  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
-  </script>
-  <script>
-  </script>
-  <script type="text/javascript">
-   $(document).ready(function() {
-        prettyPrint();
-    });
-  </script>
- </body>
-</html>
+<ul>
+<li> ident: product identifier
+<li> state: transaction state
+<li> trans_ident: transaction identifier (only set when state == TRANS_STATE_RESTORED or state == TRANS_STATE_PURCHASED)
+<li> receipt: receipt (only set when state == TRANS_STATE_PURCHASED)
+<li> date: transaction date
+<li> original_trans: original transaction (only set when state == TRANS_STATE_RESTORED)
+</ul></p><h3>PARAMETERS</h3><p>listener - listener function</p>

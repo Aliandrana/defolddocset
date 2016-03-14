@@ -1,341 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
-   <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/asciidoc-new.css" rel="stylesheet">
-     <style type="text/css">
-      .sidebar-nav {
-    padding: 9px 0;
-}
-     </style>
-     <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-      <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-      <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-      <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/favicon.ico" rel="shortcut icon">
-       <meta charset="utf-8">
-        <title>
-         Reference Documentation
-        </title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-         <meta content="" name="description">
-          <meta content="" name="author">
-           <!--  Google analytics -->
-           <!--  NOTE: The account id is duplicated in Defold#GoogleAnalyticsHandler -->
-           <script type="text/javascript">
-            if (document.location.hostname != "127.0.0.1") {
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-83690-3']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    }
-           </script>
-           <link href="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.css" rel="stylesheet" type="text/css"/>
-           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/prettify.js" type="text/javascript">
-           </script>
-           <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/prettify/lang-lua.js" type="text/javascript">
-           </script>
-          </meta>
-         </meta>
-        </meta>
-       </meta>
-      </link>
-     </link>
-    </link>
-   </link>
-  </link>
- </head>
- <body>
-  <div class="container ref-doc">
-   <div class="row">
-    <div class="span9">
-     <div class="well well-blue">
-      <h2>
-       Functions
-      </h2>
-      <table class="table table-striped">
-       <thead>
-        <tr>
-         <th>
-          Function
-         </th>
-         <th>
-          Brief
-         </th>
-        </tr>
-       </thead>
-       <tbody>
-        <tr>
-         <td>
-          <a href="#spine.cancel">
-           spine.cancel
-          </a>
-         </td>
-         <td>
-          cancel all animation on a spine model
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#spine.get_go">
-           spine.get_go
-          </a>
-         </td>
-         <td>
-          retrieve the game object corresponding to a spine model skeleton bone
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#spine.play">
-           spine.play
-          </a>
-         </td>
-         <td>
-          play an animation on a spine model
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h2>
-       Messages
-      </h2>
-      <table class="table table-striped">
-       <thead>
-        <tr>
-         <th>
-          Message
-         </th>
-         <th>
-          Brief
-         </th>
-        </tr>
-       </thead>
-       <tbody>
-        <tr>
-         <td>
-          <a href="#spine_animation_done">
-           spine_animation_done
-          </a>
-         </td>
-         <td>
-          reports the completion of a Spine animation
-         </td>
-        </tr>
-        <tr>
-         <td>
-          <a href="#spine_event">
-           spine_event
-          </a>
-         </td>
-         <td>
-          reports an incoming event from the Spine animation
-         </td>
-        </tr>
-       </tbody>
-      </table>
-     </div>
-     <h2>
-      Functions
-     </h2>
-     <a name="spine.cancel">
-     </a>
-     <div>
-      <h3 class="name">
-       spine.cancel
-      </h3>
-      <p>
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          url
-         </td>
-         <td>
-          the spine model for which to cancel the animation (url)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <p>
-       The following examples assumes that the spine model has id "spinemodel".
-      </p>
-      <p>
-       How to cancel all animation:
-      </p>
-      <pre class="prettyprint linenums lang-lua">
+<h1><a name='spine.cancel'>spine.cancel</a></h1><p>cancel all animation on a spine model</p><h3>PARAMETERS</h3><p>url - the spine model for which to cancel the animation (url)</p><h3>EXAMPLES</h3><p><p>
+The following examples assumes that the spine model has id "spinemodel".
+</p>
+<p>
+How to cancel all animation:
+</p>
+<pre>
 function init(self)
     spine.cancel("#spinemodel")
 end
-</pre>
-     </div>
-     <a name="spine.get_go">
-     </a>
-     <div>
-      <h3 class="name">
-       spine.get_go
-      </h3>
-      <p>
-       The returned game object can be used for parenting and transform queries.
+</pre></p><h1><a name='spine.get_go'>spine.get_go</a></h1><p>retrieve the game object corresponding to a spine model skeleton bone</p><p>The returned game object can be used for parenting and transform queries.
 This function has complexity O(n), where n is the number of bones in the spine model skeleton.
-Only available from .script files.
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          url
-         </td>
-         <td>
-          the spine model to query (url)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          bone_id
-         </td>
-         <td>
-          id of the corresponding bone (string|hash)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Returns
-      </h3>
-      <p>
-       id of the game object
-      </p>
-      <h3>
-       Examples
-      </h3>
-      <p>
-       The following examples assumes that the spine model has id "spinemodel".
-       <p>
-        How to parent the game object of the calling script to the "right_hand" bone of the spine model in a player game object:
-       </p>
-       <pre class="prettyprint linenums lang-lua">
+Game objects corresponding to a spine model skeleton bone can not be individually deleted.
+Only available from .script files.</p><h3>PARAMETERS</h3><p>url - the spine model to query (url)</p><p>bone_id - id of the corresponding bone (string|hash)</p><h3>RETURN</h3><p>id of the game object</p><h3>EXAMPLES</h3><p><p>
+The following examples assumes that the spine model has id "spinemodel".
+<p>
+How to parent the game object of the calling script to the "right_hand" bone of the spine model in a player game object:
+</p>
+<pre>
 function init(self)
     local parent = spine.get_go("player#spinemodel", "right_hand")
     msg.post(".", "set_parent", {parent_id = parent})
 end
-</pre>
-      </p>
-     </div>
-     <a name="spine.play">
-     </a>
-     <div>
-      <h3 class="name">
-       spine.play
-      </h3>
-      <p>
-      </p>
-      <h3>
-       Parameters
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          url
-         </td>
-         <td>
-          the spine model for which to play the animation (url)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          animation_id
-         </td>
-         <td>
-          id of the animation to play (string|hash)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          playback
-         </td>
-         <td>
-          playback mode of the animation (constant)
-          <ul>
-           <li>
-            <code>
-             go.PLAYBACK_ONCE_FORWARD
-            </code>
-           </li>
-           <li>
-            <code>
-             go.PLAYBACK_ONCE_BACKWARD
-            </code>
-           </li>
-           <li>
-            <code>
-             go.PLAYBACK_ONCE_PINGPONG
-            </code>
-           </li>
-           <li>
-            <code>
-             go.PLAYBACK_LOOP_FORWARD
-            </code>
-           </li>
-           <li>
-            <code>
-             go.PLAYBACK_LOOP_BACKWARD
-            </code>
-           </li>
-           <li>
-            <code>
-             go.PLAYBACK_LOOP_PINGPONG
-            </code>
-           </li>
-          </ul>
-         </td>
-        </tr>
-        <tr>
-         <td>
-          blend_duration
-         </td>
-         <td>
-          duration of a linear blend between the current and new animations
-         </td>
-        </tr>
-        <tr>
-         <td>
-          [complete_function]
-         </td>
-         <td>
-          function to call when the animation has completed (function)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <p>
-       The following examples assumes that the spine model has id "spinemodel".
-      </p>
-      <p>
-       How to play the "jump" animation followed by the "run" animation:
-      </p>
-      <pre class="prettyprint linenums lang-lua">
+</pre></p><h1><a name='spine.play'>spine.play</a></h1><p>play an animation on a spine model</p><h3>PARAMETERS</h3><p>url - the spine model for which to play the animation (url)</p><p>animation_id - id of the animation to play (string|hash)</p><p>playback - playback mode of the animation (constant)
+<ul>
+  <li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
+  <li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>
+  <li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>
+  <li><code>go.PLAYBACK_LOOP_FORWARD</code></li>
+  <li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>
+  <li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
+</ul></p><p>blend_duration - duration of a linear blend between the current and new animations</p><p>[complete_function] - function to call when the animation has completed (function)</p><h3>EXAMPLES</h3><p><p>
+The following examples assumes that the spine model has id "spinemodel".
+</p>
+<p>
+How to play the "jump" animation followed by the "run" animation:
+</p>
+<pre>
 function init(self)
     local url = msg.url("#spinemodel")
     -- first blend during 0.1 sec into the jump, then during 0.2 s into the run animation
@@ -343,63 +43,63 @@ function init(self)
         spine.play(url, "run", go.PLAYBACK_LOOP_FORWARD, 0.2)
     end)
 end
-</pre>
-     </div>
-     <h2>
-      Messages
-     </h2>
-     <a name="spine_animation_done">
-     </a>
-     <div>
-      <h3 class="name">
-       spine_animation_done
-      </h3>
-      <p>
-       <p>
-        This message is sent when a Spine animation has finished playing back to the script
+</pre></p><h1><a name='spine.reset_constant'>spine.reset_constant</a></h1><p>reset a shader constant for a spine model</p><p>The constant must be defined in the material assigned to the spine model.
+Resetting a constant through this function implies that the value defined in the material will be used.
+Which spine model to reset a constant for is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the spine model that should have a constant reset (url)</p><p>name - of the constant (string|hash)</p><h3>EXAMPLES</h3><p><p>
+The following examples assumes that the spine model has id "spinemodel" and that the default-material in builtins is used.
+If you assign a custom material to the spine model, you can reset the constants defined there in the same manner.
+</p>
+<p>
+How to reset the tinting of a spine model:
+</p>
+<pre>
+function init(self)
+    spine.reset_constant("#spinemodel", "tint")
+end
+</pre></p><h1><a name='spine.set_constant'>spine.set_constant</a></h1><p>set a shader constant for a spine model</p><p>The constant must be defined in the material assigned to the spine model.
+Setting a constant through this function will override the value set for that constant in the material.
+The value will be overridden until spine.reset_constant is called.
+Which spine model to set a constant for is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the spine model that should have a constant set (url)</p><p>name - of the constant (string|hash)</p><p>value - of the constant (vec4)</p><h3>EXAMPLES</h3><p><p>
+The following examples assumes that the spine model has id "spinemodel" and that the default-material in builtins is used.
+If you assign a custom material to the spine model, you can set the constants defined there in the same manner.
+</p>
+<p>
+How to tint a spine model to red:
+</p>
+<pre>
+function init(self)
+    spine.set_constant("#spinemodel", "tint", vmath.vector4(1, 0, 0, 1))
+end
+</pre></p><h1><a name='spine.set_ik_target'>spine.set_ik_target</a></h1><p>set the IK constraint object target position to follow position of a game object</p><p>Only available from .script files.</p><h3>PARAMETERS</h3><p>url - the spine model containing the object (url)</p><p>ik_constraint_id - id of the corresponding IK constraint object (string|hash)</p><p>target_url - target game object (url)</p><h3>EXAMPLES</h3><p><p>
+The following example assumes that the spine model has id "spinemodel".
+<p>
+How to set the target IK position of the right_hand_constraint constraint object of the player object
+to follow the position of game object with url "some_game_object"
+</p>
+<pre>
+function init(self)
+    spine.set_ik_target("player#spinemodel", "right_hand_constraint", "some_game_object")
+end
+</pre></p><h1><a name='spine.set_ik_target_position'>spine.set_ik_target_position</a></h1><p>set the target position of an IK constraint object</p><p>Only available from .script files.</p><h3>PARAMETERS</h3><p>url - the spine model containing the object (url)</p><p>ik_constraint_id - id of the corresponding IK constraint object (string|hash)</p><p>position - (vec3)</p><h3>EXAMPLES</h3><p><p>
+The following example assumes that the spine model has id "spinemodel".
+<p>
+How to set the target IK position of the right_hand_constraint constraint object of the player object
+</p>
+<pre>
+function init(self)
+    spine.set_ik_target_position("player#spinemodel", "right_hand_constraint", vmath.vector3(1,2,3))
+end
+</pre></p><h1><a name='spine_animation_done'>spine_animation_done</a></h1><p>reports the completion of a Spine animation</p><p><p>
+This message is sent when a Spine animation has finished playing back to the script
 that started the animation. This message is sent only for animations that play with
 the following playback modes and no message is sent if the animation is cancelled with
 spine.cancel():
-        <ul>
-         <li>
-          go.PLAYBACK_ONCE_FORWARD
-         </li>
-         <li>
-          go.PLAYBACK_ONCE_BACKWARD
-         </li>
-         <li>
-          go.PLAYBACK_ONCE_PINGPONG
-         </li>
-        </ul>
-       </p>
-      </p>
-      <h3>
-       Fields
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          animation_id
-         </td>
-         <td>
-          the id of the completed animation (hash)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          playback
-         </td>
-         <td>
-          the playback mode of the completed animation (constant)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <pre class="prettyprint linenums lang-lua">
+<ul>
+ <li>go.PLAYBACK_ONCE_FORWARD</li>
+ <li>go.PLAYBACK_ONCE_BACKWARD</li>
+ <li>go.PLAYBACK_ONCE_PINGPONG</li>
+</ul>
+</p></p><h3>PARAMETERS</h3><p>animation_id - the id of the completed animation (hash)</p><p>playback - the playback mode of the completed animation (constant)</p><h3>EXAMPLES</h3><p><pre>
 function on_message(self, message_id, message, sender)
   if message_id == hash("spine_animation_done") then
     if message.animation_id == hash("run") and message.playback == go.PLAYBACK_ONCE_FORWARD then
@@ -408,92 +108,15 @@ function on_message(self, message_id, message, sender)
     end
   end
 end
-</pre>
-     </div>
-     <a name="spine_event">
-     </a>
-     <div>
-      <h3 class="name">
-       spine_event
-      </h3>
-      <p>
-       <p>
-        This message is sent when Spine animation playback fires events. These events
+</pre></p><h1><a name='spine_event'>spine_event</a></h1><p>reports an incoming event from the Spine animation</p><p><p>
+This message is sent when Spine animation playback fires events. These events
 has to be defined on the animation track in the Spine animation editor. An event
 can contain custom values expressed in the fields "integer", "float" and "string".
-       </p>
-      </p>
-      <h3>
-       Fields
-      </h3>
-      <table class="table table-striped">
-       <tbody>
-        <tr>
-         <td>
-          event_id
-         </td>
-         <td>
-          the id of the event (hash)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          animation_id
-         </td>
-         <td>
-          the id of the animation (hash)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          t
-         </td>
-         <td>
-          the time of the event in seconds, relative to the start of the animation (number)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          blend_weight
-         </td>
-         <td>
-          the blend weight (between 0.0-1.0) of the current animation at time t (number)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          integer
-         </td>
-         <td>
-          user defined integer value for the event (number)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          float
-         </td>
-         <td>
-          user defined floating point value for the event (number)
-         </td>
-        </tr>
-        <tr>
-         <td>
-          string
-         </td>
-         <td>
-          user defined string value for the event (hash)
-         </td>
-        </tr>
-       </tbody>
-      </table>
-      <h3>
-       Examples
-      </h3>
-      <p>
-       The following example assumes that an animation sends event messages with the id "footstep"
+</p></p><h3>PARAMETERS</h3><p>event_id - the id of the event (hash)</p><p>animation_id - the id of the animation (hash)</p><p>t - the time of the event in seconds, relative to the start of the animation (number)</p><p>blend_weight - the blend weight (between 0.0-1.0) of the current animation at time t (number)</p><p>integer - user defined integer value for the event (number)</p><p>float - user defined floating point value for the event (number)</p><p>string - user defined string value for the event (hash)</p><h3>EXAMPLES</h3><p><p>
+The following example assumes that an animation sends event messages with the id "footstep"
 and that the "integer" field is used to distinguish between left and right foot (values 0 and 1).
-      </p>
-      <pre class="prettyprint linenums lang-lua">
+</p>
+<pre>
 function on_message(self, message_id, message, sender)
   if message_id == hash("spine_event") then
     -- Receiving animation event from Spine. Play footsteps.
@@ -503,24 +126,4 @@ function on_message(self, message_id, message, sender)
       msg.post("#sound_footstep_left", "play_sound")
   end
 end
-</pre>
-     </div>
-    </div>
-   </div>
-  </div>
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
-  </script>
-  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/bootstrap/js/bootstrap.js">
-  </script>
-  <script src="http://defold-cdn.s3-website-eu-west-1.amazonaws.com/defold.js">
-  </script>
-  <script>
-  </script>
-  <script type="text/javascript">
-   $(document).ready(function() {
-        prettyPrint();
-    });
-  </script>
- </body>
-</html>
+</pre></p>
