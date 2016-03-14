@@ -22,6 +22,8 @@ INFO_PLIST = """<!DOCTYPE plist SYSTEM "http://www.apple.com/DTDs/PropertyList-1
 <true/>
 <key>dashIndexFilePath</key>
 <string>index.html</string>
+<key>DashDocSetFamily</key>
+<string>dashtoc</string>
 </dict>
 </plist>
 """
@@ -100,28 +102,33 @@ def create_docset():
 						class_doc = ""
 						for element in json.load(fh)["elements"]:
 							function_name = element["name"]
-							function_path = class_path + "#" + function_name
-							class_doc = class_doc + "<h1><a name='" + function_name + "'>" + function_name + "</a></h1>"
-							class_doc = class_doc + "<p>" + element["brief"] + "</p>"
-							if element["description"] != "":
-								class_doc = class_doc + "<p>" + element["description"] + "</p>"
-							if len(element["parameters"]) > 0:
-								class_doc = class_doc + "<h3>PARAMETERS</h3>"
-								for parameter in element["parameters"]:
-									class_doc = class_doc + "<p>" + parameter["name"] + " - "  + parameter["doc"] + "</p>"
-							if element["return_"] != "":
-								class_doc = class_doc + "<h3>RETURN</h3>"
-								class_doc = class_doc + "<p>" + element["return_"] + "</p>"
-							if element["examples"] != "":
-								class_doc = class_doc + "<h3>EXAMPLES</h3>"
-								class_doc = class_doc + "<p>" + element["examples"] + "</p>"
+							if function_name != "":
+								entry_type = "Function"
+								if element["type"] == "VARIABLE":
+									entry_type = "Field"
+								elif element["type"] == "MESSAGE":
+									entry_type = "Command"
+								elif element["type"] == "PROPERTY":
+									entry_type = "Property"
 
-							type = "Function"
-							if element["type"] == "VARIABLE":
-								type = "Variable"
-							elif element["type"] == "MESSAGE":
-								type = "Variable"
-							cursor.execute('INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)', (function_name, 'Function', "ref/" + function_path))
+								function_path = class_path + "#" + function_name
+								class_doc = class_doc + "<h1><a name='" + function_name + "'>" + function_name + "</a></h1>"
+								class_doc = class_doc + "<a name='//apple_ref/cpp/" + entry_type + "/" + function_name + "' class='dashAnchor'></a>"
+								class_doc = class_doc + "<p>" + element["brief"] + "</p>"
+								if element["description"] != "":
+									class_doc = class_doc + "<p>" + element["description"] + "</p>"
+								if len(element["parameters"]) > 0:
+									class_doc = class_doc + "<h3>PARAMETERS</h3>"
+									for parameter in element["parameters"]:
+										class_doc = class_doc + "<p>" + parameter["name"] + " - "  + parameter["doc"] + "</p>"
+								if element["return_"] != "":
+									class_doc = class_doc + "<h3>RETURN</h3>"
+									class_doc = class_doc + "<p>" + element["return_"] + "</p>"
+								if element["examples"] != "":
+									class_doc = class_doc + "<h3>EXAMPLES</h3>"
+									class_doc = class_doc + "<p>" + element["examples"] + "</p>"
+
+								cursor.execute('INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)', (function_name, entry_type, "ref/" + function_path))
 
 						index_html = index_html + "<a href='ref/" + class_path + "'>" + class_name + "</a></br>"
 						with open(os.path.join(ref_path, class_path), "w") as out:

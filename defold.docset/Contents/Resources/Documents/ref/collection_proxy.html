@@ -1,4 +1,4 @@
-<h1><a name='async_load'>async_load</a></h1><p>tells a collection proxy to start asynchronous loading of the referenced collection</p><p><p>
+<h1><a name='async_load'>async_load</a></h1><a name='//apple_ref/cpp/Command/async_load' class='dashAnchor'></a><p>tells a collection proxy to start asynchronous loading of the referenced collection</p><p><p>
 Post this message to a collection-proxy-component to start background loading of the referenced collection.
 When the loading has completed, the message <code>proxy_loaded</code> will be sent back to the script.
 </p>
@@ -19,7 +19,7 @@ function on_message(self, message_id, message, sender)
         msg.post(self.loader, message_id)
     end
 end
-</pre></p><h1><a name='disable'>disable</a></h1><p>tells a collection proxy to disable the referenced collection</p><p>Post this message to a collection-proxy-component to disable the referenced collection, which in turn disables the contained game objects and components.</p><h3>EXAMPLES</h3><p><p>In this example we use a collection proxy to load/unload a level (collection).</p>
+</pre></p><h1><a name='disable'>disable</a></h1><a name='//apple_ref/cpp/Command/disable' class='dashAnchor'></a><p>tells a collection proxy to disable the referenced collection</p><p>Post this message to a collection-proxy-component to disable the referenced collection, which in turn disables the contained game objects and components.</p><h3>EXAMPLES</h3><p><p>In this example we use a collection proxy to load/unload a level (collection).</p>
 <p>The examples assumes the script belongs to an instance with a collection-proxy-component with id "proxy".</p>
 <pre>
 function on_message(self, message_id, message, sender)
@@ -35,7 +35,7 @@ function on_message(self, message_id, message, sender)
         msg.post(self.unloader, "level_ended")
     end
 end
-</pre></p><h1><a name='enable'>enable</a></h1><p>tells a collection proxy to enable the referenced collection</p><p>Post this message to a collection-proxy-component to enable the referenced collection, which in turn enables the contained game objects and components.
+</pre></p><h1><a name='enable'>enable</a></h1><a name='//apple_ref/cpp/Command/enable' class='dashAnchor'></a><p>tells a collection proxy to enable the referenced collection</p><p>Post this message to a collection-proxy-component to enable the referenced collection, which in turn enables the contained game objects and components.
 If the referenced collection was not initialized prior to this call, it will automatically be initialized.</p><h3>EXAMPLES</h3><p><p>In this example we use a collection proxy to load/unload a level (collection).</p>
 <p>The examples assume the script belongs to an instance with collection-proxy-component with id "proxy".</p>
 <pre>
@@ -51,7 +51,7 @@ function on_message(self, message_id, message, sender)
         msg.post(self.loader, "level_started")
     end
 end
-</pre></p><h1><a name='final'>final</a></h1><p>tells a collection proxy to finalize the referenced collection</p><p>Post this message to a collection-proxy-component to finalize the referenced collection, which in turn finalizes the contained game objects and components.</p><h3>EXAMPLES</h3><p><p>In this example we use a collection proxy to load/unload a level (collection).</p>
+</pre></p><h1><a name='final'>final</a></h1><a name='//apple_ref/cpp/Command/final' class='dashAnchor'></a><p>tells a collection proxy to finalize the referenced collection</p><p>Post this message to a collection-proxy-component to finalize the referenced collection, which in turn finalizes the contained game objects and components.</p><h3>EXAMPLES</h3><p><p>In this example we use a collection proxy to load/unload a level (collection).</p>
 <p>The examples assumes the script belongs to an instance with a collection-proxy-component with id "proxy".</p>
 <pre>
 function on_message(self, message_id, message, sender)
@@ -67,7 +67,7 @@ function on_message(self, message_id, message, sender)
         msg.post(self.unloader, "level_ended")
     end
 end
-</pre></p><h1><a name='init'>init</a></h1><p>tells a collection proxy to initialize the loaded collection</p><p>Post this message to a collection-proxy-component to initialize the game objects and components in the referenced collection.
+</pre></p><h1><a name='init'>init</a></h1><a name='//apple_ref/cpp/Command/init' class='dashAnchor'></a><p>tells a collection proxy to initialize the loaded collection</p><p>Post this message to a collection-proxy-component to initialize the game objects and components in the referenced collection.
 Sending <code>enable</code> to an uninitialized collection proxy automatically initializes it.
 The <code>init</code> message simply provides a higher level of control.</p><h3>EXAMPLES</h3><p><p>In this example we use a collection proxy to load/unload a level (collection).</p>
 <p>The examples assume the script belongs to an instance with collection-proxy-component with id "proxy".</p>
@@ -85,7 +85,7 @@ function on_message(self, message_id, message, sender)
         msg.post(self.loader, message_id)
     end
 end
-</pre></p><h1><a name='load'>load</a></h1><p>tells a collection proxy to start loading the referenced collection</p><p><p>
+</pre></p><h1><a name='load'>load</a></h1><a name='//apple_ref/cpp/Command/load' class='dashAnchor'></a><p>tells a collection proxy to start loading the referenced collection</p><p><p>
 Post this message to a collection-proxy-component to start the loading of the referenced collection.
 When the loading has completed, the message <code>proxy_loaded</code> will be sent back to the script.
 </p>
@@ -106,13 +106,13 @@ function on_message(self, message_id, message, sender)
         msg.post(self.loader, message_id)
     end
 end
-</pre></p><h1><a name='proxy_loaded'>proxy_loaded</a></h1><p>reports that a collection proxy has loaded its referenced collection</p><p><p>
+</pre></p><h1><a name='proxy_loaded'>proxy_loaded</a></h1><a name='//apple_ref/cpp/Command/proxy_loaded' class='dashAnchor'></a><p>reports that a collection proxy has loaded its referenced collection</p><p><p>
 This message is sent back to the script that initiated a collection proxy load when the referenced
 collection is loaded. See documentation for "load" for examples how to use.
-</p></p><h1><a name='proxy_unloaded'>proxy_unloaded</a></h1><p>reports that a collection proxy has unloaded its referenced collection</p><p><p>
+</p></p><h1><a name='proxy_unloaded'>proxy_unloaded</a></h1><a name='//apple_ref/cpp/Command/proxy_unloaded' class='dashAnchor'></a><p>reports that a collection proxy has unloaded its referenced collection</p><p><p>
 This message is sent back to the script that initiated an unload with a collection proxy when
 the referenced collection is unloaded. See documentation for "unload" for examples how to use.
-</p></p><h1><a name='set_time_step'>set_time_step</a></h1><p>sets the time-step for update</p><p><p>
+</p></p><h1><a name='set_time_step'>set_time_step</a></h1><a name='//apple_ref/cpp/Command/set_time_step' class='dashAnchor'></a><p>sets the time-step for update</p><p><p>
 Post this message to a collection-proxy-component to modify the time-step used when updating the collection controlled by the proxy.
 The time-step is modified by a scaling <code>factor</code> and can be incremented either continuously or in discrete steps.
 </p>
@@ -143,7 +143,7 @@ Simulate 1 FPS for the collection:
 </p>
 <pre>
 msg.post("#proxy", "set_time_step", {factor = 1/60, mode = 1})
-</pre></p><h1><a name='unload'>unload</a></h1><p>tells a collection proxy to start unloading the referenced collection</p><p><p>
+</pre></p><h1><a name='unload'>unload</a></h1><a name='//apple_ref/cpp/Command/unload' class='dashAnchor'></a><p>tells a collection proxy to start unloading the referenced collection</p><p><p>
 Post this message to a collection-proxy-component to start the unloading of the referenced collection.
 When the unloading has completed, the message <code>proxy_unloaded</code> will be sent back to the script.
 </p></p><h3>EXAMPLES</h3><p><p>In this example we use a collection proxy to load/unload a level (collection).</p>
