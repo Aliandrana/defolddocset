@@ -1,0 +1,34 @@
+{
+  "elements": [
+    {
+      "description": "The URL identifies the collectionfactory component that should do the spawning.\n\nSpawning is instant, but spawned game objects get their first update calls the following frame. The supplied parameters for position, rotation and scale\nwill be applied to the whole collection when spawned.\n\nScript properties in the created game objects can be overridden through\na properties-parameter table. The table should contain game object ids\n(hash) as keys and property tables as values to be used when initiating each\nspawned game object.\n\nSee go.property for more information on script properties.\n\nThe function returns a table that contains a key for each game object\nid (hash), as addressed if the collection file was top level, and the\ncorresponding spawned instance id (hash) as value with a unique path\nprefix added to each instance.", 
+      "parameters": [
+        {
+          "doc": "the collection factory component to be used (url)", 
+          "name": "url"
+        }, 
+        {
+          "doc": "position to assign to the newly spawned collection (vector3)", 
+          "name": "[position]"
+        }, 
+        {
+          "doc": "rotation to assign to the newly spawned collection (quat)", 
+          "name": "[rotation]"
+        }, 
+        {
+          "doc": "table of script properties to propagate to any new game object instances (table)", 
+          "name": "[properties]"
+        }, 
+        {
+          "doc": "uniform scaling to apply to the newly spawned collection (must be greater than 0). (number)", 
+          "name": "[scale]"
+        }
+      ], 
+      "brief": "Spawn a new instance of a collection into the existing collection.", 
+      "examples": "<p>\nHow to spawn a collection of game objects:\n</p>\n<pre>\nfunction init(self)\n  -- Spawn a small group of enemies.\n  local pos = vmath.vector3(100, 12.5, 0)\n  local rot = vmath.quat_rotation_z(math.pi / 2)\n  local scale = 0.5\n  local props = {}\n  props[hash(\"/enemy_leader\")] = { health = 1000.0 }\n  props[hash(\"/enemy_1\")] = { health = 200.0 }\n  props[hash(\"/enemy_2\")] = { health = 400.0, color = hash(\"green\") }\n\n  local self.enemy_ids = collectionfactory.create(\"#enemyfactory\", pos, rot, props, scale)\n  -- enemy_ids now map to the spawned instance ids:\n  --\n  -- pprint(self.enemy_ids)\n  --\n  -- DEBUG:SCRIPT:\n  -- {\n  --   hash: [/enemy_leader] = hash: [/collection0/enemy_leader],\n  --   hash: [/enemy_1] = hash: [/collection0/enemy_1],\n  --   hash: [/enemy_2] = hash: [/collection0/enemy_2]\n  -- }\n\n  -- Send \"attack\" message to the leader. First look up its instance id.\n  local leader_id = self.enemy_ids[hash(\"/enemy_leader\")]\n  msg.post(leader_id, \"attack\")\nend\n</pre>\n<p>\nHow to delete a spawned collection:\n</p>\n<pre>\ngo.delete_all(self.enemy_ids)\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "a table mapping the id:s from the collection to the new instance id:s", 
+      "name": "collectionfactory.create"
+    }
+  ]
+}

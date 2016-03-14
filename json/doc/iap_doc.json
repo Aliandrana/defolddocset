@@ -1,0 +1,145 @@
+{
+  "elements": [
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "unspecified error reason", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "iap.REASON_UNSPECIFIED"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "user canceled reason", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "iap.REASON_USER_CANCELED"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "transaction failed state", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "iap.TRANS_STATE_FAILED"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "transaction purchased state", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "iap.TRANS_STATE_PURCHASED"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "transaction purchasing state", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "iap.TRANS_STATE_PURCHASING"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "transaction restored state", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "iap.TRANS_STATE_RESTORED"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "transaction unverified state", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "iap.TRANS_STATE_UNVERIFIED"
+    }, 
+    {
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "product to buy (identifier)\n\n<b>Note:</b> Calling iap.finish is required on a successful transaction if auto finish transactions is disabled in project settings.", 
+          "name": "id"
+        }
+      ], 
+      "brief": "buy product", 
+      "examples": "<pre>\nlocal function iap_listener(self, transaction, error)\n    if error == nil then\n        print(transaction.ident)\n        print(transaction.state)\n        print(transaction.date)\n        print(transaction.trans_ident) -- only available when state == TRANS_STATE_PURCHASED, TRANS_STATE_UNVERIFIED or TRANS_STATE_RESTORED\n        print(transaction.receipt)     -- only available when state == TRANS_STATE_PURCHASED or TRANS_STATE_UNVERIFIED\n        print(transaction.user_id)     -- only available for Amazon IAP transactions\n\n        -- required if auto finish transactions is disabled in project settings\n        if (transaction.state == iap.TRANS_STATE_PURCHASED) then\n            -- do server-side verification of purchase here..\n            iap.finish(self, transation)\n        end\n    else\n        print(error.error, error.reason)\n    end\nend\nfunction example(self)\n    iap.set_listener(iap_listener)\n    iap.buy(\"my_iap\")\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "iap.buy"
+    }, 
+    {
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "transaction table parameter as supplied in listener callback\n\n<b>Note:</b> Calling iap.finish is required on a successful transaction if auto finish transactions is disabled in project settings (otherwise ignored).\nThe transaction.state field must equal iap.TRANS_STATE_PURCHASED.", 
+          "name": "transaction"
+        }
+      ], 
+      "brief": "finish buying product", 
+      "examples": "", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "iap.finish"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "get current provider id", 
+      "examples": "", 
+      "type": "FUNCTION", 
+      "return_": "provider id (constant).\n<ul>\n    <li>iap.PROVIDER_ID_GOOGLE</li>\n    <li>iap.PROVIDER_ID_AMAZON</li>\n    <li>iap.PROVIDER_ID_APPLE</li>\n    <li>iap.PROVIDER_ID_FACEBOOK</li>\n</ul>", 
+      "name": "iap.get_provider_id"
+    }, 
+    {
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "table (array) to get information about", 
+          "name": "ids"
+        }, 
+        {
+          "doc": "result callback", 
+          "name": "callback"
+        }
+      ], 
+      "brief": "list in-app products", 
+      "examples": "<b>Note:</b> Nested calls, that is calling iap.list from within callback is not supported.\n Doing so will result in call being ignored with the engine reporting \"Unexpected callback set\".\n\n<pre>\nlocal function iap_callback(self, products, error)\n    if error == nil then\n        for k,v in pairs(products) do\n            print(v.ident)\n            print(v.title)\n            print(v.description)\n            print(v.price)\n            print(v.price_string)\n            print(v.currency_code) -- only available on iOS\n        end\n    else\n        print(error.error)\n    end\nend\nfunction example(self)\n    iap.list({\"my_iap\"}, iap_callback)\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "iap.list"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "restore products (non-consumable)", 
+      "examples": "", 
+      "type": "FUNCTION", 
+      "return_": "false if current store doesn't support handling restored transactions, otherwise true (bool)", 
+      "name": "iap.restore"
+    }, 
+    {
+      "description": "The listener callback has the following signature: function(self, transaction, error) where transaction is a table\ndescribing the transaction and error is a table. The error parameter is nil on success.\nThe transaction table has the following members:\n<ul>\n<li> ident: product identifier\n<li> state: transaction state\n<li> trans_ident: transaction identifier (only set when state == TRANS_STATE_RESTORED or state == TRANS_STATE_PURCHASED)\n<li> receipt: receipt (only set when state == TRANS_STATE_PURCHASED)\n<li> date: transaction date\n<li> original_trans: original transaction (only set when state == TRANS_STATE_RESTORED)\n</ul>", 
+      "parameters": [
+        {
+          "doc": "listener function", 
+          "name": "listener"
+        }
+      ], 
+      "brief": "set transaction listener", 
+      "examples": "", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "iap.set_listener"
+    }
+  ]
+}

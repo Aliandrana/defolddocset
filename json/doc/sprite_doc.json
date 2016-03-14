@@ -1,0 +1,130 @@
+{
+  "elements": [
+    {
+      "description": "This message is sent to the sender of a <code>play_animation</code> message when the animation has completed.\nNote that only animations played either forward or backward once ever completes. See <code>play_animation</code>\nfor more information and examples of how to use this message.", 
+      "parameters": [
+        {
+          "doc": "the current tile of the sprite (number)", 
+          "name": "current_tile"
+        }, 
+        {
+          "doc": "id of the animation that was completed (hash)", 
+          "name": "id"
+        }
+      ], 
+      "brief": "reports that an animation has completed", 
+      "examples": "", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "animation_done"
+    }, 
+    {
+      "description": "<p>\nPost this message to a sprite-component to make it play an animation from its tile set.\n</p>", 
+      "parameters": [
+        {
+          "doc": "the id of the animation to play", 
+          "name": "id"
+        }
+      ], 
+      "brief": "plays a sprite animation", 
+      "examples": "<p>\nIn the examples, it is assumed that the instance of the script has a sprite-component with id \"sprite\". The sprite itself is assumed to be bound to a tile set with animations \"walk\" and \"jump\".\n<pre>\nmsg.post(\"#sprite\", \"play_animation\", {id = hash(\"jump\")})\n</pre>\n<p>\nHow to sequence two animations together.\n</p>\n<pre>\nfunction init(self)\n    -- play jump animation at init\n    msg.post(\"#sprite\", \"play_animation\", {id = hash(\"jump\")})\nend\n\nfunction on_message(self, message_id, message, sender)\n    -- check for animation done response\n    if message_id == hash(\"animation_done\") then\n        -- start the walk animation\n        msg.post(\"#sprite\", \"play_animation\", {id = hash(\"walk\")})\n    end\nend\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "play_animation"
+    }, 
+    {
+      "description": "The non-uniform scale of the sprite. The type of the property is vector3.", 
+      "parameters": [], 
+      "brief": "sprite scale (vector3)", 
+      "examples": "<p>\nHow to scale a sprite independently along the X and Y axis:\n</p>\n<pre>\nfunction init(self)\n -- Double the y-axis scaling on component \"sprite\"\n\tlocal yscale = go.get(\"#sprite\", \"scale.y\")\n\tgo.set(\"#sprite\", \"scale.y\", yscale * 2)\nend\n</pre>", 
+      "type": "PROPERTY", 
+      "return_": "", 
+      "name": "scale"
+    }, 
+    {
+      "description": "[READ ONLY] Returns the size of the sprite, not allowing for any additional scaling that may be applied.\nThe type of the property is vector3.", 
+      "parameters": [], 
+      "brief": "sprite size (vector3)", 
+      "examples": "<p>\nHow to query a sprite's size, either as a vector or selecting a specific dimension:\n</p>\n<pre>\nfunction init(self)\n -- get size from component \"sprite\"\n\tlocal size = go.get(\"#sprite\", \"size\")\n\tlocal sx = go.get(\"#sprite\", \"size.x\")\n\t-- do something useful\n\tassert(size.x == sx)\nend\n</pre>", 
+      "type": "PROPERTY", 
+      "return_": "", 
+      "name": "size"
+    }, 
+    {
+      "description": "The constant must be defined in the material assigned to the sprite.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich sprite to reset a constant for is identified by the URL.", 
+      "parameters": [
+        {
+          "doc": "the sprite that should have a constant reset (url)", 
+          "name": "url"
+        }, 
+        {
+          "doc": "of the constant (string|hash)", 
+          "name": "name"
+        }
+      ], 
+      "brief": "reset a shader constant for a sprite", 
+      "examples": "<p>\nThe following examples assumes that the sprite has id \"sprite\" and that the default-material in builtins is used.\nIf you assign a custom material to the sprite, you can reset the constants defined there in the same manner.\n</p>\n<p>\nHow to reset the tinting of a sprite:\n</p>\n<pre>\nfunction init(self)\n    sprite.reset_constant(\"#sprite\", \"tint\")\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "sprite.reset_constant"
+    }, 
+    {
+      "description": "The constant must be defined in the material assigned to the sprite.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until sprite.reset_constant is called.\nWhich sprite to set a constant for is identified by the URL.", 
+      "parameters": [
+        {
+          "doc": "the sprite that should have a constant set (url)", 
+          "name": "url"
+        }, 
+        {
+          "doc": "of the constant (string|hash)", 
+          "name": "name"
+        }, 
+        {
+          "doc": "of the constant (vec4)", 
+          "name": "value"
+        }
+      ], 
+      "brief": "set a shader constant for a sprite", 
+      "examples": "<p>\nThe following examples assumes that the sprite has id \"sprite\" and that the default-material in builtins is used.\nIf you assign a custom material to the sprite, you can set the constants defined there in the same manner.\n</p>\n<p>\nHow to tint a sprite to red:\n</p>\n<pre>\nfunction init(self)\n    sprite.set_constant(\"#sprite\", \"tint\", vmath.vector4(1, 0, 0, 1))\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "sprite.set_constant"
+    }, 
+    {
+      "description": "Which sprite to flip is identified by the URL.\nIf the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.", 
+      "parameters": [
+        {
+          "doc": "the sprite that should flip its animations (url)", 
+          "name": "url"
+        }, 
+        {
+          "doc": "if the sprite should flip its animations or not (boolean)", 
+          "name": "flip"
+        }
+      ], 
+      "brief": "make a sprite flip the animations horizontally or not", 
+      "examples": "<p>\nHow to flip a sprite so it faces the horizontal movement:\n</p>\n<pre>\nfunction update(self, dt)\n    -- calculate self.velocity somehow\n    sprite.set_hflip(\"#sprite\", self.velocity.x < 0)\nend\n</pre>\n<p>It is assumed that the sprite component has id \"sprite\" and that the original animations faces right.</p>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "sprite.set_hflip"
+    }, 
+    {
+      "description": "Which sprite to flip is identified by the URL.\nIf the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.", 
+      "parameters": [
+        {
+          "doc": "the sprite that should flip its animations (url)", 
+          "name": "url"
+        }, 
+        {
+          "doc": "if the sprite should flip its animations or not (boolean)", 
+          "name": "flip"
+        }
+      ], 
+      "brief": "make a sprite flip the animations vertically or not", 
+      "examples": "<p>\nHow to flip a sprite in a game which negates gravity as a game mechanic:\n</p>\n<pre>\nfunction update(self, dt)\n    -- calculate self.up_side_down somehow\n    sprite.set_vflip(\"#sprite\", self.up_side_down)\nend\n</pre>\n<p>It is assumed that the sprite component has id \"sprite\" and that the original animations are up-right.</p>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "sprite.set_vflip"
+    }
+  ]
+}

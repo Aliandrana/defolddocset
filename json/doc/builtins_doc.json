@@ -1,0 +1,46 @@
+{
+  "elements": [
+    {
+      "description": "All ids in the engine are represented as hashes, so a string needs to be hashed\nbefore it can be compared with an id.", 
+      "parameters": [
+        {
+          "doc": "string to hash (string)", 
+          "name": "s"
+        }
+      ], 
+      "brief": "hashes a string", 
+      "examples": "<p>To compare a message_id in an on-message callback function:</p>\n<pre>\nfunction on_message(self, message_id, message, sender)\n    if message_id == hash(\"my_message\") then\n        -- Act on the message here\n    end\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "a hashed string (hash)", 
+      "name": "hash"
+    }, 
+    {
+      "description": "The returned string is always padded with leading zeros", 
+      "parameters": [
+        {
+          "doc": "hash value to get hex string for", 
+          "name": "h"
+        }
+      ], 
+      "brief": "get hex representation of a hash value as a string", 
+      "examples": "", 
+      "type": "FUNCTION", 
+      "return_": "hex representation", 
+      "name": "hash_to_hex"
+    }, 
+    {
+      "description": "Pretty printing of lua values", 
+      "parameters": [
+        {
+          "doc": "value to print", 
+          "name": "v"
+        }
+      ], 
+      "brief": "pretty printing", 
+      "examples": "", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "pprint"
+    }
+  ]
+}

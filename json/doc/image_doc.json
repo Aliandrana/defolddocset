@@ -1,0 +1,49 @@
+{
+  "elements": [
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "luminance image type", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "image.TYPE_LUMINANCE"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "RGB image type", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "image.TYPE_RGB"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "RGBA image type", 
+      "examples": "", 
+      "type": "VARIABLE", 
+      "return_": "", 
+      "name": "image.TYPE_RGBA"
+    }, 
+    {
+      "description": "Load image (PNG or JPEG) from buffer.", 
+      "parameters": [
+        {
+          "doc": "image data buffer", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "premultiply alpha. optional and defaults to false", 
+          "name": "[premult]"
+        }
+      ], 
+      "brief": "load image from buffer", 
+      "examples": "", 
+      "type": "FUNCTION", 
+      "return_": "object with the following fields: width, height, type and buffer (raw data). nil is returned if loading fails.", 
+      "name": "image.load"
+    }
+  ]
+}

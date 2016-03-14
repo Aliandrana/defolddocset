@@ -81,7 +81,7 @@ By starting a new animation in that function, several animations can be sequence
 <code>complete_function</code> will be ignored and never called upon animation completion.
 </p>
 <p>
-See the <a href="/doc/properties">properties guide</a> for which properties can be animated and how.
+See the <a href="http://www.defold.com/doc/properties">properties guide</a> for which properties can be animated and how.
 </p></p><h3>PARAMETERS</h3><p>url - url of the game object or component having the property (hash|string|url)</p><p>property - name of the property to animate (hash|string)</p><p>playback - playback mode of the animation (constant)
 <ul>
   <li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
@@ -90,7 +90,7 @@ See the <a href="/doc/properties">properties guide</a> for which properties can 
   <li><code>go.PLAYBACK_LOOP_FORWARD</code></li>
   <li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>
   <li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
-</ul></p><p>to - target property value (number|vector3|vector4|quaternion)</p><p>easing - easing to use during animation. Either specify a constant, see the <a href="/doc/properties">properties guide</a> for a complete list, or a vmath.vector with a curve. (constant|vector)</p><p>duration - duration of the animation in seconds (number)</p><p>[delay] - delay before the animation starts in seconds (number)</p><p>[complete_function] - function with parameters (self, url, property) to call when the animation has completed (function)</p><h3>EXAMPLES</h3><p><p>Animate the position of a game object to x = 10 during 1 second, then y = 20 during 1 second:</p>
+</ul></p><p>to - target property value (number|vector3|vector4|quaternion)</p><p>easing - easing to use during animation. Either specify a constant, see the <a href="http://www.defold.com/doc/properties">properties guide</a> for a complete list, or a vmath.vector with a curve. (constant|vector)</p><p>duration - duration of the animation in seconds (number)</p><p>[delay] - delay before the animation starts in seconds (number)</p><p>[complete_function] - function with parameters (self, url, property) to call when the animation has completed (function)</p><h3>EXAMPLES</h3><p><p>Animate the position of a game object to x = 10 during 1 second, then y = 20 during 1 second:</p>
 <pre>
 local function x_done(self, url, property)
     go.animate(go.get_id(), "position.y", go.PLAYBACK_ONCE_FORWARD, 20, go.EASING_LINEAR, 1)
@@ -118,7 +118,7 @@ end
 By calling this function, all stored animations of the given property will be canceled.
 </p>
 <p>
-See the <a href="/doc/properties">properties guide</a> for which properties can be animated and how.
+See the <a href="http://www.defold.com/doc/properties">properties guide</a> for which properties can be animated and how.
 </p></p><h3>PARAMETERS</h3><p>url - url of the game object or component having the property (hash|string|url)</p><p>property - name of the property to animate (hash|string)</p><h3>EXAMPLES</h3><p><p>Cancel the animation of the position of a game object:</p>
 <pre>
 go.cancel_animations(go.get_id(), "position")

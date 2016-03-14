@@ -1,0 +1,18 @@
+{
+  "elements": [
+    {
+      "description": "Decode a string of JSON data into a Lua table.\nA Lua error is raised for syntax errors.", 
+      "parameters": [
+        {
+          "doc": "json data (string)", 
+          "name": "json"
+        }
+      ], 
+      "brief": "decode JSON from a string to a lua-table", 
+      "examples": "", 
+      "type": "FUNCTION", 
+      "return_": "decoded json (table)", 
+      "name": "json.decode"
+    }
+  ]
+}

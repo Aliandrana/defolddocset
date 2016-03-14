@@ -1,0 +1,252 @@
+{
+  "elements": [
+    {
+      "description": "The angular damping value for the collision object. Setting this value alters the damping of\nangular motion of the object (rotation). Valid values are between 0 (no damping) and 1 (full damping).", 
+      "parameters": [], 
+      "brief": "collision object angular damping (number)", 
+      "examples": "<p>\nHow to decrease a collision object component's angular damping:\n</p>\n<pre>\n-- get angular damping from collision object \"collisionobject\" in gameobject \"floater\"\nlocal target = \"floater#collisionobject\"\nlocal damping = go.get(target, \"angular_damping\")\n-- decrease it by 10%\ngo.set(target, \"angular_damping\", damping * 0.9)\n</pre>", 
+      "type": "PROPERTY", 
+      "return_": "", 
+      "name": "angular_damping"
+    }, 
+    {
+      "description": "[READ ONLY] Returns the current linear velocity of the collision object component as a vector3.\nThe velocity is measured as a rotation around the vector with a speed equivalent to the vector length\nin radians/s.", 
+      "parameters": [], 
+      "brief": "collision object angular velocity (vector3)", 
+      "examples": "<p>\nHow to query a collision object component's angular velocity:\n</p>\n<pre>\n-- get angular velocity from collision object \"collisionobject\" in gameobject \"boulder\"\n-- this is a 2d game so rotation around z is the only one available.\nlocal velocity = go.get(\"boulder#collisionobject\", \"angular_velocity.z\")\n-- do something interesting\nif velocity < 0 then\n    -- clockwise rotation\n    ...\nelse\n    -- counter clockwise rotation\n    ...\nend\n</pre>", 
+      "type": "PROPERTY", 
+      "return_": "", 
+      "name": "angular_velocity"
+    }, 
+    {
+      "description": "Post this message to a collision-object-component to apply the specified force on the collision object.\nThe collision object must be dynamic.", 
+      "parameters": [
+        {
+          "doc": "the force to be applied on the collision object, measured in Newton (vector3)", 
+          "name": "force"
+        }, 
+        {
+          "doc": "the position where the force should be applied (vector3)", 
+          "name": "position"
+        }
+      ], 
+      "brief": "applies a force on a collision object", 
+      "examples": "<p>\nAssuming the instance of the script has a collision-object-component with id \"co\":\n</p>\n<pre>\n-- apply a force of 1 Newton towards world-x at the center of the game object instance\nmsg.post(\"#co\", \"apply_force\", {force = vmath.vector3(1, 0, 0), position = go.get_world_position()})\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "apply_force"
+    }, 
+    {
+      "description": "<p>\nThis message is broadcasted to every component of an instance that has a collision object, when the collision\nobject collides with another collision object. For a script to take action when such a collision happens, it\nshould check for this message in its <code>on_message</code> callback function.\n</p>\n<p>\nThis message only reports that a collision actually happened and will only be sent once per colliding pair and frame.\nTo retrieve more detailed information, check for the <code>contact_point_response</code> instead.\n</p>", 
+      "parameters": [
+        {
+          "doc": "the id of the instance the collision object collided with (hash)", 
+          "name": "other_id"
+        }, 
+        {
+          "doc": "the world position of the instance the collision object collided with (vec3)", 
+          "name": "other_position"
+        }, 
+        {
+          "doc": "the collision group of the other collision object (hash)", 
+          "name": "group"
+        }
+      ], 
+      "brief": "reports a collision between two collision objects", 
+      "examples": "<p>\nHow to take action when a collision occurs:\n</p>\n<pre>\nfunction on_message(self, message_id, message, sender)\n    -- check for the message\n    if message_id == hash(\"collision_response\") then\n        -- take action\n    end\nend\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "collision_response"
+    }, 
+    {
+      "description": "<p>\nThis message is broadcasted to every component of an instance that has a collision object, when the collision\nobject has contact points with respect to another collision object. For a script to take action when\nsuch contact points occur, it should check for this message in its <code>on_message</code> callback function.\n</p>\n<p>\nSince multiple contact points can occur for two colliding objects, this message can be sent multiple times in\nthe same frame for the same two colliding objects. To only be notified once when the collision occurs, check\nfor the <code>collision_response</code> message instead.\n</p>", 
+      "parameters": [
+        {
+          "doc": "world position of the contact point (vector3)", 
+          "name": "position"
+        }, 
+        {
+          "doc": "normal in world space of the contact point, which points from the other object towards the current object (vector3)", 
+          "name": "normal"
+        }, 
+        {
+          "doc": "the relative velocity of the collision object as observed from the other object (vector3)", 
+          "name": "relative_velocity"
+        }, 
+        {
+          "doc": "the penetration distance between the objects, which is always positive (number)", 
+          "name": "distance"
+        }, 
+        {
+          "doc": "the impulse the contact resulted in (number)", 
+          "name": "applied_impulse"
+        }, 
+        {
+          "doc": "life time of the contact, <b>not currently used</b> (number)", 
+          "name": "life_time"
+        }, 
+        {
+          "doc": "the mass of the current collision object in kg (number)", 
+          "name": "mass"
+        }, 
+        {
+          "doc": "the mass of the other collision object in kg (number)", 
+          "name": "other_mass"
+        }, 
+        {
+          "doc": "the id of the instance the collision object is in contact with (hash)", 
+          "name": "other_id"
+        }, 
+        {
+          "doc": "the world position of the other collision object (vector3)", 
+          "name": "other_position"
+        }, 
+        {
+          "doc": "the collision group of the other collision object (hash)", 
+          "name": "group"
+        }
+      ], 
+      "brief": "reports a contact point between two collision objects", 
+      "examples": "<p>\nHow to take action when a contact point occurs:\n</p>\n<pre>\nfunction on_message(self, message_id, message, sender)\n    -- check for the message\n    if message_id == hash(\"contact_point_response\") then\n        -- take action\n    end\nend\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "contact_point_response"
+    }, 
+    {
+      "description": "The linear damping value for the collision object. Setting this value alters the damping of\nlinear motion of the object. Valid values are between 0 (no damping) and 1 (full damping).", 
+      "parameters": [], 
+      "brief": "collision object linear damping (number)", 
+      "examples": "<p>\nHow to increase a collision object component's linear damping:\n</p>\n<pre>\n-- get linear damping from collision object \"collisionobject\" in gameobject \"floater\"\nlocal target = \"floater#collisionobject\"\nlocal damping = go.get(target, \"linear_damping\")\n-- increase it by 10% if it's below 0.9\nif damping <= 0.9 then\n    go.set(target, \"linear_damping\", damping * 1.1)\nend\n</pre>", 
+      "type": "PROPERTY", 
+      "return_": "", 
+      "name": "linear_damping"
+    }, 
+    {
+      "description": "[READ ONLY] Returns the current linear velocity of the collision object component as a vector3.\nThe velocity is measured in units/s (pixels/s).", 
+      "parameters": [], 
+      "brief": "collision object linear velocity (vector3)", 
+      "examples": "<p>\nHow to query a collision object component's linear velocity:\n</p>\n<pre>\n-- get linear velocity from collision object \"collisionobject\" in gameobject \"ship\"\nlocal source = \"ship#collisionobject\"\nlocal velocity = go.get(source, \"linear_velocity\")\n-- apply the velocity on target game object \"boulder\"'s collision object as a force\nlocal target = \"boulder#collisionobject\"\nlocal pos = go.get_position(target)\nmsg.post(target, \"apply_force\", { force = velocity, position = pos })\n</pre>", 
+      "type": "PROPERTY", 
+      "return_": "", 
+      "name": "linear_velocity"
+    }, 
+    {
+      "description": "[READ ONLY] Returns the defined physical mass of the collision object component as a number.", 
+      "parameters": [], 
+      "brief": "collision object mass (number)", 
+      "examples": "<p>\nHow to query a collision object component's mass:\n</p>\n<pre>\n-- get mass from collision object component \"boulder\"\nlocal mass = go.get(\"#boulder\", \"mass\")\n-- do something useful\nassert(mass > 1)\n</pre>", 
+      "type": "PROPERTY", 
+      "return_": "", 
+      "name": "mass"
+    }, 
+    {
+      "description": "Ray casts are used to test for intersections against collision objects in the physics world.\nWhich collision objects to hit is filtered by their collision groups and can be configured through <code>groups</code>.\nThe actual ray cast will be performed during the physics-update.\nIf an object is hit, the result will be reported via a <code>ray_cast_response</code> message.", 
+      "parameters": [
+        {
+          "doc": "the world position of the start of the ray (vector3)", 
+          "name": "from"
+        }, 
+        {
+          "doc": "the world position of the end of the ray (vector3)", 
+          "name": "to"
+        }, 
+        {
+          "doc": "a lua table containing the hashed groups for which to test collisions against (table)", 
+          "name": "groups"
+        }, 
+        {
+          "doc": "a number between 0-255 that will be sent back in the response for identification, 0 by default (number)", 
+          "name": "[request_id]"
+        }
+      ], 
+      "brief": "requests a ray cast to be performed", 
+      "examples": "<p>\nHow to perform a ray cast:\n</p>\n<pre>\nfunction init(self)\n    self.my_interesting_groups = {hash(\"my_group1\"), hash(\"my_group2\")}\nend\n\nfunction update(self, dt)\n    -- request ray cast\n    physics.ray_cast(interesting_start, interesting_end, self.my_interesting_groups)\nend\n\nfunction on_message(self, message_id, message, sender)\n    -- check for the response\n    if message_id == hash(\"ray_cast_response\") then\n        -- act on the hit\n    end\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "physics.ray_cast"
+    }, 
+    {
+      "description": "This message is sent back to the sender of a <code>ray_cast_request</code>, if the ray hit a collision object.\nSee <code>request_ray_cast</code> for examples of how to use it.", 
+      "parameters": [
+        {
+          "doc": "the fraction of the hit measured along the ray, where 0 is the start of the ray and 1 is the end (number)", 
+          "name": "fraction"
+        }, 
+        {
+          "doc": "the world position of the hit", 
+          "name": "position"
+        }, 
+        {
+          "doc": "the normal of the surface of the collision object where it was hit", 
+          "name": "normal"
+        }, 
+        {
+          "doc": "the instance id of the hit collision object", 
+          "name": "id"
+        }, 
+        {
+          "doc": "the collision group of the hit collision object as a hashed name", 
+          "name": "group"
+        }, 
+        {
+          "doc": "id supplied when the ray cast was requested", 
+          "name": "request_id"
+        }
+      ], 
+      "brief": "reports a ray cast hit", 
+      "examples": "", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "ray_cast_response"
+    }, 
+    {
+      "description": "<b>DEPRECATED!</b> Post this message to a collision-object-component to retrieve its velocity.\n\nRead properties <code>linear_velocity</code> and <code>angular_velocity</code>\nwith <code>go.get()</code> instead.", 
+      "parameters": [], 
+      "brief": "(DEPRECATED) requests the velocity of a collision object", 
+      "examples": "<p>\nHow to retrieve the velocity of a collision object, assuming the collision-object-component has id \"co\" and belongs to the same instance as the script:\n</p>\n<pre>\nfunction update(self, dt)\n    -- request velocity\n    msg.post(\"#co\", \"request_velocity\")\nend\n\nfunction on_message(self, message_id, message, sender)\n    -- check for the response\n    if message_id == hash(\"velocity_response\") then\n        -- do something with the velocity, e.g:\n        self.velocity = message.linear_velocity\n    end\nend\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "request_velocity"
+    }, 
+    {
+      "description": "<p>\nThis message is broadcasted to every component of an instance that has a collision object, when the collision\nobject interacts with another collision object and one of them is a trigger.\nFor a script to take action when such an interaction happens, it\nshould check for this message in its <code>on_message</code> callback function.\n</p>\n<p>\nThis message only reports that an interaction actually happened and will only be sent once per colliding pair and frame.\nTo retrieve more detailed information, check for the <code>contact_point_response</code> instead.\n</p>", 
+      "parameters": [
+        {
+          "doc": "the id of the instance the collision object collided with (hash)", 
+          "name": "other_id"
+        }, 
+        {
+          "doc": "if the interaction was an entry or not (exit)", 
+          "name": "enter"
+        }, 
+        {
+          "doc": "the collision group of the triggering object as a hashed name", 
+          "name": "group"
+        }
+      ], 
+      "brief": "reports interaction (enter/exit) between a trigger collision object and another collision object", 
+      "examples": "<p>\nHow to take action when a trigger interaction occurs:\n</p>\n<pre>\nfunction on_message(self, message_id, message, sender)\n    -- check for the message\n    if message_id == hash(\"trigger_response\") then\n        if message.enter then\n            -- take action for entry\n        else\n            -- take action for exit\n        end\n    end\nend\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "trigger_response"
+    }, 
+    {
+      "description": "<b>DEPRECATED!</b> This message is sent back to the sender of a <code>request_velocity</code> message.\nSee <code>request_velocity</code> for examples on how to use it.\n\nRead properties <code>linear_velocity</code> and <code>angular_velocity</code>\nwith <code>go.get()</code> instead.", 
+      "parameters": [
+        {
+          "doc": "the linear velocity, i.e. translation, of the collision object in units/s (pixels/s (vector3)", 
+          "name": "linear_velocity"
+        }, 
+        {
+          "doc": "the angular velocity, i.e. rotation, of the collision object in radians/s.\nThe velocity is measured as a rotation around the vector with a speed equivalent to the vector length (vector3)", 
+          "name": "angular_velocity"
+        }
+      ], 
+      "brief": "(DEPRECATED) reports the velocity of a collision object", 
+      "examples": "", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "velocity_response"
+    }
+  ]
+}

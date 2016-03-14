@@ -66,6 +66,8 @@ def unzip_ref_doc():
 	with zipfile.ZipFile(DOC_ZIP) as zf:
 		zf.extractall(JSON_PATH)
 
+def convert_hrefs(s):
+	return s.replace("<a href=\"/", "<a href=\"http://www.defold.com/")
 
 def create_docset():
 	# create all paths
@@ -131,7 +133,7 @@ def create_docset():
 
 						index_html = index_html + "<a href='ref/" + class_path + "'>" + class_name + "</a></br>"
 						with open(os.path.join(ref_path, class_path), "w") as out:
-							out.write(class_doc)
+							out.write(convert_hrefs(class_doc))
 
 						cursor.execute('INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)', (class_name, 'Module', "ref/" + class_path))
 

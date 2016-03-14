@@ -1,0 +1,106 @@
+{
+  "elements": [
+    {
+      "description": "Terminates the game application and reports the specified <code>code</code> to the OS.\nThis message can only be sent to the designated <code>@system</code> socket.", 
+      "parameters": [
+        {
+          "doc": "exit code to report to the OS, 0 means clean exit (number)", 
+          "name": "code"
+        }
+      ], 
+      "brief": "exits application", 
+      "examples": "<p>\nThis examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):\n</p>\n<pre>\nfunction on_message(self, message_id, message, sender)\n    if message_id == hash(\"quit\") then\n        msg.post(\"@system:\", \"exit\", {code = 0})\n    end\nend\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "exit"
+    }, 
+    {
+      "description": "Arguments will be translated into command line arguments. Sending the reboot\ncommand is equivalent to starting the engine with the same arguments.", 
+      "parameters": [
+        {
+          "doc": "argument 1", 
+          "name": "arg1"
+        }, 
+        {
+          "doc": "argument 2", 
+          "name": "arg2"
+        }, 
+        {
+          "doc": "argument 3", 
+          "name": "arg3"
+        }, 
+        {
+          "doc": "argument 4", 
+          "name": "arg4"
+        }, 
+        {
+          "doc": "argument 5", 
+          "name": "arg5"
+        }, 
+        {
+          "doc": "argument 6", 
+          "name": "arg6"
+        }
+      ], 
+      "brief": "reboot engine with arguments", 
+      "examples": "<pre>\n-- Reboot engine with a specific bootstrap collection.\nlocal arg1 = '--config=bootstrap.main_collection=/my.collectionc'\nlocal arg2 = 'build/default/game.projectc'\nmsg.post(\"@system:\", \"reboot\", {arg1 = arg1, arg2 = arg2})\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "reboot"
+    }, 
+    {
+      "description": "Set game update-frequency. This option is equivalent to display.update_frequency but\nset in run-time", 
+      "parameters": [
+        {
+          "doc": "target frequency. 60 for 60 fps", 
+          "name": "frequency"
+        }
+      ], 
+      "brief": "set update frequency", 
+      "examples": "<pre>\nmsg.post(\"@system:\", \"set_update_frequency\", { frequency = 60 } )\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "set_update_frequency"
+    }, 
+    {
+      "description": "Starts video recording of the game frame-buffer to file. Current video format is the\nopen vp8 codec in the ivf container. It's possible to upload this format directly\nto YouTube. The VLC video player has native support but with the known issue that\nnot the entirely files is played back. It's probably an issue with VLC.\nThe Miro Video Converter has support for vp8/ivf.\nNOTE: Audio is currently not supported", 
+      "parameters": [
+        {
+          "doc": "file name to write the video to", 
+          "name": "file_name"
+        }, 
+        {
+          "doc": "frame period to record, ie write every nth frame. Default value is 2", 
+          "name": "frame_period"
+        }, 
+        {
+          "doc": "frames per second. Playback speed for the video. Default value is 30. The fps value doens't affect the recording. It's only meta-data in the written video file.", 
+          "name": "fps"
+        }
+      ], 
+      "brief": "starts video recording", 
+      "examples": "<pre>\nRecord a video in 30 fps given that the native game fps is 60:\nmsg.post(\"@system:\", \"start_record\", { file_name = \"test_rec.ivf\" } )\n\nTo write a video in 60 fps given that the native game fps is 60:\nmsg.post(\"@system:\", \"start_record\", { file_name = \"test_rec.ivf\", frame_period = 1, fps = 60 } )\n\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "start_record"
+    }, 
+    {
+      "description": "", 
+      "parameters": [], 
+      "brief": "stop current video recording", 
+      "examples": "<pre>\nmsg.post(\"@system:\", \"stop_record\")\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "stop_record"
+    }, 
+    {
+      "description": "This message can only be sent to the designated <code>@system</code> socket.", 
+      "parameters": [], 
+      "brief": "shows/hides the on-screen profiler", 
+      "examples": "<pre>\nmsg.post(\"@system:\", \"toggle_profile\")\n</pre>", 
+      "type": "MESSAGE", 
+      "return_": "", 
+      "name": "toggle_profile"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "elements": [
+    {
+      "description": "The URL identifies which factory should create the game object.\nIf the game object is created inside of the frame (e.g. from an update callback), the game object will be created instantly, but none of its component will be updated in the same frame.\n\nProperties defined in scripts in the created game object can be overridden through the properties-parameter below.\nSee go.property for more information on script properties.", 
+      "parameters": [
+        {
+          "doc": "the factory that should create a game object (url)", 
+          "name": "url"
+        }, 
+        {
+          "doc": "the position of the new game object, the position of the game object containing the factory is used by default (vector3)", 
+          "name": "[position]"
+        }, 
+        {
+          "doc": "the rotation of the new game object, the rotation of the game object containing the factory is used by default (quat)", 
+          "name": "[rotation]"
+        }, 
+        {
+          "doc": "the properties defined in a script attached to the new game object (table)", 
+          "name": "[properties]"
+        }, 
+        {
+          "doc": "the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default (number or vector3)", 
+          "name": "[scale]"
+        }
+      ], 
+      "brief": "make a factory create a new game object", 
+      "examples": "<p>\nHow to create a new game object:\n</p>\n<pre>\nfunction init(self)\n    self.my_created_object = factory.create(\"#factory\", nil, nil, {my_value = 1})\n    -- communicate with the object\n    msg.post(msg.url(nil, self.my_created_object), \"hello\")\nend\n</pre>\n<p>\nAnd then let the new game object have a script attached:\n</p>\n<pre>\ngo.property(\"my_value\", 0)\n\nfunction init(self)\n    -- do something with self.my_value which is now one\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "the global id of the spawned game object (hash)", 
+      "name": "factory.create"
+    }
+  ]
+}

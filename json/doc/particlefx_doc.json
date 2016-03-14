@@ -1,0 +1,89 @@
+{
+  "elements": [
+    {
+      "description": "ParticleFX documentation", 
+      "parameters": [], 
+      "brief": "ParticleFX documentation", 
+      "examples": "", 
+      "type": "PACKAGE", 
+      "return_": "", 
+      "name": ""
+    }, 
+    {
+      "description": "Particle FX started this way need to be manually stopped through particlefx.stop.\nWhich particle FX to play is identified by the URL.", 
+      "parameters": [
+        {
+          "doc": "the particle fx that should start playing (url)", 
+          "name": "url"
+        }
+      ], 
+      "brief": "start playing a particle FX", 
+      "examples": "<p>\nHow to play a particle fx when a game object is created:\n</p>\n<pre>\nfunction init(self)\n    particlefx.play(\"#particlefx\")\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "particlefx.play"
+    }, 
+    {
+      "description": "The constant must be defined in the material assigned to the emitter.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich particle FX to reset a constant for is identified by the URL.", 
+      "parameters": [
+        {
+          "doc": "the particle FX that should have a constant reset (url)", 
+          "name": "url"
+        }, 
+        {
+          "doc": "the id of the emitter (string|hash)", 
+          "name": "emitter_id"
+        }, 
+        {
+          "doc": "the name of the constant (string|hash)", 
+          "name": "name"
+        }
+      ], 
+      "brief": "reset a shader constant for a particle FX emitter", 
+      "examples": "<p>\nThe following examples assumes that the particle FX has id \"particlefx\", contains an emitter with id \"emitter\" and that the default-material in builtins is used.\nIf you assign a custom material to the emitter, you can reset the constants defined there in the same manner.\n</p>\n<p>\nHow to reset the tinting of particles from an emitter:\n</p>\n<pre>\nfunction init(self)\n    particlefx.reset_constant(\"#particlefx\", \"emitter\", \"tint\")\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "particlefx.reset_constant"
+    }, 
+    {
+      "description": "The constant must be defined in the material assigned to the emitter.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until particlefx.reset_constant is called.\nWhich particle FX to set a constant for is identified by the URL.", 
+      "parameters": [
+        {
+          "doc": "the particle FX that should have a constant set (url)", 
+          "name": "url"
+        }, 
+        {
+          "doc": "the id of the emitter (string|hash)", 
+          "name": "emitter_id"
+        }, 
+        {
+          "doc": "the name of the constant (string|hash)", 
+          "name": "name"
+        }, 
+        {
+          "doc": "the value of the constant (vec4)", 
+          "name": "value"
+        }
+      ], 
+      "brief": "set a shader constant for a particle FX emitter", 
+      "examples": "<p>\nThe following examples assumes that the particle FX has id \"particlefx\", contains an emitter with id \"emitter\" and that the default-material in builtins is used.\nIf you assign a custom material to the emitter, you can set the constants defined there in the same manner.\n</p>\n<p>\nHow to tint particles from an emitter red:\n</p>\n<pre>\nfunction init(self)\n    particlefx.set_constant(\"#particlefx\", \"emitter\", \"tint\", vmath.vector4(1, 0, 0, 1))\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "particlefx.set_constant"
+    }, 
+    {
+      "description": "Stopping a particle FX does not remove the already spawned particles.\nWhich particle fx to stop is identified by the URL.", 
+      "parameters": [
+        {
+          "doc": "the particle fx that should stop playing (url)", 
+          "name": "url"
+        }
+      ], 
+      "brief": "stop playing a particle fx", 
+      "examples": "<p>\nHow to stop a particle fx when a game object is deleted:\n</p>\n<pre>\nfunction final(self)\n    particlefx.stop(\"#particlefx\")\nend\n</pre>", 
+      "type": "FUNCTION", 
+      "return_": "", 
+      "name": "particlefx.stop"
+    }
+  ]
+}
