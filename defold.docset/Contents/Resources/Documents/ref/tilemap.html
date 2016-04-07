@@ -17,19 +17,19 @@ function on_message(self, message_id, message, sender)
         end
     end
 end
-</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.get_bounds' class='dashAnchor'></a><a name='tilemap.get_bounds'>tilemap.get_bounds</a></h1><p>get the bounds of a tile map</p><p>Get the tile set at the specified position in the tilemap. The returned tile to set is identified
+</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.get_bounds' class='dashAnchor'></a><a name='tilemap.get_bounds'>tilemap.get_bounds()</a></h1><p>get the bounds of a tile map</p><p>Get the tile set at the specified position in the tilemap. The returned tile to set is identified
 by its index starting with 1 in the top left corner of the tile set. The coordinates of the tile is
 1-indexed (see <code>tilemap.set_tile()</code>) Which tile map and layer to query is identified by
 the URL and the layer name parameters.</p><h3>PARAMETERS</h3><p>url - the tile map (url)</p><h3>RETURN</h3><p>number of rows in the tile map (number)</p><h3>EXAMPLES</h3><p><pre>
 -- get the level bounds.
 local x, y, w, h = tilemap.get_bounds("/level#tilemap")
-</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.get_tile' class='dashAnchor'></a><a name='tilemap.get_tile'>tilemap.get_tile</a></h1><p>get a tile from a tile map</p><p>Get the tile set at the specified position in the tilemap. The returned tile to set is identified
+</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.get_tile' class='dashAnchor'></a><a name='tilemap.get_tile'>tilemap.get_tile()</a></h1><p>get a tile from a tile map</p><p>Get the tile set at the specified position in the tilemap. The returned tile to set is identified
 by its index starting with 1 in the top left corner of the tile set, or 0 if the tile is blank.
 The coordinates of the tile is 1-indexed (see <code>tilemap.set_tile()</code>)
 Which tile map and layer to query is identified by the URL and the layer name parameters.</p><h3>PARAMETERS</h3><p>url - the tile map (url)</p><p>name - of the layer (string|hash)</p><p>x-coordinate - of the tile (number)</p><p>y-coordinate - of the tile (number)</p><h3>RETURN</h3><p>index of the tile (number)</p><h3>EXAMPLES</h3><p><pre>
 -- get the tile under the player.
 local tileno = tilemap.get_tile("/level#tilemap", "foreground", self.player_x, self.player_y)
-</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.reset_constant' class='dashAnchor'></a><a name='tilemap.reset_constant'>tilemap.reset_constant</a></h1><p>reset a shader constant for a tile map</p><p>The constant must be defined in the material assigned to the tile map.
+</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.reset_constant' class='dashAnchor'></a><a name='tilemap.reset_constant'>tilemap.reset_constant()</a></h1><p>reset a shader constant for a tile map</p><p>The constant must be defined in the material assigned to the tile map.
 Resetting a constant through this function implies that the value defined in the material will be used.
 Which tile map to reset a constant for is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the tile map that should have a constant reset (url)</p><p>name - of the constant (string|hash)</p><h3>EXAMPLES</h3><p><p>
 The following examples assumes that the tile map has id "tilemap" and that the default-material in builtins is used.
@@ -42,7 +42,7 @@ How to reset the tinting of a tile map:
 function init(self)
     tilemap.reset_constant("#tilemap", "tint")
 end
-</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.set_constant' class='dashAnchor'></a><a name='tilemap.set_constant'>tilemap.set_constant</a></h1><p>set a shader constant for a tile map</p><p>The constant must be defined in the material assigned to the tile map.
+</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.set_constant' class='dashAnchor'></a><a name='tilemap.set_constant'>tilemap.set_constant()</a></h1><p>set a shader constant for a tile map</p><p>The constant must be defined in the material assigned to the tile map.
 Setting a constant through this function will override the value set for that constant in the material.
 The value will be overridden until tilemap.reset_constant is called.
 Which tile map to set a constant for is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the tile map that should have a constant set (url)</p><p>name - of the constant (string|hash)</p><p>value - of the constant (vec4)</p><h3>EXAMPLES</h3><p><p>
@@ -56,7 +56,7 @@ How to tint a tile map to red:
 function init(self)
     tilemap.set_constant("#tilemap", "tint", vmath.vector4(1, 0, 0, 1))
 end
-</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.set_tile' class='dashAnchor'></a><a name='tilemap.set_tile'>tilemap.set_tile</a></h1><p>set a tile in a tile map</p><p>Replace a tile in a tile map with a new tile. The coordinates of the tile is 1-indexed so a 4 by 4
+</pre></p><h1><a name='//apple_ref/cpp/Function/tilemap.set_tile' class='dashAnchor'></a><a name='tilemap.set_tile'>tilemap.set_tile()</a></h1><p>set a tile in a tile map</p><p>Replace a tile in a tile map with a new tile. The coordinates of the tile is 1-indexed so a 4 by 4
 tile map centered around origo has the following x,y coordinates:
 <pre>
 +-------+-------+------+------+

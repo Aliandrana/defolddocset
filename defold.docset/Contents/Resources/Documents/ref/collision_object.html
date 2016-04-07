@@ -101,7 +101,7 @@ How to query a collision object component's mass:
 local mass = go.get("#boulder", "mass")
 -- do something useful
 assert(mass > 1)
-</pre></p><h1><a name='//apple_ref/cpp/Function/physics.ray_cast' class='dashAnchor'></a><a name='physics.ray_cast'>physics.ray_cast</a></h1><p>requests a ray cast to be performed</p><p>Ray casts are used to test for intersections against collision objects in the physics world.
+</pre></p><h1><a name='//apple_ref/cpp/Function/physics.ray_cast' class='dashAnchor'></a><a name='physics.ray_cast'>physics.ray_cast()</a></h1><p>requests a ray cast to be performed</p><p>Ray casts are used to test for intersections against collision objects in the physics world.
 Which collision objects to hit is filtered by their collision groups and can be configured through <code>groups</code>.
 The actual ray cast will be performed during the physics-update.
 If an object is hit, the result will be reported via a <code>ray_cast_response</code> message.</p><h3>PARAMETERS</h3><p>from - the world position of the start of the ray (vector3)</p><p>to - the world position of the end of the ray (vector3)</p><p>groups - a lua table containing the hashed groups for which to test collisions against (table)</p><p>[request_id] - a number between 0-255 that will be sent back in the response for identification, 0 by default (number)</p><h3>EXAMPLES</h3><p><p>

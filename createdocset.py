@@ -114,7 +114,7 @@ def create_docset():
 									entry_type = "Property"
 
 								function_path = class_path + "#" + function_name
-								class_doc = class_doc + "<h1><a name='//apple_ref/cpp/" + entry_type + "/" + function_name + "' class='dashAnchor'></a><a name='" + function_name + "'>" + function_name + "</a></h1>"
+								class_doc = class_doc + "<h1><a name='//apple_ref/cpp/" + entry_type + "/" + function_name + "' class='dashAnchor'></a><a name='" + function_name + "'>" + function_name + ("()" if entry_type == "Function" else "") + "</a></h1>"
 								class_doc = class_doc + "<p>" + element["brief"] + "</p>"
 								if element["description"] != "":
 									class_doc = class_doc + "<p>" + element["description"] + "</p>"

@@ -44,7 +44,7 @@ function init(self)
 	-- do something useful
 	assert(size.x == sx)
 end
-</pre></p><h1><a name='//apple_ref/cpp/Function/sprite.reset_constant' class='dashAnchor'></a><a name='sprite.reset_constant'>sprite.reset_constant</a></h1><p>reset a shader constant for a sprite</p><p>The constant must be defined in the material assigned to the sprite.
+</pre></p><h1><a name='//apple_ref/cpp/Function/sprite.reset_constant' class='dashAnchor'></a><a name='sprite.reset_constant'>sprite.reset_constant()</a></h1><p>reset a shader constant for a sprite</p><p>The constant must be defined in the material assigned to the sprite.
 Resetting a constant through this function implies that the value defined in the material will be used.
 Which sprite to reset a constant for is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the sprite that should have a constant reset (url)</p><p>name - of the constant (string|hash)</p><h3>EXAMPLES</h3><p><p>
 The following examples assumes that the sprite has id "sprite" and that the default-material in builtins is used.
@@ -57,7 +57,7 @@ How to reset the tinting of a sprite:
 function init(self)
     sprite.reset_constant("#sprite", "tint")
 end
-</pre></p><h1><a name='//apple_ref/cpp/Function/sprite.set_constant' class='dashAnchor'></a><a name='sprite.set_constant'>sprite.set_constant</a></h1><p>set a shader constant for a sprite</p><p>The constant must be defined in the material assigned to the sprite.
+</pre></p><h1><a name='//apple_ref/cpp/Function/sprite.set_constant' class='dashAnchor'></a><a name='sprite.set_constant'>sprite.set_constant()</a></h1><p>set a shader constant for a sprite</p><p>The constant must be defined in the material assigned to the sprite.
 Setting a constant through this function will override the value set for that constant in the material.
 The value will be overridden until sprite.reset_constant is called.
 Which sprite to set a constant for is identified by the URL.</p><h3>PARAMETERS</h3><p>url - the sprite that should have a constant set (url)</p><p>name - of the constant (string|hash)</p><p>value - of the constant (vec4)</p><h3>EXAMPLES</h3><p><p>
@@ -71,7 +71,7 @@ How to tint a sprite to red:
 function init(self)
     sprite.set_constant("#sprite", "tint", vmath.vector4(1, 0, 0, 1))
 end
-</pre></p><h1><a name='//apple_ref/cpp/Function/sprite.set_hflip' class='dashAnchor'></a><a name='sprite.set_hflip'>sprite.set_hflip</a></h1><p>make a sprite flip the animations horizontally or not</p><p>Which sprite to flip is identified by the URL.
+</pre></p><h1><a name='//apple_ref/cpp/Function/sprite.set_hflip' class='dashAnchor'></a><a name='sprite.set_hflip'>sprite.set_hflip()</a></h1><p>make a sprite flip the animations horizontally or not</p><p>Which sprite to flip is identified by the URL.
 If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.</p><h3>PARAMETERS</h3><p>url - the sprite that should flip its animations (url)</p><p>flip - if the sprite should flip its animations or not (boolean)</p><h3>EXAMPLES</h3><p><p>
 How to flip a sprite so it faces the horizontal movement:
 </p>
@@ -81,7 +81,7 @@ function update(self, dt)
     sprite.set_hflip("#sprite", self.velocity.x < 0)
 end
 </pre>
-<p>It is assumed that the sprite component has id "sprite" and that the original animations faces right.</p></p><h1><a name='//apple_ref/cpp/Function/sprite.set_vflip' class='dashAnchor'></a><a name='sprite.set_vflip'>sprite.set_vflip</a></h1><p>make a sprite flip the animations vertically or not</p><p>Which sprite to flip is identified by the URL.
+<p>It is assumed that the sprite component has id "sprite" and that the original animations faces right.</p></p><h1><a name='//apple_ref/cpp/Function/sprite.set_vflip' class='dashAnchor'></a><a name='sprite.set_vflip'>sprite.set_vflip()</a></h1><p>make a sprite flip the animations vertically or not</p><p>Which sprite to flip is identified by the URL.
 If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.</p><h3>PARAMETERS</h3><p>url - the sprite that should flip its animations (url)</p><p>flip - if the sprite should flip its animations or not (boolean)</p><h3>EXAMPLES</h3><p><p>
 How to flip a sprite in a game which negates gravity as a game mechanic:
 </p>
